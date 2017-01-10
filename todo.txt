@@ -1,0 +1,39 @@
+Team Djaghrouri                                                                                                           APCS1 pd5
+Bayan Berri, Irene Lam, Jason Lam                                                                                  January 10, 2017
+  
+Game (Basic Skeleton) - DUE 1/12
+-Abstract methods (questions, answers)
+-Creates a basic game board
+-Allots point values to each section of the game board
+-Prints the game board
+
+Subclasses (Math, Science, History, Miscellaneous, etc.) - DUE 1/13
+-Array of Questions
+-Array of Answers
+
+Game (Able to play the pre-made game) - DUE 1/18
+-Compares the question with its corresponding answer
+-Records the number of players
+  -If 3+ players: Records if the players would like to play in teams
+-Records the players name
+-Records the categories the players wish to play
+-Records if the players wish to play in Special Edition or Regular Jeopardy
+-Sums the total points for each player/ team
+  -Sorts the people
+  
+Game (Including where the player(s) have the ability to create their own game) - DUE 1/18
+-Records the number of categories and questions per category
+-Records the point value for each section
+-Records Array of Questions and Answers
+-Records if they wish to play under Double Jeopardy or in the already made Special Edition
+  -If Double Jeopardy: Records the number of sections that will contain Double Jeopardy
+
+Game (Extra) - DUE 1/20
+-Refining code
+-Extra features
+  - Timer
+  - Color
+  -Centered
+  
+
+

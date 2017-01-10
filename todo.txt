@@ -1,5 +1,5 @@
-Team Djaghrouri                                                                                                           APCS1 pd5
-Bayan Berri, Irene Lam, Jason Lam                                                                                  January 10, 2017
+Team Djaghrouri                                                                                                         APCS1 pd5
+Bayan Berri, Irene Lam, Jason Lam                                                                                January 10, 2017
   
 Game (Basic Skeleton) - DUE 1/12
 -Abstract methods (questions, answers)
@@ -19,7 +19,18 @@ Game (Able to play the pre-made game) - DUE 1/18
 -Records the categories the players wish to play
 -Records if the players wish to play in Special Edition or Regular Jeopardy
 -Sums the total points for each player/ team
-  -Sorts the people
+  - Sorts the people
+-Playing the game:
+  - Selecting a category and respective point value will prompt a question
+  - Concept of "turns" (each player has a chance to answer either their chosen question or a question passed to them)
+  - Concept of "rounds" (every player 
+  - Concept of "answering" 
+    - Correct: For the miscellaneous category, if the user's answer appears in the corresponding answer string, the answer is marked as correct, whereas for math, only the exact answer is correct) -- Guidelines should be given on how the answer should be structured, or the answer string should include various forms of the answer (e.g. "1/2 0.5").
+    - Wrong: If the answer does not appear in the string, as long as every individual/team did not get a chance to answer, they will be given a chance to do so.
+  - Sums and orders people in order from highest to lowest number of points
+  - Deletes the point option when the section has been selected
+  - Upon a tie:
+    - Concept of "buzzer": The fastest person to type a letter will go first in their attempt to answer the question and win corresponding amount of points
   
 Game (Including where the player(s) have the ability to create their own game) - DUE 1/18
 -Records the number of categories and questions per category
@@ -27,13 +38,15 @@ Game (Including where the player(s) have the ability to create their own game) -
 -Records Array of Questions and Answers
 -Records if they wish to play under Double Jeopardy or in the already made Special Edition
   -If Double Jeopardy: Records the number of sections that will contain Double Jeopardy
+-Records how the user wishes to resolve a tie, either by using a premade buzzer, selecting the user that answered the most highest pointed questions (list to be continued) 
 
-Game (Extra) - DUE 1/20
+Game (Extra) - DUE 1/23
 -Refining code
+-Making code more visually appealing
 -Extra features
   - Timer
   - Color
-  -Centered
-  
+  - Centered
+  - Ability to save
 
 

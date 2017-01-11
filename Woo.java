@@ -29,11 +29,11 @@ public abstract class Woo {
     }
 
     public void newGame() {
-	//Fun printing :D
+	//Fun printing :D -- essentially prints Loading... 3x at 1 second intervals to increase suspense for the game
 	for (int i = 0; i < 3; i++) {
 	    System.out.println("Loading...\n");
 	    try {
-		Thread.sleep(1000);
+		Thread.sleep(1000); //What gives the 1 second interval
 	    }
 	    catch (InterruptedException ex) { }
 	}
@@ -49,16 +49,17 @@ public abstract class Woo {
 	catch ( IOException e ) { }
 	
 	if (option == 1) {
-	    //Implementation to create your own 
+	    //Implementation to create your own game
 	}
 
-	System.out.println("How many players are playing in total?"); //Presumese 2+
+	System.out.println("How many players are playing in total?"); //Presumese 2+ players for now
 	totalPlayers = Integer.parseInt( in.readLine() );
 
 	System.out.println("\nToday, one of these " + totalPlayers + " contestants will win the Jeopardy!");
 	
-	playerNames = new String[totalPlayers];
+	playerNames = new String[totalPlayers]; //Updates the array playerNames to the size of the number of players
 	
+	//Updates the array playerNames to the size of the number of players    
 	for (int i = 0; i < totalPlayers(); i++ ) {
 	    System.out.println("Who is player " + i + " ?");
 	    playerNames[i] = String.parseString( in.readLine() );

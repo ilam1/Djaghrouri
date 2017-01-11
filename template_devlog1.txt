@@ -55,9 +55,9 @@ wow we so BOSS bc...
 +==============================================================
 +
 +
-+yyyy-mm-dd
++2017-01-23
 +--------------------------------------------------------------
-+<Member> :: <Thing member did.>
-+<Member> :: <Thing member did.>
-+<Member> :: <Thing member did.>
++Bayan :: <Thing member did.>
++Irene :: <Thing member did.>
++Jason :: <Thing member did.>
 +==============================================================

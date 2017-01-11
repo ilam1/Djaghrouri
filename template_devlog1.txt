@@ -1,16 +1,11 @@
-+<Team Name>
-+<Member 0 Name>
-+<Member 1 Name>
-+<Member 2 Name>
-+pd <pd#>
++Team Djaghrouri
++Bayan Berri
++Irene Lam
++Jason Lam
++pd 5
 +---------------------
-+<Project>
++Jeopardy!
 +
-+
-+Suggested usage: 
-+* Replace all fields, angle brackets included, with specified info.
-+  eg, pd <pd#> --> pd 3
-+* Delete these instructions once all teammates understand usage.
 +
 +devlog--
 +Use keyboard shortcut to jump to end,
@@ -27,7 +22,8 @@
 +------------------------------------------
 +OBSTACLES OVERCOME
 +~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-+wow we so BOSS bc...
++
+wow we so BOSS bc...
 +
 +UNRESOLVED ISSUES
 +~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

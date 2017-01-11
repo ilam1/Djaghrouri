@@ -61,38 +61,81 @@ public abstract class Woo {
 	playerNames = new String[totalPlayers]; //Updates the array playerNames to the size of the number of players
 	
 	//Updates the array playerNames to the size of the number of players    
-	for (int i = 0; i < totalPlayers(); i++ ) {
+	for (int i = 0; i < totalPlayers; i++ ) {
 	    System.out.println("Who is player " + i + " ?");
 	    playerNames[i] = String.parseString( in.readLine() );
 	}
 	
-	System.out.println("\nSelect the categories you wish to play");		   
-	
+	points = new int[totalPlayers];//Updates the points array to number of players in the game and default is already 0
+
+	System.out.println("\nSelect the categories you wish to play\n");
+	System.out.println("\t1: Math\n");
+	System.out.println("\t2: Science\n");
+	System.out.println("\t3: History\n");
+	System.out.println("\t4: Miscellaneous\n");
+
+	String cat= String.parseString( in.readLine()); 
+	System.out.println("\n How many points would you like to play for? Please type in the number before the points.\n");
+
+	System.out.println("\t 1: 100\n");
+	System.out.println("\t 2: 200\n");
+	System.out.println("\t 3: 300\n");
+	System.out.println("\t 4: 400\n");
+	System.out.println("\t 5: 500\n");
+	String pt= Integer.parseInteger( in.readLine());	
     }
 
     //Overwritten toString that prints the game board
     public String toString() {
 	ans = "";
-	//Adds the category naems    
+	//Adds the category names
 	for (int i = 0; i < categories.length; i++) {
-		ans += categories[i] + " "; }
-	ans += "\n"
-	//Implement point values here	
+	    ans += categories[i] + " "; 
+	}
+	ans += "\n";
+
+	//Implement point values here
+	int increment = 100;
+	for (int i = 0; i < 5; i++) {
+	    for (int i = 0; i < categories.length; i++) {
+		ans += increment + " ";
+	    }
+	    ans += "\n";
+	    increment += 100;
+	}
     }
 
     //String of each player ordered in terms of their points
     public String sortRank() {
-	
+	for (int i = 0; i < playerNames.length - 1; i++) {
+	    if (points[i] < points[i+1]) {
+		//switches points
+		int temp = points[i];
+		points[i] = points[i+1];
+		points[i+1] = temp;
+		//switches playerNames when points are switched
+		String temp = playerNames[i];
+		playerNames[i] = playerNames[i+1];
+	        playerNames[i+1] = temp;
+	    }
+	}
+	return 
     }
 
     //Returns if the given answer is correct
     public boolean compareAnswers() {
-
+	/*
+1. array of answers(subject. answers[i] compared to readline of what the user inputs. 
+if .equals--> true.-->
+SOP "good job you gained+ ___ + points"
+	 */
+	if (cat.answers[pt].equals(
     }
 
     //Returns a calculation of each player's total points
-    public int totalPoints(int index) {
-
+    public int addPoints(int index) {
+	//player in index will have the amount of points in points[index]
+	points[index] += questionWorth[//im not sure];
     }
 
 }

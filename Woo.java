@@ -22,6 +22,7 @@ public abstract class Woo {
     protected abstract String[] questions;
     protected abstract String[] answers;
     private boolean gameOn;
+    private String[] categories = ["History","Math","Miscellaneous","Science"];	
 
     //Default constructor
     public Woo() {
@@ -65,13 +66,18 @@ public abstract class Woo {
 	    playerNames[i] = String.parseString( in.readLine() );
 	}
 	
-			   
+	System.out.println("\nSelect the categories you wish to play");		   
 	
     }
 
     //Overwritten toString that prints the game board
     public String toString() {
-	
+	ans = "";
+	//Adds the category naems    
+	for (int i = 0; i < categories.length; i++) {
+		ans += categories[i] + " "; }
+	ans += "\n"
+	//Implement point values here	
     }
 
     //String of each player ordered in terms of their points

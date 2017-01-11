@@ -26,4 +26,15 @@ public class Sci extends Woo{
     public String organSystemsA() {
     }
 
+    public String bodyPartsQ() {
+    }
+    public String bodyPartsA() {
+    }
+
+    public String periodicTableQ() {
+    }
+    public String periodicTableA() {
+    }
+
 }
+

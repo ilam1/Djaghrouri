@@ -37,6 +37,8 @@ wow we so BOSS bc...
 +MID-DEVELOPMENT DESIGN CHANGES
 +~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 +we changed ___ to ___ bc...
++We changed our plan to use early exit bubble sort for sorting the ranks of the players because
++we will only have a small amount of players so which ever sort we use wouldn't really matter. 
 +
 +LESSONS LEARNED
 +~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -58,7 +60,8 @@ wow we so BOSS bc...
 +2017-01-10
 +--------------------------------------------------------------
 +Together :: We discussed the deadlines in our todo.txt and their corresponding components.
-+Bayan :: <Thing member did.>
++Bayan :: We worked on the UML diagram and planned out the types of questions for each game.
++I created a file for each subclass of Game.java and filled math, Misc, and History with potential question and answer ideas. 
 +Irene :: Woo.java was created and filled it with numerous imports, instance variables, and must have methods (e.g. something that prints the array). The game section was also updated with print statements that go from Loading... (for suspense) to the players name. Game elements of todo.txt were further detailed (e.g. the necessary components for Jeopardy! to run). Lastly, the diagram representation of the algorithm that allows the user to create their own game was added to the flow chart.  
 +Jason :: The steps for when the user chooses to directly play the game were added to the flow chart.
 +==============================================================

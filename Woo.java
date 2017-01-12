@@ -83,7 +83,7 @@ public class Woo {
 
 	    
         points = new int[totalPlayers];//Updates the points array to number of players in the game and default is already 0
-	for (int ind = 0; ind < board[].length*(board.length-1); ind++) {
+	for (int ind = 0; ind < board[0].length*(board.length-1); ind++) {
 	System.out.println(board);
 	    
         System.out.println("\nSelect the categories you wish to play. Please type in the number before the points\n");
@@ -104,7 +104,7 @@ public class Woo {
 	System.out.println("\t 3: 300\n");
 	System.out.println("\t 4: 400\n");
 	System.out.println("\t 5: 500\n");
-	String row = Integer.parseInt( in.readLine());
+	int row = Integer.parseInt( in.readLine());
 	board[col][row] = "   ";
 		
 	if (col ==1) {

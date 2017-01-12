@@ -3,15 +3,18 @@ public class Math extends Woo{
     public String[] questions;
     public String[] answers;
     //Methods begin:
-   
+   public String[] headerCreater
     public String logQ(){
+    
     }
     public int logA(){
     }
     
     public String trigQ(){
+	String ret="A right triangle has one side length of";
+	ret+= 
     }
-    public int trigA(){
+    public String trigA(){//answer will be a string in case theres a square root
     }
     
     public String radQ(){

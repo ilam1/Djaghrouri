@@ -9,7 +9,7 @@
 
 import java.io.*;
 import java.util.*;
-import cs1.Keyboard.*;
+import cs1.Keyboard;
 
 public class Woo {
 
@@ -83,7 +83,7 @@ public class Woo {
 
 	    
         points = new int[totalPlayers];//Updates the points array to number of players in the game and default is already 0
-	for (int ind = 0; ind < board[0].length*(board.length-1); ind++) {
+	for (int ind = 0; ind < (board[0].length)*(board.length-1); ind++) {
 	System.out.println(board);
 	    
         System.out.println("\nSelect the categories you wish to play. Please type in the number before the points\n");
@@ -95,8 +95,8 @@ public class Woo {
 	//For use when there are categories to be chosen
 	//if (Integer.parseInt(in.readLine() ) == 1) 
 	//{
-	int col = Integer.parseInt( in.readLine() );
-        
+	int col = Keyboard.readInt();
+	    
 	System.out.println("\n How many points would you like to play for? Please type in the number before the points.\n");
 
 	System.out.println("\t 1: 100\n");
@@ -104,7 +104,7 @@ public class Woo {
 	System.out.println("\t 3: 300\n");
 	System.out.println("\t 4: 400\n");
 	System.out.println("\t 5: 500\n");
-	int row = Integer.parseInt( in.readLine());
+	int row = Keyboard.readInt();
 	board[col][row] = "   ";
 		
 	if (col ==1) {
@@ -119,7 +119,7 @@ public class Woo {
 	if (col == 4) {
 		System.out.println(Misc.questions[row - 1]);
 	} 		
-	String ans = in.readLine();	
+	String ans = Keyboard.readString();	
 	if (compareAnswers(ans)) {
 		points[whichPlayer()] += row*100;
 		System.out.println("Congratulations!");

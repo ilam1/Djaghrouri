@@ -1,10 +1,9 @@
 public class Misc extends Woo{
     // instance variables
-    public String[] questions;
-    public String[] answers;
-
+ public static String[] questions = new String[2];
+    public static String[] answers =new String[2];
     // Methods begin
-    public String riddleQ(){
+   /* public String riddleQ(){
     }
     public String riddleA(){
     }
@@ -15,10 +14,20 @@ public class Misc extends Woo{
     public String brainTeaserQ(){
     }
     public String brainTeaserA(){
-    }
+    }*/
     public String logicQ(){
+	return "logicQ";
     }
     public String logicA(){
+	return "logicA";
+    }
+     public String[] popQ(){
+	questions[0]= logicQ();
+	return questions;
+    }
+    public String[] popA(){
+	answers[0]=logicA();
+	return answers;
     }
     
     

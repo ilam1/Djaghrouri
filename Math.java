@@ -1,10 +1,9 @@
 public class Math extends Woo{
     //Instance Variables    
-    public String[] questions;
-    public String[] answers;
+    public static String[] questions = new String[2];
+    public static String[] answers =new String[2];
     //Methods begin:
-   public String[] headerCreater
-    public String logQ(){
+    /* public String logQ(){
     
     }
     public int logA(){
@@ -31,11 +30,20 @@ public class Math extends Woo{
     }
     public int wordA(){
     }
-    
-    public String circleEq(){
+   */
+    public String circleQ(){
+       return "what's a circle";
+   }
+    public String circleA(){
+	return "a shape";
     }
-    public int circleEq(){
+    public String[] popQ(){
+	questions[0]= circleQ();
+	return questions;
     }
-    
+    public String[] popA(){
+	answers[0]=circleA();
+	return answers;
+    }
 
 }

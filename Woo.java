@@ -111,16 +111,16 @@ public class Woo {
 		System.out.println(Math.questions[row-1]); 
 	}
 	if (col == 2) {
-		System.out.println(Science.questions[row - 1]);
+		System.out.println(Sci.questions[row - 1]);
 	} 
 	if (col ==3) {
 		System.out.println(History.questions[row-1]); 
 	}
 	if (col == 4) {
-		System.out.println(Miscellaneous.questions[row - 1]);
+		System.out.println(Misc.questions[row - 1]);
 	} 		
 	String ans = in.readLine();	
-	if (compareAns(ans)) {
+	if (compareAnswers(ans)) {
 		points[whichPlayer()] += row*100;
 		System.out.println("Congratulations!");
 	}
@@ -173,6 +173,7 @@ public class Woo {
 
     public int whichPlayer ( ) {
 	    //Returns index of player playing
+	return 0;
     }
 			
     //Returns if the given answer is correct

@@ -23,6 +23,7 @@ public abstract class Woo {
     protected abstract String[] answers;
     private boolean gameOn;
     private String[] categories = ["History","Math","Miscellaneous","Science"];	
+    private boolean diffPoint; //True if and only if the user creates a game with different point values
 
     //Default constructor
     public Woo() {
@@ -67,15 +68,15 @@ public abstract class Woo {
 	}
 	
 	points = new int[totalPlayers];//Updates the points array to number of players in the game and default is already 0
-
-	System.out.println("\nSelect the categories you wish to play\n");
+    
+	System.out.println("\nSelect the categories you wish to play (One category at a time!)\n");
 	System.out.println("\t1: Math\n");
 	System.out.println("\t2: Science\n");
 	System.out.println("\t3: History\n");
 	System.out.println("\t4: Miscellaneous\n");
-
+    
 	String cat= String.parseString( in.readLine()); 
-	System.out.println("\n How many points would you like to play for? Please type in the number before the points.\n");
+/*	System.out.println("\n How many points would you like to play for? Please type in the number before the points.\n");
 
 	System.out.println("\t 1: 100\n");
 	System.out.println("\t 2: 200\n");
@@ -83,7 +84,7 @@ public abstract class Woo {
 	System.out.println("\t 4: 400\n");
 	System.out.println("\t 5: 500\n");
 	String pt= Integer.parseInteger( in.readLine());	
-    }
+    } */
 
     //Overwritten toString that prints the game board
     public String toString() {
@@ -93,7 +94,8 @@ public abstract class Woo {
 	    ans += categories[i] + " "; 
 	}
 	ans += "\n";
-
+	
+	if (!diffPoints) {    
 	//Implement point values here
 	int increment = 100;
 	for (int i = 0; i < 5; i++) {
@@ -102,6 +104,7 @@ public abstract class Woo {
 	    }
 	    ans += "\n";
 	    increment += 100;
+	}
 	}
     }
 
@@ -123,13 +126,14 @@ public abstract class Woo {
     }
 
     //Returns if the given answer is correct
-    public boolean compareAnswers() {
-	/*
+    public boolean compareAnswers(String ans) {
+	    /*
 1. array of answers(subject. answers[i] compared to readline of what the user inputs. 
 if .equals--> true.-->
 SOP "good job you gained+ ___ + points"
 	 */
-	if (cat.answers[pt].equals(
+	    
+	//if (cat.answers[pt].equals(
     }
 
     //Returns a calculation of each player's total points

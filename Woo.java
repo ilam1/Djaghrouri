@@ -22,7 +22,8 @@ public class Woo {
     protected String[] questions;
     protected String[] answers;
     private boolean gameOn;
-    private String[] categories = {"History","Math","Miscellaneous","Science"};
+    private String[] categories = {"Math","Science","History","Miscellaneous"};
+    	
     private BufferedReader in;
     private boolean diffPoints; //True if and only if the user creates a game with different point values
 
@@ -80,29 +81,55 @@ public class Woo {
             }
         }
 
+	    
         points = new int[totalPlayers];//Updates the points array to number of players in the game and default is already 0
-
-        System.out.println("\nSelect the categories you wish to play (One category at a time!)\n");
+	for (int ind = 0; ind < board[].length*(board.length-1); ind++) {
+	System.out.println(board);
+	    
+        System.out.println("\nSelect the categories you wish to play. Please type in the number before the points\n");
         System.out.println("\t1: Math");
         System.out.println("\t2: Science");
         System.out.println("\t3: History");
         System.out.println("\t4: Miscellaneous");
-
-        try {
-            String cat = in.readLine();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-/*	System.out.println("\n How many points would you like to play for? Please type in the number before the points.\n");
+	
+	//For use when there are categories to be chosen
+	//if (Integer.parseInt(in.readLine() ) == 1) 
+	//{
+	int col = Integer.parseInt( in.readLine() );
+        
+	System.out.println("\n How many points would you like to play for? Please type in the number before the points.\n");
 
 	System.out.println("\t 1: 100\n");
 	System.out.println("\t 2: 200\n");
 	System.out.println("\t 3: 300\n");
 	System.out.println("\t 4: 400\n");
 	System.out.println("\t 5: 500\n");
-	String pt= Integer.parseInteger( in.readLine());
-    } */
-    }
+	String row = Integer.parseInt( in.readLine());
+	board[col][row] = "   ";
+		
+	if (col ==1) {
+		System.out.println(Math.questions[row-1]); 
+	}
+	if (col == 2) {
+		System.out.println(Science.questions[row - 1]);
+	} 
+	if (col ==3) {
+		System.out.println(History.questions[row-1]); 
+	}
+	if (col == 4) {
+		System.out.println(Miscellaneous.questions[row - 1]);
+	} 		
+	String ans = in.readLine();	
+	if (compareAns(ans)) {
+		points[whichPlayer()] += row*100;
+		System.out.println("Congratulations!");
+	}
+	else {
+		System.out.println("You got it wrong"); 
+	}
+		
+	} //ends for loop    
+    } //ends the game
 
         //Overwritten toString that prints the game board
     public String toString() {
@@ -144,6 +171,10 @@ public class Woo {
         return null;
     }
 
+    public int whichPlayer ( ) {
+	    //Returns index of player playing
+    }
+			
     //Returns if the given answer is correct
     public boolean compareAnswers(String ans) {
 	    /*

@@ -18,7 +18,7 @@ public class Woo {
     private String[] playerNames;
     private int[] questionWorth;
     private int[] points;
-    private String[][] board= new String[6][4];
+    private int[][] board= new int[5][4];
     protected String[] questions;
     protected String[] answers;
     private boolean gameOn;
@@ -83,8 +83,10 @@ public class Woo {
 
 	    
         points = new int[totalPlayers];//Updates the points array to number of players in the game and default is already 0
+	pointTable(board);
 	for (int ind = 0; ind < (board[0].length)*((board.length)-1); ind++) {
 	    System.out.println(toString());
+	    print2(board);
 	    
         System.out.println("\nSelect the categories you wish to play. Please type in the number before the points\n");
         System.out.println("\t1: Math");
@@ -105,7 +107,7 @@ public class Woo {
 	System.out.println("\t 4: 400\n");
 	System.out.println("\t 5: 500\n");
 	int row = Keyboard.readInt();
-	board[col][row] = "   ";
+	board[row-1][col-1] = 0;
 		
 	if (col ==1) {
 		System.out.println(Math.questions[row-1]); 
@@ -123,6 +125,10 @@ public class Woo {
 	if (compareAnswers(ans)) {
 		points[whichPlayer()] += row*100;
 		System.out.println("Congratulations!");
+		board[row-1][col-1] = 0;
+		//	print2(board);
+
+		
 	}
 	else {
 		System.out.println("You got it wrong"); 
@@ -141,21 +147,37 @@ public class Woo {
             ans += categories[i] + " ";
         }
         ans += "\n";
-
-        if (!diffPoints) {
-            //Implement point values here
-            int increment = 100;
-            for (int i = 0; i < 5; i++) {
-                for (int j = 0; j < categories.length; j++) {
-                    ans += increment + "\t";
-                }
-                ans += "\n";
-                increment += 100;
-            }
-        }
         return ans;
     }
-
+    public int[][] pointTable(int[][] board){
+	for (int row=0; row<board.length; row++){
+	    for(int col=0; col<board[row].length; col++){
+		board[row][col]= (row+1)*100;
+	    }
+	}
+	return board;
+	/*	if (!diffPoints) {
+	//Implement point values here
+	int increment = 100;
+	for (int i = 0; i < 5; i++) {
+	for (int j = 0; j < categories.length; j++) {
+	ans += increment + "\t";
+	}
+	ans += "\n";
+	increment += 100;
+	}
+	}*/
+	
+    }
+    public static void print2( int[][] board ) { 
+	//prints two d array
+	for( int[] k : board ) {
+	    for( int j : k ) {
+		System.out.print( j + "\t");
+	    }
+	    System.out.print( "\n" );
+	}
+    }
     //String of each player ordered in terms of their points
     public String sortRank() {
         for (int i = 0; i < playerNames.length - 1; i++) {
@@ -184,10 +206,9 @@ public class Woo {
 1. array of answers(subject. answers[i] compared to readline of what the user inputs.
 if .equals--> true.-->
 SOP "good job you gained+ ___ + points"
-	 */
-
+	 */ 
         //if (cat.answers[pt].equals(
-        return false;
+        return true;
     }
 
     //Returns a calculation of each player's total points

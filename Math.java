@@ -1,7 +1,7 @@
 public class Math extends Woo{
     //Instance Variables    
-    public static String[] questions = new String[2];
-    public static String[] answers =new String[2];
+    public static String[] questions = {"q1","q2","q3","q4","q5"};
+    public static String[] answers ={"a1","a2","a3","a4","a5"};
     //Methods begin:
     /* public String logQ(){
     
@@ -31,19 +31,19 @@ public class Math extends Woo{
     public int wordA(){
     }
    */
-    public String circleQ(){
+    public static String circleQ(){
        return "what's a circle";
    }
-    public String circleA(){
+    public static String circleA(){
 	return "a shape";
     }
-    public String[] popQ(){
+    /*public String[] popQ(){
 	questions[0]= circleQ();
 	return questions;
     }
     public String[] popA(){
 	answers[0]=circleA();
 	return answers;
-    }
+	}*/
 
 }

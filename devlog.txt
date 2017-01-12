@@ -24,12 +24,14 @@
 +~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 +
 wow we so BOSS bc...
-+
++We got a temporary jeopardy game to work!!
 +UNRESOLVED ISSUES
 +~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 +blah blah pesky bug...
 +maybe some of these will move into the Obs.Ovrcm section...
-+
++We still have to make it so that
+
+
 +COOL STUFF LEARNED
 +~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 +wow! oo!...

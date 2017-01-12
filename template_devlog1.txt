@@ -57,13 +57,36 @@ wow we so BOSS bc...
 +==============================================================
 +
 +
++==============================================================
++2017-01-08 and before
++--------------------------------------------------------------
++Together :: We worked on our game proposal.
++==============================================================
++2017-01-09
++--------------------------------------------------------------
++Together :: We worked on the UML diagram and planned out the types of questions for each game. We also augmented our game proposal with more Solidifies (e.g. using bubbleSort in our game algorithm). 
++==============================================================
 +2017-01-10
 +--------------------------------------------------------------
 +Together :: We discussed the deadlines in our todo.txt and their corresponding components.
-+Bayan :: We worked on the UML diagram and planned out the types of questions for each game.
++Bayan :: 
 +I created a file for each subclass of Game.java and filled math, Misc, and History with potential question and answer ideas. 
-+Irene :: Woo.java was created and filled it with numerous imports, instance variables, and must have methods (e.g. something that prints the array). The game section was also updated with print statements that go from Loading... (for suspense) to the players name. Game elements of todo.txt were further detailed (e.g. the necessary components for Jeopardy! to run). Lastly, the diagram representation of the algorithm that allows the user to create their own game was added to the flow chart.  
++Irene :: 
++Woo.java was created and filled it with numerous imports, instance variables, and must have methods (e.g. something that prints the array). 
++The game section was also updated with print statements that go from Loading... (for suspense) to the players name. 
++Game elements of todo.txt were further detailed (e.g. the necessary components for Jeopardy! to run). 
++The diagram representation of the algorithm that allows the user to create their own game was added to the flow chart.  
 +Jason :: The steps for when the user chooses to directly play the game were added to the flow chart.
++==============================================================
++2017-01-11
++--------------------------------------------------------------
++Bayan :: <Thing member did.>
++Irene ::
++Fine tuning such that the skeleton is now RUNNING (up until categories are asked)
+  + Added main and necessary try/catch blocks
+  + Fixed syntax errors (especially in method newGame() )
+  + Updated instance variables (i.e. categories that contains the categories, diffPoints for use when the user is allowed to create the game) 
++Jason :: <Thing member did.>
 +==============================================================
 +2017-01-23
 +--------------------------------------------------------------

@@ -70,7 +70,9 @@ wow we so BOSS bc...
 +--------------------------------------------------------------
 +Together :: We discussed the deadlines in our todo.txt and their corresponding components.
 +Bayan :: 
-+I created a file for each subclass of Game.java and filled math, Misc, and History with potential question and answer ideas. 
++I created a file for each subclass of Game.java and filled math, Misc, and History with potential question and answer ideas.
++Worked with Jason on the final methods of Woo.java. We planned out how to calculate the points and how to check if the answers that the user inputs are correct.
+
 +Irene :: 
 +Woo.java was created and filled it with numerous imports, instance variables, and must have methods (e.g. something that prints the array). 
 +The game section was also updated with print statements that go from Loading... (for suspense) to the players name. 

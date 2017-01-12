@@ -18,7 +18,7 @@ public class Woo {
     private String[] playerNames;
     private int[] questionWorth;
     private int[] points;
-    private String[][] board;
+    private String[][] board= new String[6][4];
     protected String[] questions;
     protected String[] answers;
     private boolean gameOn;
@@ -83,8 +83,8 @@ public class Woo {
 
 	    
         points = new int[totalPlayers];//Updates the points array to number of players in the game and default is already 0
-	for (int ind = 0; ind < (board[0].length)*(board.length-1); ind++) {
-	System.out.println(board);
+	for (int ind = 0; ind < (board[0].length)*((board.length)-1); ind++) {
+	    System.out.println(toString());
 	    
         System.out.println("\nSelect the categories you wish to play. Please type in the number before the points\n");
         System.out.println("\t1: Math");
@@ -130,7 +130,9 @@ public class Woo {
 		
 	} //ends for loop    
     } //ends the game
+    /*public void printArray(){
 
+      }*/
         //Overwritten toString that prints the game board
     public String toString() {
         String ans = "";
@@ -144,8 +146,8 @@ public class Woo {
             //Implement point values here
             int increment = 100;
             for (int i = 0; i < 5; i++) {
-                for (int j = 0; i < categories.length; j++) {
-                    ans += increment + " ";
+                for (int j = 0; j < categories.length; j++) {
+                    ans += increment + "\t";
                 }
                 ans += "\n";
                 increment += 100;

@@ -25,6 +25,8 @@
 +
 wow we so BOSS bc...
 +We got a temporary jeopardy game to work!!
++Our Board wouldn't update the point values to 0 after they were played. This is because the board was being printed in toString each time and recreated each time. our toString in essence didn't just print it. it also repopulated it but we got it to work!!
++ We kept getting an error about in.readLine(). We fixed this error by implementing Keyboard.java instead. 
 +UNRESOLVED ISSUES
 +~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 +blah blah pesky bug...
@@ -68,9 +70,23 @@ wow we so BOSS bc...
 +==============================================================
 +2017-01-10
 +--------------------------------------------------------------
-+Together :: We discussed the deadlines in our todo.txt and their corresponding components.
++Together :: We discussed the deadlines in our todo.txt and their corresponding components and worked on the flowchart. 
+
++Bayan::
+
++Irene :: 
++Woo.java was created and filled it with numerous imports, instance variables, and must have methods (e.g. something that prints the array). 
++The game section was also updated with print statements that go from Loading... (for suspense) to the players name. 
++Game elements of todo.txt were further detailed (e.g. the necessary components for Jeopardy! to run). 
++The diagram representation of the algorithm that allows the user to create their own game was added to the flow chart.
+
++Jason :: The steps for when the user chooses to directly play the game were added to the flow chart.
++==============================================================
++2017-01-11
++--------------------------------------------------------------
 +Bayan,Jason::
 +Worked on the final methods of Woo.java at the CSDojo. We planned out how to calculate the points and how to check if the answers that the user inputs are correct.
+
 +Bayan :: 
 +I created a file for each subclass of Game.java including Math.java, Misc.java, History.java, and Sci.java-- all of which extend Woo.java
 and filled math, Misc, and History with potential question and answer ideas for the methods.
@@ -78,16 +94,6 @@ and filled math, Misc, and History with potential question and answer ideas for 
 +Created an example board on paper so that it would be easier to visualize.
 +Added .gitignore to the github repository. 
 
-+Irene :: 
-+Woo.java was created and filled it with numerous imports, instance variables, and must have methods (e.g. something that prints the array). 
-+The game section was also updated with print statements that go from Loading... (for suspense) to the players name. 
-+Game elements of todo.txt were further detailed (e.g. the necessary components for Jeopardy! to run). 
-+The diagram representation of the algorithm that allows the user to create their own game was added to the flow chart.  
-+Jason :: The steps for when the user chooses to directly play the game were added to the flow chart.
-+==============================================================
-+2017-01-11
-+--------------------------------------------------------------
-+Bayan :: <Thing member did.>
 +Irene ::
 +Fine tuning such that the skeleton is now RUNNING (up until categories are asked)
   + Added main and necessary try/catch blocks
@@ -95,9 +101,33 @@ and filled math, Misc, and History with potential question and answer ideas for 
   + Updated instance variables (i.e. categories that contains the categories, diffPoints for use when the user is allowed to create the game) 
 +Jason :: <Thing member did.>
 +==============================================================
-+2017-01-23
++2017-01-12
 +--------------------------------------------------------------
-+Bayan :: <Thing member did.>
+Together:: Today in class we continued working on Woo.java. We made it so that the user can also choose the point value. and incorporated the questions of each subclass. 
++Bayan ::
+       + Went through and resolved every error in the version of Woo.java that we pushed during class.
+       + Fixed it so that we have separate methods that will populate board and print it.
+       + added a filler array for each subclass, and made the question and answer arrays static.
+       + Added methods to populate the arrays and added return statements for sample questions, this was later modified into sample arrays for the MVP.
+       + implemented Keyboard.java methods throughout Woo.java. 
 +Irene :: <Thing member did.>
 +Jason :: <Thing member did.>
 +==============================================================
++2017-01-23
++--------------------------------------------------------------
+Together::
++Bayan ::
+       + 
++Irene :: <Thing member did.>
++Jason :: <Thing member did.>
++==============================================================
+
++2017-01-23
++--------------------------------------------------------------
+Together::
++Bayan ::
+       + 
++Irene :: <Thing member did.>
++Jason :: <Thing member did.>
++==============================================================
+

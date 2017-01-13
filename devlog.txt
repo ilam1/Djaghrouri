@@ -36,8 +36,9 @@ originally intended) we need to keep track of which player is currently playing 
 
 +COOL STUFF LEARNED
 +~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-+ The various errors and exceptions that Java hosts, each catering to the very numerous errors we produce 
-+
++ The various errors and exceptions that Java hosts, each catering to the very numerous errors we produce. 
++ Do while loop (evaluates the boolean at the end)
+
 +MID-DEVELOPMENT DESIGN CHANGES
 +~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 + We changed our plan to use early exit bubble sort for sorting the ranks of the players because

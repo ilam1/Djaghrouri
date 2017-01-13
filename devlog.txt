@@ -80,7 +80,9 @@ wow we so BOSS bc...
 +Game elements of todo.txt were further detailed (e.g. the necessary components for Jeopardy! to run). 
 +The diagram representation of the algorithm that allows the user to create their own game was added to the flow chart.
 
-+Jason :: The steps for when the user chooses to directly play the game were added to the flow chart.
++Jason :: 
++ Typed up most of the flowchart leading up to the running of the game
++ The steps for when the user chooses to directly play the game were added to the flow chart.
 +==============================================================
 +2017-01-11
 +--------------------------------------------------------------
@@ -99,11 +101,13 @@ and filled math, Misc, and History with potential question and answer ideas for 
   + Added main and necessary try/catch blocks
   + Fixed syntax errors (especially in method newGame() )
   + Updated instance variables (i.e. categories that contains the categories, diffPoints for use when the user is allowed to create the game) 
-+Jason :: <Thing member did.>
++Jason ::
++ Finished function sortRank, as the points in point array is sorted, so is the player names in the playerNames array, maintaining
+  linearity between the two.
 +==============================================================
 +2017-01-12
 +--------------------------------------------------------------
-Together:: Today in class we continued working on Woo.java. We made it so that the user can also choose the point value. and incorporated the questions of each subclass. 
+Bayan, Irene, Jason :: Today in class we continued working on Woo.java. We made it so that the user can also choose the point value. and incorporated the questions of each subclass. 
 +Bayan ::
        + Went through and resolved every error in the version of Woo.java that we pushed during class.
        + Fixed it so that we have separate methods that will populate board and print it.
@@ -111,7 +115,8 @@ Together:: Today in class we continued working on Woo.java. We made it so that t
        + Added methods to populate the arrays and added return statements for sample questions, this was later modified into sample arrays for the MVP.
        + implemented Keyboard.java methods throughout Woo.java. 
 +Irene :: <Thing member did.>
-+Jason :: <Thing member did.>
++Jason ::
++ Created new simple UML diagram for our MVP(min viable product).
 +==============================================================
 +2017-01-23
 +--------------------------------------------------------------

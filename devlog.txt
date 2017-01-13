@@ -24,29 +24,30 @@
 +~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 +
 wow we so BOSS bc...
-+We got a temporary jeopardy game to work!!
-+Our Board wouldn't update the point values to 0 after they were played. This is because the board was being printed in toString each time and recreated each time. our toString in essence didn't just print it. it also repopulated it but we got it to work!!
++We got a temporary jeopardy game to work!! 
++Our Board wouldn't update the point values to 0 after they were played. This is because the board was being printed in toString each time and recreated each time. our toString in essence didn't just print it. It also repopulated it but we got it to work!!
 + We kept getting an error about in.readLine(). We fixed this error by implementing Keyboard.java instead. 
++ Utilized both try/ catch blocks and while loops as a precaution to bad input (There's more than one way to skin a cow!)
+
 +UNRESOLVED ISSUES
 +~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-+blah blah pesky bug...
-+maybe some of these will move into the Obs.Ovrcm section...
++ As opposed to our original beliefs, the current version only supports a single player. To incorporate a multi-player/ team status (as
+originally intended) we need to keep track of which player is currently playing throughout the code. 
 
 +COOL STUFF LEARNED
 +~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-+wow! oo!...
++ The various errors and exceptions that Java hosts, each catering to the very numerous errors we produce 
 +
 +MID-DEVELOPMENT DESIGN CHANGES
 +~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-+we changed ___ to ___ bc...
-+We changed our plan to use early exit bubble sort for sorting the ranks of the players because
-+we will only have a small amount of players so which ever sort we use wouldn't really matter. 
-+
++ We changed our plan to use early exit bubble sort for sorting the ranks of the players because
+ we will only have a small amount of players so which ever sort we use wouldn't really matter. 
+ (Currently under dispute; Opposer: Irene; to be resolved on a later date)
++ We changed from a multiplayer status to a single player status (the latter will be implemented later)
+
 +LESSONS LEARNED
 +~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-+tales of wisdom gained...
-+||||||||||||||||||||||||||||||||||||||||||
-+
++ String.parseString(string) does not exist (a.k.a. the coding is more thinking than doing)
 +
 +
 + ______   ______   __   __   __       ______   _______     
@@ -75,14 +76,14 @@ wow we so BOSS bc...
 +Bayan::
 
 +Irene :: 
-+Woo.java was created and filled it with numerous imports, instance variables, and must have methods (e.g. something that prints the array). 
-+The game section was also updated with print statements that go from Loading... (for suspense) to the players name. 
-+Game elements of todo.txt were further detailed (e.g. the necessary components for Jeopardy! to run). 
-+The diagram representation of the algorithm that allows the user to create their own game was added to the flow chart.
+    +Woo.java was created and filled it with numerous imports, instance variables, and must have methods (e.g. something that prints the array). 
+    +The game section was also updated with print statements that go from Loading... (for suspense) to the players name. 
+    +Game elements of todo.txt were further detailed (e.g. the necessary components for Jeopardy! to run). 
+    +The diagram representation of the algorithm that allows the user to create their own game was added to the flow chart.
 
 +Jason :: 
-+ Typed up most of the flowchart leading up to the running of the game
-+ The steps for when the user chooses to directly play the game were added to the flow chart.
+    + Typed up most of the flowchart leading up to the running of the game
+    + The steps for when the user chooses to directly play the game were added to the flow chart.
 +==============================================================
 +2017-01-11
 +--------------------------------------------------------------
@@ -90,31 +91,35 @@ wow we so BOSS bc...
 +Worked on the final methods of Woo.java at the CSDojo. We planned out how to calculate the points and how to check if the answers that the user inputs are correct.
 
 +Bayan :: 
-+I created a file for each subclass of Game.java including Math.java, Misc.java, History.java, and Sci.java-- all of which extend Woo.java
+    +I created a file for each subclass of Game.java including Math.java, Misc.java, History.java, and Sci.java-- all of which extend Woo.java
 and filled math, Misc, and History with potential question and answer ideas for the methods.
-+I also started writing up questions for math and planning which would be easier(less points) and which would be harder (more points). 
-+Created an example board on paper so that it would be easier to visualize.
-+Added .gitignore to the github repository. 
+    +I also started writing up questions for math and planning which would be easier(less points) and which would be harder (more points). 
+    +Created an example board on paper so that it would be easier to visualize.
+    +Added .gitignore to the github repository. 
 
 +Irene ::
-+Fine tuning such that the skeleton is now RUNNING (up until categories are asked)
-  + Added main and necessary try/catch blocks
-  + Fixed syntax errors (especially in method newGame() )
-  + Updated instance variables (i.e. categories that contains the categories, diffPoints for use when the user is allowed to create the game) 
+    + Fine tuning (fixed mistakes from all previous coding) such that the skeleton is now RUNNING (up until categories are asked)
+    + Added main and necessary try/catch blocks
+    + Fixed syntax errors (especially in method newGame() )
+    + Updated instance variables (i.e. categories that contains the categories, diffPoints for use when the user is allowed to create the game) 
 +Jason ::
-+ Finished function sortRank, as the points in point array is sorted, so is the player names in the playerNames array, maintaining
+    + Finished function sortRank, as the points in point array is sorted, so is the player names in the playerNames array, maintaining
   linearity between the two.
 +==============================================================
 +2017-01-12
 +--------------------------------------------------------------
 Bayan, Irene, Jason :: Today in class we continued working on Woo.java. We made it so that the user can also choose the point value. and incorporated the questions of each subclass. 
 +Bayan ::
-       + Went through and resolved every error in the version of Woo.java that we pushed during class.
-       + Fixed it so that we have separate methods that will populate board and print it.
-       + added a filler array for each subclass, and made the question and answer arrays static.
-       + Added methods to populate the arrays and added return statements for sample questions, this was later modified into sample arrays for the MVP.
-       + implemented Keyboard.java methods throughout Woo.java. 
-+Irene :: <Thing member did.>
+    + Went through and resolved every error in the version of Woo.java that we pushed during class.
+    + Fixed it so that we have separate methods that will populate board and print it.
+    + added a filler array for each subclass, and made the question and answer arrays static.
+    + Added methods to populate the arrays and added return statements for sample questions, this was later modified into sample arrays for the MVP.
+    + implemented Keyboard.java methods throughout Woo.java. 
++Irene ::
+    + Removed point value from the printed Jeopardy board upon selecting the question and point (and answering the question correctly)
+    + Removed point value from the points selection (after choosing a category, and after answering the question correctly)
+    + Removed category from category selection when all questions in the category are answered correctly
+    + Added while loop that prevents bad input
 +Jason ::
 + Created new simple UML diagram for our MVP(min viable product).
 +==============================================================

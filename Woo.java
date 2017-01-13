@@ -60,7 +60,7 @@ public class Woo {
             //Implementation to create your own game
         }
 
-        System.out.println("How many players are playing in total?"); //Presumese 2+ players for now
+        System.out.println("How many players are playing in total?"); //Currently only supports a single player
         try {
             totalPlayers = Integer.parseInt(in.readLine());
         } catch (IOException e) {
@@ -85,52 +85,75 @@ public class Woo {
         points = new int[totalPlayers];//Updates the points array to number of players in the game and default is already 0
 	pointTable(board);
 	for (int ind = 0; ind < (board[0].length)*((board.length)-1); ind++) {
-	    System.out.println(toString());
-	    print2(board);
-	    
-        System.out.println("\nSelect the categories you wish to play. Please type in the number before the points\n");
-        System.out.println("\t1: Math");
-        System.out.println("\t2: Science");
-        System.out.println("\t3: History");
-        System.out.println("\t4: Miscellaneous");
-	
-	//For use when there are categories to be chosen
-	//if (Integer.parseInt(in.readLine() ) == 1) 
-	//{
-	int col = Keyboard.readInt();
-	    
-	System.out.println("\n How many points would you like to play for? Please type in the number before the points.\n");
+        System.out.println(toString());
+        print2(board);
 
-	System.out.println("\t 1: 100\n");
-	System.out.println("\t 2: 200\n");
-	System.out.println("\t 3: 300\n");
-	System.out.println("\t 4: 400\n");
-	System.out.println("\t 5: 500\n");
-	int row = Keyboard.readInt();
-	board[row-1][col-1] = 0;
-		
-	if (col ==1) {
-		System.out.println(Math.questions[row-1]); 
-	}
-	if (col == 2) {
-		System.out.println(Sci.questions[row - 1]);
-	} 
-	if (col ==3) {
-		System.out.println(History.questions[row-1]); 
-	}
-	if (col == 4) {
-		System.out.println(Misc.questions[row - 1]);
-	} 		
-	String ans = Keyboard.readString();	
-	if (compareAnswers(ans)) {
-		points[whichPlayer()] += row*100;
-		System.out.println("Congratulations!");
-		board[row-1][col-1] = 0;
-		//	print2(board);
+        if (board[0][0] + board[1][0] + board[2][0] + board[3][0] + board[4][0] != 0)
+            System.out.println("\t1: Math");
+        if (board[0][1] + board[1][1] + board[2][1] + board[3][1] + board[4][1] != 0)
+            System.out.println("\t2: Science");
+        if (board[0][2] + board[1][2] + board[2][2] + board[3][2] + board[4][2] != 0)
+            System.out.println("\t3: History");
+        if (board[0][3] + board[1][3] + board[2][3] + board[3][3] + board[4][3] != 0)
+            System.out.println("\t4: Miscellaneous");
 
-		
-	}
-	else {
+        //For use when there are categories to be chosen
+        //if (Integer.parseInt(in.readLine() ) == 1)
+        //{
+        int col = 0;
+        do {
+            System.out.println("\nSelect the categories you wish to play. Please type in the number before the points\n");
+            col = Keyboard.readInt();
+        } while (!((col == 1 && (board[0][0] + board[1][0] + board[2][0] + board[3][0] + board[4][0] != 0))
+                || (col == 2 && (board[0][1] + board[1][1] + board[2][1] + board[3][1] + board[4][1] != 0))
+                || (col == 3 && (board[0][2] + board[1][2] + board[2][2] + board[3][2] + board[4][2] != 0))
+                || (col == 4 && (board[0][3] + board[1][3] + board[2][3] + board[3][3] + board[4][3] != 0))));
+
+
+        if (board[0][col - 1] != 0)
+            System.out.println("\t 1: 100");
+        if (board[1][col - 1] != 0)
+            System.out.println("\t 2: 200");
+        if (board[2][col - 1] != 0)
+            System.out.println("\t 3: 300");
+        if (board[3][col - 1] != 0)
+            System.out.println("\t 4: 400");
+        if (board[4][col - 1] != 0)
+            System.out.println("\t 5: 500");
+        int row = 0;
+        do {
+            System.out.println("\n How many points would you like to play for? " +
+                    "Please type in the number before the points.\n");
+            row = Keyboard.readInt();
+        } while (!((row == 1 && board[0][col - 1] != 0)
+                || (row == 2 && board[1][col - 1] != 0)
+                || (row == 3 && board[2][col - 1] != 0)
+                || (row == 4 && board[3][col - 1] != 0)
+                || (row == 5 && board[4][col - 1] != 0)));
+
+        if (col == 1) {
+            System.out.println(Math.questions[row - 1]);
+        }
+        if (col == 2) {
+            System.out.println(Sci.questions[row - 1]);
+        }
+        if (col == 3) {
+            System.out.println(History.questions[row - 1]);
+        }
+        if (col == 4) {
+            System.out.println(Misc.questions[row - 1]);
+        }
+        String ans = Keyboard.readString();
+
+        if ((col == 1 && ans.equalsIgnoreCase(Math.answers[row - 1]))
+                || (col == 2 && ans.equalsIgnoreCase(Sci.answers[row - 1]))
+                || (col == 3 && ans.equalsIgnoreCase(History.answers[row - 1]))
+                || (col == 4 && ans.equalsIgnoreCase(Misc.answers[row - 1])))   {
+            points[whichPlayer()] += row * 100;
+            System.out.println("Congratulations!");
+            board[row - 1][col - 1] = 0;
+            //	print2(board);
+    } else {
 		System.out.println("You got it wrong"); 
 	}
 		
@@ -143,8 +166,8 @@ public class Woo {
     public String toString() {
         String ans = "";
         //Adds the category names
-        for (int i = 0; i < categories.length; i++) {
-            ans += categories[i] + " ";
+        for (String category : categories) {
+            ans += category + "\t";
         }
         ans += "\n";
         return ans;
@@ -173,9 +196,11 @@ public class Woo {
 	//prints two d array
 	for( int[] k : board ) {
 	    for( int j : k ) {
-		System.out.print( j + "\t");
+	        if (j != 0)
+		        System.out.print( j);
+            System.out.print("\t\t");
 	    }
-	    System.out.print( "\n" );
+	    System.out.println();
 	}
     }
     //String of each player ordered in terms of their points

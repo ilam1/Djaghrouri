@@ -1,6 +1,6 @@
 public class History extends Woo{
     //instance variables
-    public static String[] questions = {"q1","q2","q3","q4","q5"};
+    public static String[] questions = {"hsq1","hsq2","hsq3","hsq4","hsq5"};
     public static String[] answers ={"a1","a2","a3","a4","a5"};
     //Methods begin
     /* public String presidentsQ(){

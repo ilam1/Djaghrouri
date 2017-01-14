@@ -18,12 +18,13 @@ public class Woo {
     private String[] playerNames;
     private int[] questionWorth;
     private int[] points;
-    private int[][] board= new int[5][6];
+    private int[][] board= new int[5][5];
     protected String[] questions;
     protected String[] answers;
     private boolean gameOn;
     private int[] ind = new int[5];
     private String[] categories = {" ", "Mathematics","Science","History","Miscellaneous","Stuyvesant Trivia","Literature"};
+    String[] newCat = createCategory();
 
     private BufferedReader in;
     private boolean diffPoints; //True if and only if the user creates a game with different point values
@@ -90,17 +91,17 @@ public class Woo {
         print2(board);
 
         if (board[0][0] + board[1][0] + board[2][0] + board[3][0] + board[4][0] != 0)
-            System.out.println("\t1: Math");
+            System.out.println("\t1: " + newCat[0]);
         if (board[0][1] + board[1][1] + board[2][1] + board[3][1] + board[4][1] != 0)
-            System.out.println("\t2: Science");
+            System.out.println("\t2: " + newCat[1]);
         if (board[0][2] + board[1][2] + board[2][2] + board[3][2] + board[4][2] != 0)
-            System.out.println("\t3: History");
+            System.out.println("\t3: " + newCat[2]);
         if (board[0][3] + board[1][3] + board[2][3] + board[3][3] + board[4][3] != 0)
-            System.out.println("\t4: Miscellaneous");
+            System.out.println("\t4: " + newCat[3]);
         if (board[0][4] + board[1][4] + board[2][4] + board[3][4] + board[4][4] != 0)
-            System.out.println("\t5: Stuyvesant Trivia");
-        if (board[0][5] + board[1][5] + board[2][5] + board[3][5] + board[4][5] != 0)
-            System.out.println("\t6: Literature");
+            System.out.println("\t5: " + newCat[4]);
+        //if (board[0][5] + board[1][5] + board[2][5] + board[3][5] + board[4][5] != 0)
+            //System.out.println("\t6: " + newCat[5]);
 
         //For use when there are categories to be chosen
         //if (Integer.parseInt(in.readLine() ) == 1)
@@ -139,7 +140,7 @@ public class Woo {
                 || (row == 4 && board[3][col - 1] != 0)
                 || (row == 5 && board[4][col - 1] != 0)));
 
-        if (col == 1) {
+        /*if (col == 1) {
             System.out.println(Mathematics.questions[row - 1]);
         }
         if (col == 2) {
@@ -150,7 +151,27 @@ public class Woo {
         }
         if (col == 4) {
             System.out.println(Misc.questions[row - 1]);
+        }*/
+
+        if (newCat[col-1].equals("Mathematics")) {
+          System.out.println(Mathematics.questions[row-1]);
         }
+        if (newCat[col-1].equals("Science")) {
+          System.out.println(Sci.questions[row-1]);
+        }
+        if (newCat[col-1].equals("History")) {
+          System.out.println(History.questions[row-1]);
+        }
+        if (newCat[col-1].equals("Miscellaneous")) {
+          System.out.println(Misc.questions[row-1]);
+        }
+        if (newCat[col-1].equals("Stuyvesant Trivia")) {
+          System.out.println(Stuy.questions[row-1]);
+        }
+        if (newCat[col-1].equals("Literature")) {
+          System.out.println(Literature.questions[row-1]);
+        }
+
         String ans = Keyboard.readString();
 
         if ((col == 1 && ans.equalsIgnoreCase(Mathematics.answers[row - 1]))
@@ -202,12 +223,11 @@ public class Woo {
       return ans;
     }
 
+
         //Overwritten toString that prints the game board
     public String toString() {
 
         //Adds the category names
-        String[] newCat = new String[5];
-        newCat = createCategory();
         String ans ="";
         for (String category : newCat) {
             ans += category + "\t";

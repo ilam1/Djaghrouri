@@ -22,7 +22,7 @@ public class Woo {
     protected String[] questions;
     protected String[] answers;
     private boolean gameOn;
-    private String[] categories = {"Math","Science","History","Miscellaneous"};
+    private String[] categories = {"Math","Science","History","Miscellaneous","Stuyvesant Trivia","Literature"};
     	
     private BufferedReader in;
     private boolean diffPoints; //True if and only if the user creates a game with different point values
@@ -96,6 +96,10 @@ public class Woo {
             System.out.println("\t3: History");
         if (board[0][3] + board[1][3] + board[2][3] + board[3][3] + board[4][3] != 0)
             System.out.println("\t4: Miscellaneous");
+        if (board[0][4] + board[1][4] + board[2][4] + board[3][4] + board[4][4] != 0)
+            System.out.println("\t5: Stuyvesant Trivia");
+        if (board[0][5] + board[1][5] + board[2][5] + board[3][5] + board[4][5] != 0)
+            System.out.println("\t6: Literature");		
 
         //For use when there are categories to be chosen
         //if (Integer.parseInt(in.readLine() ) == 1)
@@ -107,7 +111,10 @@ public class Woo {
         } while (!((col == 1 && (board[0][0] + board[1][0] + board[2][0] + board[3][0] + board[4][0] != 0))
                 || (col == 2 && (board[0][1] + board[1][1] + board[2][1] + board[3][1] + board[4][1] != 0))
                 || (col == 3 && (board[0][2] + board[1][2] + board[2][2] + board[3][2] + board[4][2] != 0))
-                || (col == 4 && (board[0][3] + board[1][3] + board[2][3] + board[3][3] + board[4][3] != 0))));
+                || (col == 4 && (board[0][3] + board[1][3] + board[2][3] + board[3][3] + board[4][3] != 0))
+		|| (col == 5 && (board[0][4] + board[1][4] + board[2][4] + board[3][4] + board[4][4] != 0))
+                || (col == 6 && (board[0][5] + board[1][5] + board[2][5] + board[3][5] + board[4][5] != 0))   
+		  ));
 
 
         if (board[0][col - 1] != 0)
@@ -150,7 +157,7 @@ public class Woo {
                 || (col == 3 && ans.equalsIgnoreCase(History.answers[row - 1]))
                 || (col == 4 && ans.equalsIgnoreCase(Misc.answers[row - 1])))   {
             points[whichPlayer()] += row * 100;
-            System.out.println("Congratulations!");
+            System.out.println("Congratulations! You answered the question correctly!");
             board[row - 1][col - 1] = 0;
             //	print2(board);
     } else {

@@ -122,7 +122,7 @@ Bayan, Irene, Jason :: Today in class we continued working on Woo.java. We made 
     + Removed category from category selection when all questions in the category are answered correctly
     + Added while loop that prevents bad input
 +Jason ::
-+ Created new simple UML diagram for our MVP(min viable product).
+    + Created new simple UML diagram for our MVP(min viable product).
 +==============================================================
 +2017-01-13
 +--------------------------------------------------------------
@@ -136,12 +136,14 @@ Together::
 +==============================================================
 +2017-01-14
 +--------------------------------------------------------------
-Together::
++Bayan, Jason ::
+       + Worked on woo so that categories to be displayed on the board are randomly chosen from categories array
+       + Kept running into errors due to recurrence of same category, but finally resolved
 +Bayan ::
        + 
 +Irene :: 
        + Created five more subclasses (Cheese.java, Geography.java, China.java, Impossible.java (containing various fun facts), and CompSci.java)
-+Jason :: <Thing member did.>
++Jason ::
 +==============================================================
 
 +2017-01-23

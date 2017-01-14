@@ -18,12 +18,13 @@ public class Woo {
     private String[] playerNames;
     private int[] questionWorth;
     private int[] points;
-    private int[][] board= new int[5][4];
+    private int[][] board= new int[5][6];
     protected String[] questions;
     protected String[] answers;
     private boolean gameOn;
-    private String[] categories = {"Math","Science","History","Miscellaneous","Stuyvesant Trivia","Literature"};
-    	
+    private int[] ind = new int[5];
+    private String[] categories = {" ", "Mathematics","Science","History","Miscellaneous","Stuyvesant Trivia","Literature"};
+
     private BufferedReader in;
     private boolean diffPoints; //True if and only if the user creates a game with different point values
 
@@ -81,7 +82,7 @@ public class Woo {
             }
         }
 
-	    
+
         points = new int[totalPlayers];//Updates the points array to number of players in the game and default is already 0
 	pointTable(board);
 	for (int ind = 0; ind < (board[0].length)*((board.length)-1); ind++) {
@@ -99,7 +100,7 @@ public class Woo {
         if (board[0][4] + board[1][4] + board[2][4] + board[3][4] + board[4][4] != 0)
             System.out.println("\t5: Stuyvesant Trivia");
         if (board[0][5] + board[1][5] + board[2][5] + board[3][5] + board[4][5] != 0)
-            System.out.println("\t6: Literature");		
+            System.out.println("\t6: Literature");
 
         //For use when there are categories to be chosen
         //if (Integer.parseInt(in.readLine() ) == 1)
@@ -113,7 +114,7 @@ public class Woo {
 		   || (col == 3 && (board[0][2] + board[1][2] + board[2][2] + board[3][2] + board[4][2] != 0))
 		   || (col == 4 && (board[0][3] + board[1][3] + board[2][3] + board[3][3] + board[4][3] != 0))
 		   || (col == 5 && (board[0][4] + board[1][4] + board[2][4] + board[3][4] + board[4][4] != 0))
-		   || (col == 6 && (board[0][5] + board[1][5] + board[2][5] + board[3][5] + board[4][5] != 0))   
+		   || (col == 6 && (board[0][5] + board[1][5] + board[2][5] + board[3][5] + board[4][5] != 0))
 		   ) );
 
 
@@ -139,7 +140,7 @@ public class Woo {
                 || (row == 5 && board[4][col - 1] != 0)));
 
         if (col == 1) {
-            System.out.println(Math.questions[row - 1]);
+            System.out.println(Mathematics.questions[row - 1]);
         }
         if (col == 2) {
             System.out.println(Sci.questions[row - 1]);
@@ -152,7 +153,7 @@ public class Woo {
         }
         String ans = Keyboard.readString();
 
-        if ((col == 1 && ans.equalsIgnoreCase(Math.answers[row - 1]))
+        if ((col == 1 && ans.equalsIgnoreCase(Mathematics.answers[row - 1]))
                 || (col == 2 && ans.equalsIgnoreCase(Sci.answers[row - 1]))
                 || (col == 3 && ans.equalsIgnoreCase(History.answers[row - 1]))
                 || (col == 4 && ans.equalsIgnoreCase(Misc.answers[row - 1])))   {
@@ -161,24 +162,60 @@ public class Woo {
             board[row - 1][col - 1] = 0;
             //	print2(board);
     } else {
-		System.out.println("You got it wrong"); 
+		System.out.println("You got it wrong");
 	}
-		
-	} //ends for loop    
-    } //ends the game
-    /*public void printArray(){
 
-      }*/
+	} //ends for loop
+    } //ends the game
+    public boolean checkArray(int[] arr, int input) {
+      boolean retBool = true;
+      for (int i = 0; i < arr.length; i++) {
+        if (arr[i] == input) {
+          return false;
+        }
+      }
+      return retBool;
+    }
+
+    public int[] categoryChooser(String[] categories, int[] ind) {
+      int ctr = 0;
+      while (ctr < 5) {
+        int rand = (int) (Math.random() * categories.length);
+        if (checkArray(ind, rand)) {
+          ind[ctr] = rand;
+          ctr += 1;
+        }
+        else {
+          ctr += 0;
+        }
+      }
+      return ind;
+    }
+
+    public String[] createCategory() {
+      String[] ans = new String[5];
+      int[] ind = new int[5];
+      ind = categoryChooser(categories, ind);
+      for (int i = 0; i < 5; i++) {
+        ans[i] = categories[ind[i]] + "\t";
+      }
+      return ans;
+    }
+
         //Overwritten toString that prints the game board
     public String toString() {
-        String ans = "";
+
         //Adds the category names
-        for (String category : categories) {
+        String[] newCat = new String[5];
+        newCat = createCategory();
+        String ans ="";
+        for (String category : newCat) {
             ans += category + "\t";
         }
         ans += "\n";
         return ans;
     }
+
     public int[][] pointTable(int[][] board){
 	for (int row=0; row<board.length; row++){
 	    for(int col=0; col<board[row].length; col++){
@@ -187,7 +224,7 @@ public class Woo {
 	}
 	return board;
     }
-    public static void print2( int[][] board ) { 
+    public static void print2( int[][] board ) {
 	//prints two d array
 	for( int[] k : board ) {
 	    for( int j : k ) {
@@ -219,14 +256,14 @@ public class Woo {
 	    //Returns index of player playing
 	return 0;
     }
-			
+
     //Returns if the given answer is correct
     public boolean compareAnswers(String ans) {
 	     /*
 1. array of answers(subject. answers[i] compared to readline of what the user inputs.
 if .equals--> true.-->
 SOP "good job you gained+ ___ + points"
-	 */ 
+	 */
         //if (cat.answers[pt].equals(
         return true;
     }

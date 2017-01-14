@@ -5,7 +5,7 @@ public class Impossible extends Woo{
     "What is the only continent without reptiles?",
     "Which contient hosts the largest desert in the world?",
     "What was bubble wrap's intended use upon its creation?",
-    "What holiday is May 29th?",    
+    "What holiday is May 29th?"};
     public static String[] answers ={"The bottle","Antarctica","Antarctica","Wallpaper","Put a Pillow on Your Fridge Day"};
 
 }

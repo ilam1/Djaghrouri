@@ -109,12 +109,12 @@ public class Woo {
             System.out.println("\nSelect the categories you wish to play. Please type in the number before the points\n");
             col = Keyboard.readInt();
         } while (!((col == 1 && (board[0][0] + board[1][0] + board[2][0] + board[3][0] + board[4][0] != 0))
-                || (col == 2 && (board[0][1] + board[1][1] + board[2][1] + board[3][1] + board[4][1] != 0))
-                || (col == 3 && (board[0][2] + board[1][2] + board[2][2] + board[3][2] + board[4][2] != 0))
-                || (col == 4 && (board[0][3] + board[1][3] + board[2][3] + board[3][3] + board[4][3] != 0))
-		|| (col == 5 && (board[0][4] + board[1][4] + board[2][4] + board[3][4] + board[4][4] != 0))
-                || (col == 6 && (board[0][5] + board[1][5] + board[2][5] + board[3][5] + board[4][5] != 0))   
-		  ));
+		   || (col == 2 && (board[0][1] + board[1][1] + board[2][1] + board[3][1] + board[4][1] != 0))
+		   || (col == 3 && (board[0][2] + board[1][2] + board[2][2] + board[3][2] + board[4][2] != 0))
+		   || (col == 4 && (board[0][3] + board[1][3] + board[2][3] + board[3][3] + board[4][3] != 0))
+		   || (col == 5 && (board[0][4] + board[1][4] + board[2][4] + board[3][4] + board[4][4] != 0))
+		   || (col == 6 && (board[0][5] + board[1][5] + board[2][5] + board[3][5] + board[4][5] != 0))   
+		   ) );
 
 
         if (board[0][col - 1] != 0)
@@ -186,18 +186,6 @@ public class Woo {
 	    }
 	}
 	return board;
-	/*	if (!diffPoints) {
-	//Implement point values here
-	int increment = 100;
-	for (int i = 0; i < 5; i++) {
-	for (int j = 0; j < categories.length; j++) {
-	ans += increment + "\t";
-	}
-	ans += "\n";
-	increment += 100;
-	}
-	}*/
-	
     }
     public static void print2( int[][] board ) { 
 	//prints two d array
@@ -234,7 +222,7 @@ public class Woo {
 			
     //Returns if the given answer is correct
     public boolean compareAnswers(String ans) {
-	    /*
+	     /*
 1. array of answers(subject. answers[i] compared to readline of what the user inputs.
 if .equals--> true.-->
 SOP "good job you gained+ ___ + points"

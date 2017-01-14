@@ -134,6 +134,15 @@ Together::
        + Created two more subclasses (Stuy.java and Literature.java) and made them aware to Woo.java
 +Jason :: <Thing member did.>
 +==============================================================
++2017-01-14
++--------------------------------------------------------------
+Together::
++Bayan ::
+       + 
++Irene :: 
+       + Created five more subclasses (Cheese.java, Geography.java, China.java, Impossible.java (containing various fun facts), and CompSci.java)
++Jason :: <Thing member did.>
++==============================================================
 
 +2017-01-23
 +--------------------------------------------------------------

@@ -6,7 +6,7 @@ public class CompSci extends Woo{
     "Which of the following is an example of O(nlogn)?\n\na. bubble sort\nb. insertion sort\nc. selection sort\nd. merge sort",
     "Which of the following could fill <*1> in the below statement without causing a compile error?\n<*1> x = ‘A’;\nI. int\nII. byte\nIII. short\nIV. long\nV. double\n\n
     a. I and III only\nb. I and II only\nc. I and IV only\nd. I, III, IV, and V only\ne. I, IV, and V only",
-    "Name the four agents of Netlogo in alphabetical order \n(e.g. bears, cougars, foxes, turtles")\nHint: One of the above is an agent};
+    "Name the four agents of Netlogo in alphabetical order \n(e.g. bears, cougars, foxes, turtles)\nHint: One of the above is an agent"};
     public static String[] answers ={"5", "c", "d", "tbd","links, observer, patches, turtles"};
 
 }

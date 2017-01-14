@@ -124,12 +124,14 @@ Bayan, Irene, Jason :: Today in class we continued working on Woo.java. We made 
 +Jason ::
 + Created new simple UML diagram for our MVP(min viable product).
 +==============================================================
-+2017-01-23
++2017-01-13
 +--------------------------------------------------------------
 Together::
 +Bayan ::
        + 
-+Irene :: <Thing member did.>
++Irene :: 
+       + Added questions and answers to Misc.java
+       + Created two more subclasses (Stuy.java and Literature.java) and made them aware to Woo.java
 +Jason :: <Thing member did.>
 +==============================================================
 

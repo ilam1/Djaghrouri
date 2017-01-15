@@ -1,8 +1,16 @@
 public class Sci extends Woo{
 
     //Instance Variables
-    public static String[] questions = {"sciq1","sciq2","sciq3","sciq4","sciq5"};
-    public static String[] answers ={"a1","a2","a3","a4","a5"};
+    public static String[] questions = {"How much force does it take to accelerate a 5 kg object at 4 m/s^2? (in Newtons)",
+                                        "What is 9000 km/h in mi/s?",
+                                        "In the reaction between an acid and a base, the pH changes to a value closer to what?",
+                                        "How many known elements are there on the periodic table?",
+                                        "What is the LARGEST organ in the human body?"};
+    public static String[] answers ={"20 N",
+                                     "1.5 mi/s",
+                                     "7",
+                                     "118",
+                                     "Skin"};
 
     //Methods begin:
 

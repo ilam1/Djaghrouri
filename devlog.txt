@@ -140,7 +140,8 @@ Together::
        + Worked on woo so that categories to be displayed on the board are randomly chosen from categories array
        + Kept running into errors due to recurrence of same category, but finally resolved
 +Bayan ::
-       + 
+       + Worked on making the Questions correspond with the randomly generated boad
+       + Worked on making the answers correspond with the questions as well. 
 +Irene :: 
        + Created five more subclasses (Cheese.java, Geography.java, China.java, Impossible.java (containing various fun facts), and CompSci.java)
 +Jason ::
@@ -150,7 +151,10 @@ Together::
 +--------------------------------------------------------------
 Together::
 +Bayan ::
-       + 
+       + Made the board align with the points(might be a temporary solution though)
+       + Made a few more subclasses(Women, Astronomy, Music, Composers, etc. )
+       + Changed a CS question that was causing a syntax error
+       + Added History questions. 
 +Irene :: <Thing member did.>
 +Jason :: <Thing member did.>
 +==============================================================

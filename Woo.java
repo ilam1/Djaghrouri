@@ -23,7 +23,7 @@ public class Woo {
     protected String[] answers;
     private boolean gameOn;
     private int[] ind = new int[5];
-    private String[] categories = {" ", "Math","Science","History","Misc","Stuy","Literature"};
+    private String[] categories = {" ", "Math","Sci","History","Misc","Stuy","Text","Cheese","China","CompSci","Geo", "Pop"};
     String[] newCat = createCategory();
 
     private BufferedReader in;
@@ -156,7 +156,7 @@ public class Woo {
         if (newCat[col-1].trim().equals("Math")) {
           System.out.println(Mathematics.questions[row-1]);
         }
-        if (newCat[col-1].trim().equals("Science")) {
+        if (newCat[col-1].trim().equals("Sci")) {
           System.out.println(Sci.questions[row-1]);
         }
         if (newCat[col-1].trim().equals("History")) {
@@ -166,19 +166,44 @@ public class Woo {
           System.out.println(Misc.questions[row-1]);
         }
         if (newCat[col-1].trim().equals("Stuy")) {
-          System.out.println(Stuy.questions[row-1]);
+	    System.out.println(Stuy.questions[row-1]);
         }
-        if (newCat[col-1].trim().equals("Literature")) {
-          System.out.println(Literature.questions[row-1]);
+        if (newCat[col-1].trim().equals("Text")) {
+	    System.out.println(Literature.questions[row-1]);
         }
-
+	if (newCat[col-1].trim().equals("Cheese")) {
+	    System.out.println(Cheese.questions[row-1]);
+        }
+	if (newCat[col-1].trim().equals("China")) {
+	    System.out.println(China.questions[row-1]);
+        }
+	if (newCat[col-1].trim().equals("CompSci")) {
+	    System.out.println(CompSci.questions[row-1]);
+        }
+	if (newCat[col-1].trim().equals("Geo")) {
+	    System.out.println(Geography.questions[row-1]);
+        }
+	if (newCat[col-1].trim().equals("Pop")) {
+	    System.out.println(Impossible.questions[row-1]);
+        }
+	
+	
+        
+	
+	//	private String[] categories = {"Cheese","China","CompSci","Geography", "Fun-Facts",};
         String ans = Keyboard.readString();
 	if ((newCat[col-1].trim().equals("Math")&& ans.equalsIgnoreCase(Mathematics.answers[row-1]))
 	    ||(newCat[col-1].trim().equals("Science")&& ans.equalsIgnoreCase(Sci.answers[row-1]))
 	    ||(newCat[col-1].trim().equals("History")&&ans.equalsIgnoreCase(History.answers[row-1]))
 	    || (newCat[col-1].trim().equals("Misc")&&ans.equalsIgnoreCase(Misc.answers[row-1]))
 	    ||(newCat[col-1].trim().equals("Stuy")&&ans.equalsIgnoreCase(Stuy.answers[row-1]))
-	    ||(newCat[col-1].trim().equals("Literature")&&ans.equalsIgnoreCase(Literature.answers[row-1]))){
+	    ||(newCat[col-1].trim().equals("Text")&&ans.equalsIgnoreCase(Literature.answers[row-1]))
+	    ||(newCat[col-1].trim().equals("Cheese")&&ans.equalsIgnoreCase(Cheese.answers[row-1]))
+	    ||(newCat[col-1].trim().equals("China")&&ans.equalsIgnoreCase(China.answers[row-1]))
+	    ||(newCat[col-1].trim().equals("CompSci")&&ans.equalsIgnoreCase(CompSci.answers[row-1]))
+	    ||(newCat[col-1].trim().equals("Geography")&&ans.equalsIgnoreCase(Geography.answers[row-1]))
+	    ||(newCat[col-1].trim().equals("Pop")&&ans.equalsIgnoreCase(Impossible.answers[row-1]))
+	    ||(newCat[col-1].trim().equals("Stuy")&&ans.equalsIgnoreCase(Stuy.answers[row-1]))){
 	    points[whichPlayer()]+=row*100;
 	    System.out.println("Congratulations! You answered the question correctly!");
 	    board[row-1][col-1]=0;
@@ -231,7 +256,7 @@ public class Woo {
       int[] ind = new int[5];
       ind = categoryChooser(categories, ind);
       for (int i = 0; i < 5; i++) {
-        ans[i] = categories[ind[i]] + "\t";
+        ans[i] = categories[ind[i]] + "";
       }
       return ans;
     }
@@ -263,7 +288,7 @@ public class Woo {
 	    for( int j : k ) {
 	        if (j != 0)
 		        System.out.print( j);
-            System.out.print("\t\t");
+            System.out.print("\t");
 	    }
 	    System.out.println();
 	}

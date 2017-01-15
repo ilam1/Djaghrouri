@@ -1,7 +1,7 @@
 public class History extends Woo{
     //instance variables
-    public static String[] questions = {"hsq1","hsq2","hsq3","hsq4","hsq5"};
-    public static String[] answers ={"a1","a2","a3","a4","a5"};
+    public static String[] questions = {"This process turns iron into steel.","This French term refers to the American policy towards business in the late 1800's,meaning 'hands off'","This man is the one who brought the Ten Commandments to the Jews.","Which explorer circumnavigated the world?(First and Last name)","Which renaissance writer was best known for Praise of Folly?"};
+    public static String[] answers ={"Bessemer process","laissez-Faire","Moses","Ferdinand Megellan","Erasmus"};
     //Methods begin
     /* public String presidentsQ(){
     }

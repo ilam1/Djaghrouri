@@ -23,7 +23,7 @@ public class Woo {
     protected String[] answers;
     private boolean gameOn;
     private int[] ind = new int[5];
-    private String[] categories = {" ", "Mathematics","Science","History","Miscellaneous","Stuyvesant Trivia","Literature"};
+    private String[] categories = {" ", "Math","Science","History","Misc","Stuy","Literature"};
     String[] newCat = createCategory();
 
     private BufferedReader in;
@@ -153,22 +153,22 @@ public class Woo {
             System.out.println(Misc.questions[row - 1]);
         }*/
 
-        if (newCat[col-1].equals("Mathematics")) {
+        if (newCat[col-1].trim().equals("Math")) {
           System.out.println(Mathematics.questions[row-1]);
         }
-        if (newCat[col-1].equals("Science")) {
+        if (newCat[col-1].trim().equals("Science")) {
           System.out.println(Sci.questions[row-1]);
         }
-        if (newCat[col-1].equals("History")) {
+        if (newCat[col-1].trim().equals("History")) {
           System.out.println(History.questions[row-1]);
         }
-        if (newCat[col-1].equals("Miscellaneous")) {
+        if (newCat[col-1].trim().equals("Misc")) {
           System.out.println(Misc.questions[row-1]);
         }
-        if (newCat[col-1].equals("Stuyvesant Trivia")) {
+        if (newCat[col-1].trim().equals("Stuy")) {
           System.out.println(Stuy.questions[row-1]);
         }
-        if (newCat[col-1].equals("Literature")) {
+        if (newCat[col-1].trim().equals("Literature")) {
           System.out.println(Literature.questions[row-1]);
         }
 

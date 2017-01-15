@@ -173,8 +173,21 @@ public class Woo {
         }
 
         String ans = Keyboard.readString();
+	if ((newCat[col-1].trim().equals("Math")&& ans.equalsIgnoreCase(Mathematics.answers[row-1]))
+	    ||(newCat[col-1].trim().equals("Science")&& ans.equalsIgnoreCase(Sci.answers[row-1]))
+	    ||(newCat[col-1].trim().equals("History")&&ans.equalsIgnoreCase(History.answers[row-1]))
+	    || (newCat[col-1].trim().equals("Misc")&&ans.equalsIgnoreCase(Misc.answers[row-1]))
+	    ||(newCat[col-1].trim().equals("Stuy")&&ans.equalsIgnoreCase(Stuy.answers[row-1]))
+	    ||(newCat[col-1].trim().equals("Literature")&&ans.equalsIgnoreCase(Literature.answers[row-1]))){
+	    points[whichPlayer()]+=row*100;
+	    System.out.println("Congratulations! You answered the question correctly!");
+	    board[row-1][col-1]=0;
+	}
+	else{
+	    System.out.println("You got it wrong");
+	}
 
-        if ((col == 1 && ans.equalsIgnoreCase(Mathematics.answers[row - 1]))
+        /*if ((col == 1 && ans.equalsIgnoreCase(Mathematics.answers[row - 1]))
                 || (col == 2 && ans.equalsIgnoreCase(Sci.answers[row - 1]))
                 || (col == 3 && ans.equalsIgnoreCase(History.answers[row - 1]))
                 || (col == 4 && ans.equalsIgnoreCase(Misc.answers[row - 1])))   {
@@ -184,7 +197,7 @@ public class Woo {
             //	print2(board);
     } else {
 		System.out.println("You got it wrong");
-	}
+		}*/
 
 	} //ends for loop
     } //ends the game

@@ -3,16 +3,16 @@ Bayan Berri, Irene Lam, Jason Lam                                               
   
 Game (Basic Skeleton) - DUE 1/12
 -Abstract methods (questions, answers)
--Creates a basic game board
--Allots point values to each section of the game board
--Prints the game board
+-Creates a basic game board(COMPLETED)
+-Allots point values to each section of the game board(COMPLETED)
+-Prints the game board(COMPLETED)
 
 Subclasses (Math, Science, History, Miscellaneous, etc.) - DUE 1/13
--Array of Questions
--Array of Answers
+-Array of Questions(COMPLETED)
+-Array of Answers(COMPLETED)
 
 Game (Able to play the pre-made game) - DUE 1/18
--Compares the question with its corresponding answer
+-Compares the question with its corresponding answer (COMPLETED)
 -Records the number of players
   -If 3+ players: Records if the players would like to play in teams
 -Records the players name
@@ -23,7 +23,7 @@ Game (Able to play the pre-made game) - DUE 1/18
 -Playing the game:
   - Selecting a category and respective point value will prompt a question
   - Concept of "turns" (each player has a chance to answer either their chosen question or a question passed to them)
-  - Concept of "rounds" (every player 
+  - Concept of "rounds" (every player) 
   - Concept of "answering" 
     - Correct: For the miscellaneous category, if the user's answer appears in the corresponding answer string, the answer is marked as correct, whereas for math, only the exact answer is correct) -- Guidelines should be given on how the answer should be structured, or the answer string should include various forms of the answer (e.g. "1/2 0.5").
     - Wrong: If the answer does not appear in the string, as long as every individual/team did not get a chance to answer, they will be given a chance to do so.
@@ -43,6 +43,7 @@ Game (Including where the player(s) have the ability to create their own game) -
 Game (Extra) - DUE 1/23
 -Refining code
 -Making code more visually appealing
+-implementing more modular design
 -Extra features
   - Timer
   - Color

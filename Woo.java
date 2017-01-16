@@ -23,7 +23,7 @@ public class Woo {
     protected String[] answers;
     private boolean gameOn;
     private int[] ind = new int[5];
-    private String[] categories = {" ", "Math","Sci","History","Misc","Stuy","Text","Cheese","China","CompSci","Geo", "Pop", "Women", "USA", "College","Plays", "Tech","Shows","Music","Earth","Culture","Writer","Space","Sport"};
+    private String[] categories = {" ", "Math","Sci","History","Misc","Stuy","Text","Cheese","China","CompSci","Geo", "Pop", "Women", "USA", "College","Plays","Food", "Tech","Shows","Music","Earth","Culture","Writer","Space","Sport"};
     String[] newCat = createCategory();
 
     private BufferedReader in;
@@ -149,6 +149,9 @@ public class Woo {
     } //ends the game
     public void printQues(int col,int row){
 	//prints the questions corresponding to the random array
+	if (newCat[col-1].trim().equals("Food")) {
+          System.out.println(Food.questions[row-1]);
+        }
         if (newCat[col-1].trim().equals("Math")) {
           System.out.println(Mathematics.questions[row-1]);
         }
@@ -243,6 +246,7 @@ public class Woo {
 	    ||(newCat[col-1].trim().equals("Culture")&&ans.equalsIgnoreCase(Culture.answers[row-1]))
 	    ||(newCat[col-1].trim().equals("Writer")&&ans.equalsIgnoreCase(Composers.answers[row-1]))
 	    ||(newCat[col-1].trim().equals("Space")&&ans.equalsIgnoreCase(Astronomy.answers[row-1]))
+	    ||(newCat[col-1].trim().equals("Food")&&ans.equalsIgnoreCase(Food.answers[row-1]))
 	    ||(newCat[col-1].trim().equals("Sport")&&ans.equalsIgnoreCase(Sport.answers[row-1]))){
 	    points[whichPlayer()]+=row*100;
 	    System.out.println("Congratulations! You answered the question correctly!");
@@ -359,6 +363,7 @@ public class Woo {
 
     public static void main(String[] args) {
         Woo jeopardy = new Woo();
-        jeopardy.newGame();
+	System.out.println(jeopardy.categories.length);
+	jeopardy.newGame();
     }
 }

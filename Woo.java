@@ -140,86 +140,15 @@ public class Woo {
                 || (row == 4 && board[3][col - 1] != 0)
                 || (row == 5 && board[4][col - 1] != 0)));
 
-
-	/* if (newCat[col-1].trim().equals("Math")) {
-          System.out.println(Mathematics.questions[row-1]);
-        }
-        if (newCat[col-1].trim().equals("Sci")) {
-          System.out.println(Sci.questions[row-1]);
-        }
-        if (newCat[col-1].trim().equals("History")) {
-          System.out.println(History.questions[row-1]);
-        }
-        if (newCat[col-1].trim().equals("Misc")) {
-          System.out.println(Misc.questions[row-1]);
-        }
-        if (newCat[col-1].trim().equals("Stuy")) {
-	    System.out.println(Stuy.questions[row-1]);
-        }
-        if (newCat[col-1].trim().equals("Text")) {
-	    System.out.println(Literature.questions[row-1]);
-        }
-	if (newCat[col-1].trim().equals("Cheese")) {
-	    System.out.println(Cheese.questions[row-1]);
-        }
-	if (newCat[col-1].trim().equals("China")) {
-	    System.out.println(China.questions[row-1]);
-        }
-	if (newCat[col-1].trim().equals("CompSci")) {
-	    System.out.println(CompSci.questions[row-1]);
-        }
-	if (newCat[col-1].trim().equals("Geo")) {
-	    System.out.println(Geography.questions[row-1]);
-        }
-	if (newCat[col-1].trim().equals("Pop")) {
-	    System.out.println(Impossible.questions[row-1]);
-        }
-	if (newCat[col-1].trim().equals("Women")) {
-	    System.out.println(Women.questions[row-1]);
-        }
-	if (newCat[col-1].trim().equals("USA")) {
-	    System.out.println(USA.questions[row-1]);
-        }
-	if (newCat[col-1].trim().equals("College")) {
-	    System.out.println(Universities.questions[row-1]);
-        }
-	if (newCat[col-1].trim().equals("Plays")) {
-	    System.out.println(Theatre.questions[row-1]);
-        }
-	if (newCat[col-1].trim().equals("Tech")) {
-	    System.out.println(Technology.questions[row-1]);
-        }
-	if (newCat[col-1].trim().equals("Shows")) {
-	    System.out.println(Shows.questions[row-1]);
-        }
-	if (newCat[col-1].trim().equals("Sport")) {
-	    System.out.println(Sport.questions[row-1]);
-        }
-	if (newCat[col-1].trim().equals("Music")) {
-	    System.out.println(Music.questions[row-1]);
-        }
-	if (newCat[col-1].trim().equals("Earth")) {
-	    System.out.println(Earth.questions[row-1]);
-        }
-	if (newCat[col-1].trim().equals("Culture")) {
-	    System.out.println(Culture.questions[row-1]);
-        }
-	if (newCat[col-1].trim().equals("Writer")) {
-	    System.out.println(Composers.questions[row-1]);
-        }
-	if (newCat[col-1].trim().equals("Space")) {
-	    System.out.println(Astronomy.questions[row-1]);
-        }*/
 	printQues(col,row);	     
-
-    
+  
         String ans = Keyboard.readString();
 	checkAns(ans,col,row);//implementing modular design
 
 	} //ends for loop
     } //ends the game
     public void printQues(int col,int row){
-	
+	//prints the questions corresponding to the random array
         if (newCat[col-1].trim().equals("Math")) {
           System.out.println(Mathematics.questions[row-1]);
         }

@@ -163,7 +163,8 @@ Together::
        + Finished adding questions for the remaining 3 categories.
        + Added all the categories to Woo and made sure it ran free of mistakes/ fixed syntax along the way.
        + Moved multiple parts of the newGame method and created other methods that will be called. aka Modular design
-       + This will hopefully make our code much easier to understand. 
+       + This will hopefully make our code much easier to understand.
+       + Added the Food category and questions to make it an even 25 categories.
 +Irene :: <Thing member did.>
 +Jason :: <Thing member did.>
 +==============================================================

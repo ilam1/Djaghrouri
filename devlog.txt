@@ -32,7 +32,8 @@ wow we so BOSS bc...
 +UNRESOLVED ISSUES
 +~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 + As opposed to our original beliefs, the current version only supports a single player. To incorporate a multi-player/ team status (as
-originally intended) we need to keep track of which player is currently playing throughout the code. 
+originally intended) we need to keep track of which player is currently playing throughout the code.
++Our board does not line up each time.
 
 +COOL STUFF LEARNED
 +~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -128,7 +129,6 @@ Bayan, Irene, Jason :: Today in class we continued working on Woo.java. We made 
 +--------------------------------------------------------------
 Together::
 +Bayan ::
-       + 
 +Irene :: 
        + Added questions and answers to Misc.java
        + Created two more subclasses (Stuy.java and Literature.java) and made them aware to Woo.java
@@ -146,15 +146,22 @@ Together::
        + Created five more subclasses (Cheese.java, Geography.java, China.java, Impossible.java (containing various fun facts), and CompSci.java)
 +Jason ::
 +==============================================================
-
++2017-01-15
++--------------------------------------------------------------
++Bayan ::
+       +Created many more categories.
+       +Added questions for Women.java and more.
+       +included them in Woo.java
++Irene :: 
+       + Created five more subclasses (Cheese.java, Geography.java, China.java, Impossible.java (containing various fun facts), and CompSci.java)
++Jason ::
+       + Added questions for multiple subclasses of Woo
 +2017-01-23
 +--------------------------------------------------------------
 Together::
 +Bayan ::
-       + Made the board align with the points(might be a temporary solution though)
-       + Made a few more subclasses(Women, Astronomy, Music, Composers, etc. )
-       + Changed a CS question that was causing a syntax error
-       + Added History questions. 
+       + Finished adding questions for the remaining 3 categories.
+       + Added all the categories to Woo and made sure it ran free of mistakes/ fixed syntax along the way. 
 +Irene :: <Thing member did.>
 +Jason :: <Thing member did.>
 +==============================================================

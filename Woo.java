@@ -214,7 +214,9 @@ public class Woo {
 
     
         String ans = Keyboard.readString();
-	if ((newCat[col-1].trim().equals("Math")&& ans.equalsIgnoreCase(Mathematics.answers[row-1]))
+	checkAns(ans,col,row);//implementing modular design
+
+	/*	if ((newCat[col-1].trim().equals("Math")&& ans.equalsIgnoreCase(Mathematics.answers[row-1]))
 	    ||(newCat[col-1].trim().equals("Science")&& ans.equalsIgnoreCase(Sci.answers[row-1]))
 	    ||(newCat[col-1].trim().equals("History")&&ans.equalsIgnoreCase(History.answers[row-1]))
 	    || (newCat[col-1].trim().equals("Misc")&&ans.equalsIgnoreCase(Misc.answers[row-1]))
@@ -244,12 +246,46 @@ public class Woo {
 	}
 	else{
 	    System.out.println("You got it wrong");
-	}
+	    }*/
 // "College","Plays", "Tech","Shows","Music","Earth","Culture","Composers","Space","Sport"};
 
 	} //ends for loop
     } //ends the game
-    public boolean checkArray(int[] arr, int input) {
+    public void checkAns(String ans,int col,int row){
+	//this long if statement checks if the user's answer is correct. 
+	if ((newCat[col-1].trim().equals("Math")&& ans.equalsIgnoreCase(Mathematics.answers[row-1]))
+	    ||(newCat[col-1].trim().equals("Science")&& ans.equalsIgnoreCase(Sci.answers[row-1]))
+	    ||(newCat[col-1].trim().equals("History")&&ans.equalsIgnoreCase(History.answers[row-1]))
+	    || (newCat[col-1].trim().equals("Misc")&&ans.equalsIgnoreCase(Misc.answers[row-1]))
+	    ||(newCat[col-1].trim().equals("Stuy")&&ans.equalsIgnoreCase(Stuy.answers[row-1]))
+	    ||(newCat[col-1].trim().equals("Text")&&ans.equalsIgnoreCase(Literature.answers[row-1]))
+	    ||(newCat[col-1].trim().equals("Cheese")&&ans.equalsIgnoreCase(Cheese.answers[row-1]))
+	    ||(newCat[col-1].trim().equals("China")&&ans.equalsIgnoreCase(China.answers[row-1]))
+	    ||(newCat[col-1].trim().equals("CompSci")&&ans.equalsIgnoreCase(CompSci.answers[row-1]))
+	    ||(newCat[col-1].trim().equals("Geography")&&ans.equalsIgnoreCase(Geography.answers[row-1]))
+	    ||(newCat[col-1].trim().equals("Pop")&&ans.equalsIgnoreCase(Impossible.answers[row-1]))
+	    ||(newCat[col-1].trim().equals("Women")&&ans.equalsIgnoreCase(Women.answers[row-1]))
+	    ||(newCat[col-1].trim().equals("USA")&&ans.equalsIgnoreCase(USA.answers[row-1]))
+	    ||(newCat[col-1].trim().equals("College")&&ans.equalsIgnoreCase(Universities.answers[row-1]))
+	    ||(newCat[col-1].trim().equals("Plays")&&ans.equalsIgnoreCase(Theatre.answers[row-1]))
+	    ||(newCat[col-1].trim().equals("Tech")&&ans.equalsIgnoreCase(Technology.answers[row-1]))
+	    ||(newCat[col-1].trim().equals("Shows")&&ans.equalsIgnoreCase(Shows.answers[row-1]))
+	    ||(newCat[col-1].trim().equals("Music")&&ans.equalsIgnoreCase(Music.answers[row-1]))
+	    ||(newCat[col-1].trim().equals("Earth")&&ans.equalsIgnoreCase(Earth.answers[row-1]))
+	    ||(newCat[col-1].trim().equals("Culture")&&ans.equalsIgnoreCase(Culture.answers[row-1]))
+	    ||(newCat[col-1].trim().equals("Writer")&&ans.equalsIgnoreCase(Composers.answers[row-1]))
+	    ||(newCat[col-1].trim().equals("Space")&&ans.equalsIgnoreCase(Astronomy.answers[row-1]))
+	    ||(newCat[col-1].trim().equals("Sport")&&ans.equalsIgnoreCase(Sport.answers[row-1]))){
+	    points[whichPlayer()]+=row*100;
+	    System.out.println("Congratulations! You answered the question correctly!");
+	    board[row-1][col-1]=0;
+	}
+	else{
+	    System.out.println("You got it wrong");
+	}
+    }
+    public boolean checkArray(int[] arr, int input){
+	//used in categoryChooser to make sure the index is not repeating before appending it to the ind array. 
       boolean retBool = true;
       for (int i = 0; i < arr.length; i++) {
         if (arr[i] == input) {
@@ -260,6 +296,8 @@ public class Woo {
     }
 
     public int[] categoryChooser(String[] categories, int[] ind) {
+	//Randomly generates a number and checks that it is not repeating.
+	//this is used to randomly generate categories.
       int ctr = 0;
       while (ctr < 5) {
         int rand = (int) (Math.random() * categories.length);
@@ -275,6 +313,7 @@ public class Woo {
     }
 
     public String[] createCategory() {
+	//This calls category chooser and fills the array ans with the corresponding categories of the index from the ind array. 
       String[] ans = new String[5];
       int[] ind = new int[5];
       ind = categoryChooser(categories, ind);
@@ -285,12 +324,11 @@ public class Woo {
     }
 
 
-        //Overwritten toString that prints the game board
+        //Overwritten toString that prints the game board headers
     public String toString() {
-
         //Adds the category names
         String ans ="";
-        for (String category : newCat) {
+        for (String category : newCat) {//newcat is an instance variable array that is randomly generated
             ans += category + "\t";
         }
         ans += "\n";
@@ -298,6 +336,7 @@ public class Woo {
     }
 
     public int[][] pointTable(int[][] board){
+	//Creates the two d array that will be used to print the points. 
 	for (int row=0; row<board.length; row++){
 	    for(int col=0; col<board[row].length; col++){
 		board[row][col]= (row+1)*100;
@@ -306,7 +345,7 @@ public class Woo {
 	return board;
     }
     public static void print2( int[][] board ) {
-	//prints two d array
+	//prints two d array with a tab in between
 	for( int[] k : board ) {
 	    for( int j : k ) {
 	        if (j != 0)
@@ -340,12 +379,6 @@ public class Woo {
 
     //Returns if the given answer is correct
     public boolean compareAnswers(String ans) {
-	     /*
-1. array of answers(subject. answers[i] compared to readline of what the user inputs.
-if .equals--> true.-->
-SOP "good job you gained+ ___ + points"
-	 */
-        //if (cat.answers[pt].equals(
         return true;
     }
 

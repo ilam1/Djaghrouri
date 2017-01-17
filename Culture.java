@@ -1,4 +1,4 @@
-public class Culture extends Woo{
+public class Culture extends Category{
     public static String[] questions={"In which country was it a custom to bind the women's feet?",
 				      "What is a traditional cheese pizza called in most countries of the world?",
 				      "This island's coins feature Disney and Star Wars characters",

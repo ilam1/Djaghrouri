@@ -1,4 +1,4 @@
-public class Sci extends Woo{
+public class Sci extends Category{
 
     //Instance Variables
     public static String[] questions = {"How much force does it take to accelerate a 5 kg object at 4 m/s^2? (in Newtons)",

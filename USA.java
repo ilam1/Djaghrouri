@@ -1,4 +1,4 @@
-public class USA extends Woo{
+public class USA extends Category{
     public static String[] questions={"How many States are in the USA?",
 				      "This person had the longest tenure as the President of the United States (Last name only)",
 				      "If it is 6:00 am in NY what is the time in Los Angeles?(format: 5:00 pm)",

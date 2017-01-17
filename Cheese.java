@@ -1,4 +1,4 @@
-public class Cheese extends Woo{
+public class Cheese extends Category{
 
     //Instance Variables
     public static String[] questions = {

@@ -1,4 +1,4 @@
-public class CompSci extends Woo{
+public class CompSci extends Category{
 
     //Instance Variables
     public static String[] questions = {"What will the following equate to?\n(cadaar '(((6 5 4 3 2 1) 7) 8 9))",

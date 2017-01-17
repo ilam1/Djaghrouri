@@ -152,20 +152,37 @@ Together::
        +Created many more categories.
        +Added questions for Women.java and more.
        +included them in Woo.java
-+Irene :: 
-       + Created five more subclasses (Cheese.java, Geography.java, China.java, Impossible.java (containing various fun facts), and CompSci.java)
-+Jason ::
-       + Added questions for multiple subclasses of Woo
-+2017-01-23
-+--------------------------------------------------------------
-Together::
-+Bayan ::
        + Finished adding questions for the remaining 3 categories.
        + Added all the categories to Woo and made sure it ran free of mistakes/ fixed syntax along the way.
        + Moved multiple parts of the newGame method and created other methods that will be called. aka Modular design
        + This will hopefully make our code much easier to understand.
        + Added the Food category and questions to make it an even 25 categories.
-+Irene :: <Thing member did.>
-+Jason :: <Thing member did.>
++Irene :: 
++Jason ::
+       + Added questions for multiple subclasses of Woo
++2017-01-16
++--------------------------------------------------------------
+Together::
++Bayan ::
++Irene :: 
+       + Added Category.java for future use to host an abstract method
+       + Added Food.java (waiting on Bayan's addition)
+       + Added ??? as a placeholder for the 25th category (selecting it as a category is allowed, although the question shows as string "***Encrypted Message***" without a message)
+       + Added two options to Woo.java after player names are are recorded
+         1 being randomize (already coded)
+       + 2 allowing the user to select 5 categories from a list of 25 (newly added) 
+       + When selecting the categories, the user types the word (case insensitive)
+       + Modified private String array Categories to more accurately represent the categories (e.g. Geography instead of Geo, which could also symbolize Geometry)
+       + Modified printQues and checkAns to display questions and confirm answers based on the aforementioned changes
+       + Modified the appearance of printing in order to make more sense to the user (e.g. instructions to pick a point value comes after the jeopardy board is printed and before the point values)
+       + Fixed the 50+ syntax errors along the way
++Jason :: 
++==============================================================       
++2017-01-23
++--------------------------------------------------------------
+Together::
++Bayan ::
++Irene ::
++Jason :: 
 +==============================================================
 

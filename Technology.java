@@ -1,4 +1,4 @@
-public class Technology extends Woo{
+public class Technology extends Category{
     public static String[] questions={"This part of the hardware of a computer stores all your programs and files.",
 				      "An electronic signal that is represented by a 1 or 0",
 				      "This person invented the Model T car in 1908",

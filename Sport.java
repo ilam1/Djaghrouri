@@ -1,4 +1,4 @@
-public class Sport extends Woo{
+public class Sport extends Category{
     public static String[] questions= {"Who is a former competitive swimmer with the most Olympic medals of all time?",
                                        "Who won the Super Bowl in 2016?",
                                        "In which country did MODERN day soccer originate?",

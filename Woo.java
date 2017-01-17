@@ -230,7 +230,7 @@ public class Woo {
         if (newCat[col - 1].trim().equalsIgnoreCase("StuyTrivia")) {
             System.out.println(Stuy.questions[row - 1]);
         }
-        if (newCat[col - 1].trim().equalsIgnoreCase("Text")) {
+        if (newCat[col - 1].trim().equalsIgnoreCase("Literature")) {
             System.out.println(Literature.questions[row - 1]);
         }
         if (newCat[col - 1].trim().equalsIgnoreCase("Cheese")) {
@@ -278,7 +278,7 @@ public class Woo {
         if (newCat[col - 1].trim().equalsIgnoreCase("Culture")) {
             System.out.println(Culture.questions[row - 1]);
         }
-        if (newCat[col - 1].trim().equalsIgnoreCase("Literature")) {
+        if (newCat[col - 1].trim().equalsIgnoreCase("Composers")) {
             System.out.println(Composers.questions[row - 1]);
         }
         if (newCat[col - 1].trim().equalsIgnoreCase("Space")) {
@@ -297,7 +297,7 @@ public class Woo {
                 || (newCat[col - 1].trim().equalsIgnoreCase("History")  && ans.equalsIgnoreCase(History.answers[row - 1]))
                 || (newCat[col - 1].trim().equalsIgnoreCase("Logic")    && ans.equalsIgnoreCase(Misc.answers[row - 1]))
                 || (newCat[col - 1].trim().equalsIgnoreCase("StuyTrivia")&& ans.equalsIgnoreCase(Stuy.answers[row - 1]))
-                || (newCat[col - 1].trim().equalsIgnoreCase("Text")     && ans.equalsIgnoreCase(Literature.answers[row - 1]))
+                || (newCat[col - 1].trim().equalsIgnoreCase("Literature")     && ans.equalsIgnoreCase(Literature.answers[row - 1]))
                 || (newCat[col - 1].trim().equalsIgnoreCase("Cheese")   && ans.equalsIgnoreCase(Cheese.answers[row - 1]))
                 || (newCat[col - 1].trim().equalsIgnoreCase("China")    && ans.equalsIgnoreCase(China.answers[row - 1]))
                 || (newCat[col - 1].trim().equalsIgnoreCase("CompSci")  && ans.equalsIgnoreCase(CompSci.answers[row - 1]))
@@ -313,7 +313,7 @@ public class Woo {
                 || (newCat[col - 1].trim().equalsIgnoreCase("Music")    && ans.equalsIgnoreCase(Music.answers[row - 1]))
                 || (newCat[col - 1].trim().equalsIgnoreCase("Earth")    && ans.equalsIgnoreCase(Earth.answers[row - 1]))
                 || (newCat[col - 1].trim().equalsIgnoreCase("Culture")  && ans.equalsIgnoreCase(Culture.answers[row - 1]))
-                || (newCat[col - 1].trim().equalsIgnoreCase("Literature")&& ans.equalsIgnoreCase(Composers.answers[row - 1]))
+                || (newCat[col - 1].trim().equalsIgnoreCase("Composers")&& ans.equalsIgnoreCase(Composers.answers[row - 1]))
                 || (newCat[col - 1].trim().equalsIgnoreCase("Space")    && ans.equalsIgnoreCase(Astronomy.answers[row - 1]))
                 || (newCat[col - 1].trim().equalsIgnoreCase("Sports")   && ans.equalsIgnoreCase(Sport.answers[row - 1]))) {
             points[whichPlayer()] += row * 100;

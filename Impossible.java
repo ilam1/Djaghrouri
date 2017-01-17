@@ -1,4 +1,4 @@
-public class Impossible extends Woo{
+public class Impossible extends Category{
 
     //Instance Variables
     public static String[] questions = {"What does the expiration date on water bottles refer to?",

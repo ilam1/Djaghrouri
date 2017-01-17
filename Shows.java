@@ -1,4 +1,4 @@
-public class Shows extends Woo{
+public class Shows extends Category{
     public static String[] questions={"Who was the lead actor in The Fresh Prince of Bel-Air?",
                                       "What year did the Simpsons started to air?",
                                       "How long were Jerry Seinfield and his pals sentenced to in the series finale?",

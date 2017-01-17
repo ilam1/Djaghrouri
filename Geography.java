@@ -1,4 +1,4 @@
-public class Geography extends Woo{
+public class Geography extends Category{
 
     //Instance Variables
     public static String[] questions = {

@@ -1,4 +1,4 @@
-public class Literature extends Woo{
+public class Literature extends Category{
 
     //Instance Variables
     public static String[] questions = {"Name the last name of the author that wrote the below statement:\nTwo households both alike in dignity",

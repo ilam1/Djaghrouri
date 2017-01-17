@@ -1,4 +1,4 @@
-public class China extends Woo{
+public class China extends Category{
 
     //Instance Variables
     public static String[] questions = {

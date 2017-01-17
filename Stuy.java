@@ -1,4 +1,4 @@
-public class Stuy extends Woo{
+public class Stuy extends Category{
 
     //Instance Variables
     public static String[] questions = {"What train is the greatest cause of stress?\n(Please answer with a letter or number)",

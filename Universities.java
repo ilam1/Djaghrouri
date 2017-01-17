@@ -1,4 +1,4 @@
-public class Universities extends Woo{
+public class Universities extends Category{
     public static String[] questions={"What year was the oldest college university established in?",
                                       "How many Ivy League college universities are there?",
                                       "What is the name of the newest university in the U.S.?",

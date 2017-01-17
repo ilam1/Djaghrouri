@@ -1,4 +1,4 @@
-public class Misc extends Woo{
+public class Misc extends Category{
     // instance variables
     public static String[] questions = {"What is the best month for a parade?",
 	    "What gets whipped and beaten without ever squealing?",

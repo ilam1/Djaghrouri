@@ -1,4 +1,4 @@
-public class Earth extends Woo{
+public class Earth extends Category{
     public static String[] questions= {"How old is the earth?",
                                         "How many continents are there on Earth?",
                                         "How far are we from the sun? (in km)",

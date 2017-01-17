@@ -2,7 +2,7 @@
 Bayan Berri, Irene Lam, Jason Lam
 
 ### Description
-The user is prompted with two options, either to play the pre-existing game or to create their own game, that is, the game of JEOPARDY! The user inputs how many players and player names. The user is given an option to either play Normal Jeopardy or Special Edition Jeopardy (described below). From there, categories are chosen and the game follows (to a degree) regular jeopardy, with a tie invoking either All or Nothing! Further explanations of the mechanics of the game and usage of topics learned this past semester are explained below.
+This is a multiplayer game of Jeopardy with our unique twists coded in Java. User is prompted to either make their own game, or to choose from a list of pre-given categories to play from. User is able to choose between Normal or Special Edition Jeopardy, and at the end, All or Nothing! or Bet! is invoked to determine winner.
 
 ### Jargon Explained
 * Special Edition Jeopardy randomly enhances certain boxes with a chance for player(s) to double the amount of money they win (similar to Double Jeopardy), except failure comes with a randomly generated twist, losing double thier amount.

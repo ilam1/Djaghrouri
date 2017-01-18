@@ -27,7 +27,7 @@ public class Woo {
     private int[] ind = new int[5];
     private String[] categories =
     {"???", "Math", "Science", "History", "Logic", "StuyTrivia",
-     "Text", "Cheese", "China", "CompSci", "Geometry",
+     "Text", "Cheese", "China", "CompSci", "Geography",
      "Pop", "Women", "USA", "College", "Plays",
      "Food", "Tech", "Shows", "Music", "Earth", "Culture",
      "Literature", "Space", "Sports"};
@@ -44,15 +44,15 @@ public class Woo {
 
     public void newGame() {
         //Fun printing :D
-        System.out.print("Loading");
+	/*        System.out.print("Loading");
         for (int i = 0; i < 3; i++) {
             try {
-                Thread.sleep(1000); //What gives the 1 second interval
+		Thread.sleep(1000); //What gives the 1 second interval
             } catch (InterruptedException ex) {
             }
             System.out.print(".");
         }
-        System.out.println();
+        System.out.println(); */
 
         in = new BufferedReader(new InputStreamReader(System.in));
 
@@ -91,24 +91,31 @@ public class Woo {
             } catch (IOException e) {
                 e.printStackTrace();
             }
-	    System.out.println(playerNames[i] + ", please select your desired buzzer");
+	    System.out.println(playerNames[i] + ", please select your ONE CHARACTER desired buzzer");
 
 	    while (buzzer[i] == null) {
 		boolean any = false;
-		String name="";
+		String buzzerName="";
 		for (String x: buzzer) {
 		    try {
-			name = in.readLine();
+			buzzerName = in.readLine();
 		    } catch (IOException e) {
 			e.printStackTrace();
 		    }
-		    if (x == name || name = "") {
+		    if (x == buzzerName ) {
 			any = true; }
+		    System.out.println(any);
+		    System.out.println(buzzerName);
+		    System.out.println(buzzer[i]);
 		}
-		if (!any) {
-		    buzzer[i] = name;}
+		if (any) {
+		    System.out.println("Your buzzer has already been taken! Please select another buzzer:"); 
+		}
+		else if (buzzerName.length() != 1) {
+		    System.out.println("Your buzzer is invalid! Please select another buzzer:"); 
+		}
 		else {
-		    System.out.println("You're buzzer has already been taken! Please select another buzzer:"); }
+		    buzzer[i] = buzzerName;}
 	    }
 	}
 	
@@ -239,7 +246,7 @@ public class Woo {
 	} //ends for loop
 	System.out.println("Buzz to answer the question!");
 	try {
-	    buzzed = in.readLine();
+	    buzzed = in.readLine().substring(0,1);
 	} catch (IOException e) {
 	    e.printStackTrace();
 	}

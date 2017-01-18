@@ -91,28 +91,30 @@ public class Woo {
             } catch (IOException e) {
                 e.printStackTrace();
             }
-	    System.out.println("\n" + playerNames[i] + ", please select your ONE CHARACTER desired buzzer");
+	    if (totalPlayers > 1) {
+		System.out.println("\n" + playerNames[i] + ", please select your ONE CHARACTER desired buzzer");
 
-	    while (buzzer[i] == null) {
-		boolean any = false;
-		String buzzerName="";
-		try {
-		    buzzerName = in.readLine();
-		} catch (IOException e) {
-		    e.printStackTrace();
-		}
-		for (String x: buzzer) {
-		    if (x != null && x.equals(buzzerName) ) {
-			any = true; }
-		}
-		if (any) {
-		    System.out.println("Your buzzer has already been taken! Please select another buzzer:"); 
-		}
-		else if (buzzerName.length() != 1) {
-		    System.out.println("Your buzzer is invalid! Please select another buzzer:"); 
-		}
-		else {
-		    buzzer[i] = buzzerName;
+		while (buzzer[i] == null) {
+		    boolean any = false;
+		    String buzzerName="";
+		    try {
+			buzzerName = in.readLine();
+		    } catch (IOException e) {
+			e.printStackTrace();
+		    }
+		    for (String x: buzzer) {
+			if (x != null && x.equals(buzzerName) ) {
+			    any = true; }
+		    }
+		    if (any) {
+			System.out.println("Your buzzer has already been taken! Please select another buzzer:"); 
+		    }
+		    else if (buzzerName.length() != 1) {
+			System.out.println("Your buzzer is invalid! Please select another buzzer:"); 
+		    }
+		    else {
+			buzzer[i] = buzzerName;
+		    }
 		}
 	    }
 	}
@@ -183,11 +185,13 @@ public class Woo {
 		    System.out.printf("Sorry, we do not recognize \"%s\", please select another category", str);
 	    }
 	}
-	System.out.println("Thank you, ladies and gentlemen. Hello & welcome to Jeopardy!, America's favorite answer-and-question game. Yes, we give the QUESTIONS, and then it's up to these " + totalPlayers + " contestants to come up with the ANSWERS. Players, as you know, whenever you recognize an answer you're free to ring in; but, I want to warn you about the Jeopardy!: if you are wrong, the value of the question will be deducted from your winnings. Right now, put your hands on the buttons, but please don't ring in until the answer is exposed. If all three of you are ready, then let's play Jeopardy!");
+	System.out.println("\n*            *            *\n\nThank you, ladies and gentlemen. Hello & welcome to Jeopardy!, America's favorite answer-and-question game. Yes, we give the QUESTIONS, and then it's up to these " + totalPlayers + " contestants to come up with the ANSWERS. Players, as you know, whenever you recognize an answer you're free to ring in; but, I want to warn you about the Jeopardy!: if you are wrong, the value of the question will be deducted from your winnings. Right now, put your hands on the buttons, but please don't ring in until the answer is exposed. If all " + totalPlayers + " of you are ready, then let's play Jeopardy!");
 	
 	points = new int[totalPlayers];//Updates the points array to number of players in the game
+
 	pointTable(board);
 	for (int ind = 0; ind < (board[0].length) * ((board.length) - 1); ind++) {
+	    System.out.println();
 	    System.out.println(toString());
 	    print2(board);
 
@@ -217,7 +221,7 @@ public class Woo {
 
 	    int row = 0;
 	    do {
-		System.out.println("\n How many points would you like to play for? " +
+		System.out.println("\nHow many points would you like to play for? " +
 				   "Please type in the number before the points.\n");
 		if (board[0][col - 1] != 0)
 		    System.out.println("\t 1: 100");
@@ -354,10 +358,14 @@ public class Woo {
 	    || (newCat[col - 1].trim().equalsIgnoreCase("Space")    && ans.equalsIgnoreCase(Astronomy.answers[row - 1]))
 	    || (newCat[col - 1].trim().equalsIgnoreCase("Sports")   && ans.equalsIgnoreCase(Sport.answers[row - 1]))) {
 	    points[whichPlayer(buzzed)] += row * 100;
-	    System.out.println("Congratulations! You answered the question correctly!");
+	    System.out.println("Congratulations! You answered the question correctly! (๑>ᴗ<๑)");
 	    board[row - 1][col - 1] = 0;
 	} else {
-	    System.out.println("You got it wrong");
+	    System.out.println("You got it wrong ┐(´～｀)┌");
+	    if (totalPlayers == 1) {
+		board[row - 1][col - 1] = 0;
+		System.out.println("The correct answer is :");
+	    }
 	}
     }
 

@@ -162,7 +162,6 @@ Together::
        + Added questions for multiple subclasses of Woo
 +2017-01-16
 +--------------------------------------------------------------
-Together::
 +Bayan ::
 +Irene :: 
        + Added Category.java for future use to host an abstract method
@@ -175,7 +174,21 @@ Together::
        + Modified private String array Categories to more accurately represent the categories (e.g. Geography instead of Geo, which could also symbolize Geometry)
        + Modified printQues and checkAns to display questions and confirm answers based on the aforementioned changes
        + Modified the appearance of printing in order to make more sense to the user (e.g. instructions to pick a point value comes after the jeopardy board is printed and before the point values)
+       + Modified the board's formatting such that everything is aligned/ centered
        + Fixed the 50+ syntax errors along the way
++Jason :: 
++==============================================================       
++2017-01-17
++--------------------------------------------------------------
++Bayan, Irene::
+       + Incorporated abstract methods into Category.java
++Bayan ::
++Irene ::
+       + Added new instance variable buzzer to accomodate the newly added buzzer (recorded after the user inputs their name)
+       + Added conditionals and necessary try catch blocks to prevent the selection of a buzzer already taken
+       + Wrote method whichPlayer to return the index of the player based on the String first buzzed
+       + Added conditionals to take into account various features when displaying messages (e.g. number of players)
+       + Added new introductory messages to more accurately resemble the television Jeopardy! show
 +Jason :: 
 +==============================================================       
 +2017-01-23

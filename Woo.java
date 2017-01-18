@@ -27,7 +27,7 @@ public class Woo {
     private int[] ind = new int[5];
     private String[] categories =
     {"???", "Math", "Science", "History", "Logic", "StuyTrivia",
-     "Text", "Cheese", "China", "CompSci", "Geography",
+     "Literature", "Cheese", "China", "CompSci", "Geography",
      "Pop", "Women", "USA", "College", "Plays",
      "Food", "Tech", "Shows", "Music", "Earth", "Culture",
      "Literature", "Space", "Sports"};
@@ -56,7 +56,7 @@ public class Woo {
 
         in = new BufferedReader(new InputStreamReader(System.in));
 
-        System.out.println("You are now playing JEOPARDY \n Dedicated to Ms. Djaghrouri\n");
+        System.out.println("You are now playing JEOPARDY \nDedicated to Ms. Djaghrouri (≧∀≦)\n");
         System.out.println("\t1: Create your own game!");
         System.out.println("\t2: Play our game!");
         int option = 0;
@@ -92,7 +92,7 @@ public class Woo {
                 e.printStackTrace();
             }
 	    if (totalPlayers > 1) {
-		System.out.println("\n" + playerNames[i] + ", please select your ONE CHARACTER desired buzzer");
+		System.out.println("\n" + playerNames[i] + " please select your ONE CHARACTER desired buzzer");
 
 		while (buzzer[i] == null) {
 		    boolean any = false;
@@ -241,17 +241,29 @@ public class Woo {
 		       || (row == 5 && board[4][col - 1] != 0)));
 
 	    printQues(col, row);
-	    	    
+	    System.out.println("Buzz to answer the question!");
+	    try {
+		buzzed = in.readLine().substring(0,1);
+	    } catch (IOException e) {
+		e.printStackTrace();
+	    }
+	    while (playerToAnswer(buzzed).equals("Error")) {
+		System.out.println("\nNo one has that buzzer ┐( -“-)┌ Buzz again!\n");
+		try {
+		    buzzed = in.readLine().substring(0,1);
+		} catch (IOException e) {
+		    e.printStackTrace();
+		}		
+	    }
+	    
+	    System.out.println(playerToAnswer(buzzed) + " buzzed first, so you get to answer!");
+	    
+
 	    String ans = Keyboard.readString();
 	    checkAns(ans, col, row);//implementing modular design
 
 	} //ends for loop
-	System.out.println("Buzz to answer the question!");
-	try {
-	    buzzed = in.readLine().substring(0,1);
-	} catch (IOException e) {
-	    e.printStackTrace();
-	}
+
     } //ends the game
 
     public void printQues(int col, int row) {
@@ -478,6 +490,15 @@ public class Woo {
 	//player in index will have the amount of points in points[index]
 	points[index] += questionWorth[0];
 	
+    }
+
+    public String playerToAnswer(String character) {
+	for (int x = 0; x < buzzer.length; x++) {
+	    if (buzzer[x].equals(character)) {
+		return playerNames[x];
+	    }
+	}
+	return "Error";
     }
 
     public static void main(String[] args) {

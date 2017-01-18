@@ -85,28 +85,25 @@ public class Woo {
 	
         //Updates the array playerNames to the size of the number of players
         for (int i = 0; i < totalPlayers; i++) {
-            System.out.println("Who is player " + (i + 1) + " ?");
+            System.out.println("\nWho is player " + (i + 1) + " ?");
             try {
                 playerNames[i] = in.readLine();
             } catch (IOException e) {
                 e.printStackTrace();
             }
-	    System.out.println(playerNames[i] + ", please select your ONE CHARACTER desired buzzer");
+	    System.out.println("\n" + playerNames[i] + ", please select your ONE CHARACTER desired buzzer");
 
 	    while (buzzer[i] == null) {
 		boolean any = false;
 		String buzzerName="";
+		try {
+		    buzzerName = in.readLine();
+		} catch (IOException e) {
+		    e.printStackTrace();
+		}
 		for (String x: buzzer) {
-		    try {
-			buzzerName = in.readLine();
-		    } catch (IOException e) {
-			e.printStackTrace();
-		    }
-		    if (x == buzzerName ) {
+		    if (x != null && x.equals(buzzerName) ) {
 			any = true; }
-		    System.out.println(any);
-		    System.out.println(buzzerName);
-		    System.out.println(buzzer[i]);
 		}
 		if (any) {
 		    System.out.println("Your buzzer has already been taken! Please select another buzzer:"); 
@@ -115,7 +112,8 @@ public class Woo {
 		    System.out.println("Your buzzer is invalid! Please select another buzzer:"); 
 		}
 		else {
-		    buzzer[i] = buzzerName;}
+		    buzzer[i] = buzzerName;
+		}
 	    }
 	}
 	

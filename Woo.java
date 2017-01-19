@@ -501,6 +501,57 @@ public class Woo {
 	    if (totalPlayers == 1) {
 		board[row - 1][col - 1] = 0;
 		System.out.println("The correct answer is :");
+		if ((newCat[col - 1].trim().equals("???"))) {
+		    System.out.println("***Encrypted Answer***"); }
+		if ((newCat[col - 1].trim().equalsIgnoreCase("Math"))) {
+		    System.out.println(Mathematics.answers[row - 1]); }
+		if ((newCat[col - 1].trim().equalsIgnoreCase("Science"))) {
+		    System.out.println(Sci.answers[row - 1]); }
+		if ((newCat[col - 1].trim().equalsIgnoreCase("History"))) {
+		    System.out.println(History.answers[row - 1]); }
+		if ((newCat[col - 1].trim().equalsIgnoreCase("Logic"))) {
+		    System.out.println(Misc.answers[row - 1]); }
+		if ((newCat[col - 1].trim().equalsIgnoreCase("StuyTrivia"))) {
+		    System.out.println(Stuy.answers[row - 1]); }
+		if ((newCat[col - 1].trim().equalsIgnoreCase("Literature"))) {
+		    System.out.println(Literature.answers[row - 1]); }
+		if ((newCat[col - 1].trim().equalsIgnoreCase("Cheese"))) {
+		    System.out.println(Cheese.answers[row - 1]); }
+		if ((newCat[col - 1].trim().equalsIgnoreCase("China"))) {
+		    System.out.println(China.answers[row - 1]); }
+		if ((newCat[col - 1].trim().equalsIgnoreCase("Compsci"))) {
+		    System.out.println(CompSci.answers[row - 1]); }
+		if ((newCat[col - 1].trim().equalsIgnoreCase("Geography"))) {
+		    System.out.println(Geography.answers[row - 1]); }
+		if ((newCat[col - 1].trim().equalsIgnoreCase("Pop"))) {
+		    System.out.println(Impossible.answers[row - 1]); }
+		if ((newCat[col - 1].trim().equalsIgnoreCase("Women"))) {
+		    System.out.println(Women.answers[row - 1]); }
+		if ((newCat[col - 1].trim().equalsIgnoreCase("USA"))) {
+		    System.out.println(USA.answers[row - 1]); }
+		if ((newCat[col - 1].trim().equalsIgnoreCase("College"))) {
+		    System.out.println(Universities.answers[row - 1]); }
+		if ((newCat[col - 1].trim().equalsIgnoreCase("Plays"))) {
+		    System.out.println(Theatre.answers[row - 1]); }
+		if ((newCat[col - 1].trim().equalsIgnoreCase("Food"))) {
+		    System.out.println(Food.answers[row - 1]); }
+		if ((newCat[col - 1].trim().equalsIgnoreCase("Tech"))) {
+		    System.out.println(Technology.answers[row - 1]); }
+		if ((newCat[col - 1].trim().equalsIgnoreCase("Shows"))) {
+		    System.out.println(Shows.answers[row - 1]); }
+		if ((newCat[col - 1].trim().equalsIgnoreCase("Music"))) {
+		    System.out.println(Music.answers[row - 1]); }
+		if ((newCat[col - 1].trim().equalsIgnoreCase("Earth"))) {
+		    System.out.println(Earth.answers[row - 1]); }
+		if ((newCat[col - 1].trim().equalsIgnoreCase("Culture"))) {
+		    System.out.println(Culture.answers[row - 1]); }
+		if ((newCat[col - 1].trim().equalsIgnoreCase("Composers"))) {
+		    System.out.println(Composers.answers[row - 1]); }
+		if ((newCat[col - 1].trim().equalsIgnoreCase("Space"))) {
+		    System.out.println(Astronomy.answers[row - 1]); }
+		if ((newCat[col - 1].trim().equalsIgnoreCase("Sports"))) {
+		    System.out.println(Sport.answers[row - 1]); }
+		
 	    }
 	}
     }

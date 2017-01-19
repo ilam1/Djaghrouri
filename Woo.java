@@ -248,7 +248,7 @@ public class Woo {
 		e.printStackTrace();
 	    }
 	    while (playerToAnswer(buzzed).equals("Error")) {
-		System.out.println("\nNo one has that buzzer ┐( -“-)┌ Buzz again!\n");
+		System.out.println("\nNo one has that buzzer!! Buzz again!\n");
 		try {
 		    buzzed = in.readLine().substring(0,1);
 		} catch (IOException e) {
@@ -370,10 +370,10 @@ public class Woo {
 	    || (newCat[col - 1].trim().equalsIgnoreCase("Space")    && ans.equalsIgnoreCase(Astronomy.answers[row - 1]))
 	    || (newCat[col - 1].trim().equalsIgnoreCase("Sports")   && ans.equalsIgnoreCase(Sport.answers[row - 1]))) {
 	    points[whichPlayer(buzzed)] += row * 100;
-	    System.out.println("Congratulations! You answered the question correctly! (๑>ᴗ<๑)");
+	    System.out.println("Congratulations! You answered the question correctly!");
 	    board[row - 1][col - 1] = 0;
 	} else {
-	    System.out.println("You got it wrong ┐(´～｀)┌");
+	    System.out.println("You got it wrong");
 	    if (totalPlayers == 1) {
 		board[row - 1][col - 1] = 0;
 		System.out.println("The correct answer is :");

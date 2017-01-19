@@ -53,6 +53,109 @@ public class Woo {
         }
         System.out.println();
     }
+    public String[] makeCat(){
+	int ctr=1;
+	while (ctr<=5){
+	    System.out.println("what's the topic for category "+ ctr);
+	    Custom.category[ctr-1]= Keyboard.readString();
+	    ctr+=1;
+	}
+	return Custom.category;
+    }
+    public String[] makeQues1(){
+	int ind=0;
+	while(ind<5){
+	    System.out.println("What is the question worth "+((ind+1)*100)+" points for the "+ Custom.category[0]+" category");
+	    Custom.questions1[ind]=Keyboard.readString();
+	    ind+=1;
+	}
+	return Custom.questions1;
+    }
+    public String[]makeAns1(){
+    	int ind=0;
+	while(ind<5){
+	    System.out.println("What is the answer worth "+((ind+1)*100)+" points for the "+ Custom.category[0]+" category");
+	    Custom.answers1[ind]=Keyboard.readString();
+	    ind+=1;
+	}
+	return Custom.answers1;
+    }
+     public String[] makeQues2(){
+	int ind=0;
+	while(ind<5){
+	    System.out.println("What is the question worth "+((ind+1)*100)+" points for the "+ Custom.category[1]+" category");
+	    Custom.questions2[ind]=Keyboard.readString();
+	    ind+=1;
+	}
+	return Custom.questions2;
+    }
+    public String[]makeAns2(){
+    	int ind=0;
+	while(ind<5){
+	    System.out.println("What is the answer worth "+((ind+1)*100)+" points for the "+ Custom.category[1]+" category");
+	    Custom.answers2[ind]=Keyboard.readString();
+	    ind+=1;
+	}
+	return Custom.answers2;
+    }
+    public String[] makeQues3(){
+	int ind=0;
+	while(ind<5){
+	    System.out.println("What is the question worth "+((ind+1)*100)+" points for the "+ Custom.category[2]+" category");
+	    Custom.questions3[ind]=Keyboard.readString();
+	    ind+=1;
+	}
+	return Custom.questions3;
+    }
+    public String[]makeAns3(){
+	int ind=0;
+	while(ind<5){
+	    System.out.println("What is the answer worth "+((ind+1)*100)+" points for the "+ Custom.category[2]+" category");
+	    Custom.answers3[ind]=Keyboard.readString();
+	    ind+=1;
+	}
+	return Custom.answers3;
+    }
+    public String[] makeQues4(){
+	//int ctr=1;
+	int ind=0;
+	while(ind<5){
+	    System.out.println("What is the question worth "+((ind+1)*100)+" points for the "+ Custom.category[3]+" category");
+	    Custom.questions4[ind]=Keyboard.readString();
+	    ind+=1;
+	}
+	return Custom.questions4;
+    }
+    public String[]makeAns4(){
+    	//int ctr=1;
+	int ind=0;
+	while(ind<5){
+	    System.out.println("What is the answer worth "+((ind+1)*100)+" points for the "+ Custom.category[3]+" category");
+	    Custom.answers4[ind]=Keyboard.readString();
+	    ind+=1;
+	}
+	return Custom.answers4;
+    }
+    public String[] makeQues5(){
+	//	int ctr=1;
+	int ind=0;
+	while(ind<5){
+	    System.out.println("What is the question worth "+((ind+1)*100)+" points for the "+ Custom.category[4]+" category");
+	    Custom.questions5[ind]=Keyboard.readString();
+	    ind+=1;
+	}
+	return Custom.questions5;
+    }
+    public String[]makeAns5(){
+	//	int ctr=1;
+	int ind=0;
+	while(ind<5){
+	    System.out.println("What is the answer worth "+((ind+1)*100)+" points for the "+ Custom.category[4]+" category");
+	    Custom.answers5[ind]=Keyboard.readString();
+	    ind+=1;
+	}
+	return Custom.answers5;
+    }
 
     public void choice1(){
 	System.out.println("You are now playing JEOPARDY \nDedicated to Ms. Djaghrouri (≧∀≦)\n");
@@ -68,8 +171,22 @@ public class Woo {
         if (option == 1) {
             //Implementation to create your own game
             System.out.println("CURRENTLY EMPTY");
-            System.exit(0);
+	    makeCat();
+	    makeQues1();
+	    makeAns1();
+	    makeQues2();
+	    makeAns2();
+	    makeQues3();
+	    makeAns3();
+	    makeQues4();
+	    makeAns4();
+	    makeQues5();
+	    makeAns5();
+            //System.exit(0);
 	}
+    }
+    public void testPrintArr(String[] arr){
+    
     }
     public void newGame() {
 	//	load();

@@ -28,12 +28,14 @@ wow we so BOSS bc...
 +Our Board wouldn't update the point values to 0 after they were played. This is because the board was being printed in toString each time and recreated each time. our toString in essence didn't just print it. It also repopulated it but we got it to work!!
 + We kept getting an error about in.readLine(). We fixed this error by implementing Keyboard.java instead. 
 + Utilized both try/ catch blocks and while loops as a precaution to bad input (There's more than one way to skin a cow!)
-
++ We finally managed to have the board print out lining up with the categories
 +UNRESOLVED ISSUES
 +~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 + As opposed to our original beliefs, the current version only supports a single player. To incorporate a multi-player/ team status (as
 originally intended) we need to keep track of which player is currently playing throughout the code.
-+Our board does not line up each time.
++How to add color
++How to create a new file in order to let the user make their own game.
++How to implement a timer
 
 +COOL STUFF LEARNED
 +~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -50,8 +52,11 @@ originally intended) we need to keep track of which player is currently playing 
 +LESSONS LEARNED
 +~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 + String.parseString(string) does not exist (a.k.a. the coding is more thinking than doing)
-+
-+
++ Abstract classes cannot have abstract instance variables.
++ the trim operator removes the spaces which we had a lot of after each string category.
++ Having descriptive comments, especially when working in a group, is quite resourceful.
++ Incorporating modular design is much much easier to follow than having one method that contains hundreds of lines of code.
++ Looking back at other homeworks can really help. You never know when you can incorporate methods that you've already coded. 
 + ______   ______   __   __   __       ______   _______     
 +/_____/\ /_____/\ /_/\ /_/\ /_/\     /_____/\ /______/\    
 +\:::_ \ \\::::_\/_\:\ \\ \ \\:\ \    \:::_ \ \\::::__\/__  
@@ -194,6 +199,9 @@ Together::
 +2017-01-18
 +--------------------------------------------------------------
 +Bayan ::
+       + Fixed minor syntax errors.
+       + changed instance variables of class category
+       	 +Abstract classes can't have abstract instance variables. 
 +Irene ::
        + Implemented buzzer!
           + Buzzers greater than one character will return a unique error message

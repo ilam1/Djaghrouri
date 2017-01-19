@@ -1,6 +1,6 @@
 public abstract class Category {
-    public abstract String[] questions;
-    public abstract String[] answers;
+    protected String[] questions;
+    protected String[] answers;
 
     public final boolean isName(String in, String[] alias) {
         if (isName(in))

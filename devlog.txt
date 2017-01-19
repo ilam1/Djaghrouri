@@ -216,7 +216,15 @@ Together::
        + Error involving subclass Literature (not printing questions/ answers) was fixed
        
 +Jason :: 
-+==============================================================       
++==============================================================
++2017-01-19
++--------------------------------------------------------------
+Together::
++Bayan ::
+       + Started implementing more modular design so that the code is more readable and easier to understand. This will also hopefully make it easier to see any mistakes or add parts to the code. descriptive variable names and methods will also make it easier to continue working off our partners' code
++Irene :: 
++Jason :: <Thing member did.>
++==============================================================
 +2017-01-23
 +--------------------------------------------------------------
 Together::

@@ -42,9 +42,8 @@ public class Woo {
         gameOn = true;
     }
 
-    public void newGame() {
-        //Fun printing :D
-	/*        System.out.print("Loading");
+    public void load(){
+	System.out.print("Loading");
         for (int i = 0; i < 3; i++) {
             try {
 		Thread.sleep(1000); //What gives the 1 second interval
@@ -52,11 +51,11 @@ public class Woo {
             }
             System.out.print(".");
         }
-        System.out.println(); */
+        System.out.println();
+    }
 
-        in = new BufferedReader(new InputStreamReader(System.in));
-
-        System.out.println("You are now playing JEOPARDY \nDedicated to Ms. Djaghrouri (≧∀≦)\n");
+    public void choice1(){
+	System.out.println("You are now playing JEOPARDY \nDedicated to Ms. Djaghrouri (≧∀≦)\n");
         System.out.println("\t1: Create your own game!");
         System.out.println("\t2: Play our game!");
         int option = 0;
@@ -65,13 +64,21 @@ public class Woo {
             option = Integer.parseInt(in.readLine());
         } catch (IOException e) {
         }
-
+	
         if (option == 1) {
             //Implementation to create your own game
             System.out.println("CURRENTLY EMPTY");
             System.exit(0);
-        }
-        System.out.println("\nHow many players are playing in total?"); //Currently only supports a single player
+	}
+    }
+    public void newGame() {
+	//	load();
+
+        in = new BufferedReader(new InputStreamReader(System.in));
+
+	choice1();
+
+	System.out.println("\nHow many players are playing in total?"); //Currently only supports a single player
         try {
             totalPlayers = Integer.parseInt(in.readLine());
         } catch (IOException e) {

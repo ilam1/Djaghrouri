@@ -191,6 +191,24 @@ Together::
        + Added new introductory messages to more accurately resemble the television Jeopardy! show
 +Jason :: 
 +==============================================================       
++2017-01-18
++--------------------------------------------------------------
++Bayan ::
++Irene ::
+       + Implemented buzzer!
+          + Buzzers greater than one character will return a unique error message
+          + (WITH LOTS OF HELP FROM PATRICK CHAN) Buzzers already used by another user will return a unique error message
+          + "Buzzing in" follows the display of each question, resolving our issue of which player ought to answer the question
+          + A buzzer will continue to be asked until a character that will not trigger the aforementioned error messages is given
+       + Modified the game for single players (where the total number of players = 1)
+          + The buzzer prompt will not be triggered (neither asking for the player's desired buzzer nor needing to buzz in for questions)
+          + Answering a question wrong discards the question from the board, stimulating instead a slot (to be implemented) with the
+            answer to both let the user learn and give the user a chance to clear the board
+       + Spacing and emojis are now added to make the Jeopardy! board more readable/ interesting
+       + Error involving subclass Literature (not printing questions/ answers) was fixed
+       
++Jason :: 
++==============================================================       
 +2017-01-23
 +--------------------------------------------------------------
 Together::

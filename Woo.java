@@ -516,7 +516,7 @@ public class Woo {
 	    board[row - 1][col - 1] = 0;
 	} else {
 	    System.out.println("You got it wrong. ");
-	    //points[whichPlayer(buzzed)] -= row * 100;
+	    points[whichPlayer(buzzed)] -= row * 100;
 	    if (totalPlayers == 1) {
 		board[row - 1][col - 1] = 0;
 		System.out.println("The correct answer is: ");
@@ -687,11 +687,17 @@ public class Woo {
 		playerNames[i + 1] = temps;
 	    }
 	}
-	System.out.println("\n====================\nLeaderboard:\n");
-	for (int i = 0; i < playerNames.length; i++) {
-	    System.out.println(playerNames[i] + " -- " + points[i]);
+	if (totalPlayers == 1 ) {
+	    System.out.println("\nYour points: " + points[0]);
+	    System.out.println(comments(points[0]));
 	}
-	System.out.println("\n====================");
+	else {
+	    System.out.println("\n====================\nLeaderboard:\n");
+	    for (int i = 0; i < playerNames.length; i++) {
+		System.out.println(playerNames[i] + " -- " + points[i]);
+	    }
+	    System.out.println("\n====================");
+	}
     }
 
     public int whichPlayer(String buzz) {
@@ -716,6 +722,19 @@ public class Woo {
 	}
 	return "Error";
     }
+
+    public String comments(int point) {
+	if (point < -1000) {
+	    return "And you call yourself a Stuyvesant student?"; }
+	else if (point < -500) {
+	    return "Almost beyond hope - Selling 1 point for $1, please find Ms. D for change"; }
+	else if (point < 0) {
+	    return "We offer ARISTA and AIS Tutoring to cater to your every needs. Academic needs."; }
+	else if (point > 2000) {
+	    return "Average"; }
+	return "";
+    }
+			       
 
     public static void main(String[] args) {
 	Woo jeopardy = new Woo();

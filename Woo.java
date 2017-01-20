@@ -549,6 +549,7 @@ public class Woo {
 	    {
 		points[whichPlayer(buzzed)] += row * 100;
 		System.out.println("Congratulations! You answered the question correctly!");
+		board[row - 1][col - 1] = 0;
 	    }
 	else {
 	    System.out.println("You got it wrong. ");

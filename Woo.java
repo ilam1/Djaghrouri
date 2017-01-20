@@ -65,7 +65,7 @@ public class Woo {
     public String[] makeCat(){
 	int ctr=1;
 	while (ctr<=5){
-	    System.out.println("what's the topic for category "+ ctr);
+	    System.out.println("What's the topic for category "+ ctr + "?");
 	    Custom.category[ctr-1]= Keyboard.readString();
 	    ctr+=1;
 	}
@@ -108,9 +108,7 @@ public class Woo {
     public void choice1(){
 
             //Implementation to create your own game
-	     System.out.println("CURRENTLY EMPTY");
 	    makeCat();
-	    System.out.println("PRINTING CAT:");
 	    //testPrintArr(Custom.category);
 	    makeQues1(Custom.questions1,0);
 	    //System.out.println("PRINTING Q1:");
@@ -196,7 +194,9 @@ public class Woo {
         }
 
         if (option == 1) {
-	    choice1(); }
+	    choice1();
+	    
+	}
 
 	System.out.println("\nHow many players are playing in total?"); //Currently only supports a single player
         try {
@@ -290,6 +290,87 @@ public class Woo {
 	System.out.println("\n*            *            *\n\nThank you, ladies and gentlemen. Hello & welcome to Jeopardy!, America's favorite answer-and-question game. Yes, we give the QUESTIONS, and then it's up to these " + totalPlayers + " contestants to come up with the ANSWERS. Players, as you know, whenever you recognize an answer you're free to ring in; but, I want to warn you about the Jeopardy!: if you are wrong, the value of the question will be deducted from your winnings. Right now, put your hands on the buttons, but please don't ring in until the answer is exposed. If all " + totalPlayers + " of you are ready, then let's play Jeopardy!");
 
 	points = new int[totalPlayers];//Updates the points array to number of players in the game
+	if (option == 1) {
+	    pointTable(board);
+	    for (int ind = 0; ind < (board[0].length) * ((board.length) - 1); ind++) {
+		System.out.println();
+		System.out.println(printCustom());
+		print2(board);
+		
+		int col = 0;
+		do {
+		    System.out.println("\nSelect the categories you wish to play. Please type in the number before the points");
+
+		    if (board[0][0] + board[1][0] + board[2][0] + board[3][0] + board[4][0] != 0)
+			System.out.println("\t1: " + Custom.category[0]);
+		    if (board[0][1] + board[1][1] + board[2][1] + board[3][1] + board[4][1] != 0)
+			System.out.println("\t2: " + Custom.category[1]);
+		    if (board[0][2] + board[1][2] + board[2][2] + board[3][2] + board[4][2] != 0)
+			System.out.println("\t3: " + Custom.category[2]);
+		    if (board[0][3] + board[1][3] + board[2][3] + board[3][3] + board[4][3] != 0)
+			System.out.println("\t4: " + Custom.category[3]);
+		    if (board[0][4] + board[1][4] + board[2][4] + board[3][4] + board[4][4] != 0)
+			System.out.println("\t5: " + Custom.category[4]);
+
+		    col = Keyboard.readInt();
+		} while (!((col == 1 && (board[0][0] + board[1][0] + board[2][0] + board[3][0] + board[4][0] != 0))
+			   || (col == 2 && (board[0][1] + board[1][1] + board[2][1] + board[3][1] + board[4][1] != 0))
+			   || (col == 3 && (board[0][2] + board[1][2] + board[2][2] + board[3][2] + board[4][2] != 0))
+			   || (col == 4 && (board[0][3] + board[1][3] + board[2][3] + board[3][3] + board[4][3] != 0))
+			   || (col == 5 && (board[0][4] + board[1][4] + board[2][4] + board[3][4] + board[4][4] != 0))
+			   || (col == 6 && (board[0][5] + board[1][5] + board[2][5] + board[3][5] + board[4][5] != 0))
+			   ));
+
+		int row = 0;
+		do {
+		    System.out.println("\nHow many points would you like to play for? " +
+				       "Please type in the number before the points.\n");
+		    if (board[0][col - 1] != 0)
+			System.out.println("\t 1: 100");
+		    if (board[1][col - 1] != 0)
+			System.out.println("\t 2: 200");
+		    if (board[2][col - 1] != 0)
+			System.out.println("\t 3: 300");
+		    if (board[3][col - 1] != 0)
+			System.out.println("\t 4: 400");
+		    if (board[4][col - 1] != 0)
+			System.out.println("\t 5: 500");
+		    row = Keyboard.readInt();
+		} while (!((row == 1 && board[0][col - 1] != 0)
+			   || (row == 2 && board[1][col - 1] != 0)
+			   || (row == 3 && board[2][col - 1] != 0)
+			   || (row == 4 && board[3][col - 1] != 0)
+			   || (row == 5 && board[4][col - 1] != 0)));
+	    
+
+	    printCustomQues(col, row);
+	    
+	    if (totalPlayers > 1) {
+		System.out.println("Buzz to answer the question!");
+		try {
+		    buzzed = in.readLine().substring(0,1);
+		} catch (IOException e) {
+		    e.printStackTrace();
+		}
+		while (playerToAnswer(buzzed).equals("Error")) {
+		    System.out.println("\nNo one has that buzzer!! Buzz again!\n");
+		    try {
+			buzzed = in.readLine().substring(0,1);
+		    } catch (IOException e) {
+			e.printStackTrace();
+		    }
+		}
+
+		System.out.println(playerToAnswer(buzzed) + " buzzed first, so you get to answer!");
+	    }
+
+	    String ans = Keyboard.readString();
+	    checkAns(ans, col, row);
+	    }
+	}
+
+	//------------------------------MARKER FOR HELP-------
+	else {
 
 	pointTable(board);
 	for (int ind = 0; ind < (board[0].length) * ((board.length) - 1); ind++) {
@@ -367,13 +448,22 @@ public class Woo {
 	    checkAns(ans, col, row);//implementing modular design
 
 	} //ends for loop
-
+	} //ends if/else statement
     } //ends the game
     /*
      *After the user chooses the category they would like and the number of points they would like to play for
      *This uses the user's input data to go into the array of category names and compares the category name to the class name
      *Then prints out the points worth index of the question array in the category subclass. 
      */
+
+    public void printCustomQues(int col, int row) {
+	if (col == 1) { System.out.println(Custom.questions1[row-1]); }
+	else if (col == 2) { System.out.println(Custom.questions2[row-1]); }
+	else if (col == 3) { System.out.println(Custom.questions3[row-1]); }
+	else if (col == 4) { System.out.println(Custom.questions4[row-1]); }
+	else if (col == 5) { System.out.println(Custom.questions5[row-1]); }
+    }
+
     public void printQues(int col, int row) {
 	//prints the questions corresponding to the random array
 	if (newCat[col - 1].trim().equalsIgnoreCase("Nature"))
@@ -449,6 +539,33 @@ public class Woo {
 	    System.out.println(Sport.questions[row - 1]);
 	}
     }
+
+    public void checkCustomAns(String ans, int col, int row) {
+	if (col == 1 && ans.equalsIgnoreCase(Custom.answers1[row - 1])
+	    || col == 2 && ans.equalsIgnoreCase(Custom.answers2[row - 1])
+	    || col == 3 && ans.equalsIgnoreCase(Custom.answers3[row - 1])
+	    || col == 4 && ans.equalsIgnoreCase(Custom.answers4[row - 1])
+	    || col == 5 && ans.equalsIgnoreCase(Custom.answers5[row - 1]))
+	    {
+		points[whichPlayer(buzzed)] += row * 100;
+		System.out.println("Congratulations! You answered the question correctly!");
+	    }
+	else {
+	    System.out.println("You got it wrong. ");
+	    points[whichPlayer(buzzed)] -= row * 100;
+	    if (totalPlayers == 1) {
+		board[row - 1][col - 1] = 0;
+		System.out.println("The correct answer is: ");
+		if (col == 1 && ans.equalsIgnoreCase(Custom.answers1[row - 1]))                 { System.out.println(Custom.answers1[row - 1]); }
+		if (col == 2 && ans.equalsIgnoreCase(Custom.answers2[row - 1]))                 { System.out.println(Custom.answers2[row - 1]); }
+		if (col == 3 && ans.equalsIgnoreCase(Custom.answers3[row - 1]))                 { System.out.println(Custom.answers3[row - 1]); }
+		if (col == 4 && ans.equalsIgnoreCase(Custom.answers4[row - 1]))                 { System.out.println(Custom.answers4[row - 1]); }
+		if (col == 5 && ans.equalsIgnoreCase(Custom.answers5[row - 1]))                 { System.out.println(Custom.answers5[row - 1]); }
+	    }
+	}
+	sortRank();
+    }
+	   
 
     /*
      *After the user answers the question, this method compares what the user inputs to the subclass's corresponding answer.
@@ -608,6 +725,15 @@ public class Woo {
 	}
 	ans += "\n";
 	return ans;
+    }
+
+    public String printCustom() {
+	String retString = "";
+	for (String category : Custom.category) {//Custom.category is an instance variable array inside a subclass
+	    retString += String.format("%-11s", category);
+	}
+	retString += "\n";
+	return retString;
     }
 
     /*

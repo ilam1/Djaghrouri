@@ -32,7 +32,7 @@ public class Woo {
      "Food", "Tech", "Shows", "Music", "Earth", "Culture",
      "Literature", "Space", "Sports"};
     String[] newCat = createCategory();
-    String buzzed;
+    String buzzed = "";
 
     private BufferedReader in;
     private boolean diffPoints; //True if and only if the user creates a game with different point values
@@ -206,6 +206,9 @@ public class Woo {
 
         playerNames = new String[totalPlayers]; //Updates the array playerNames to the size of the number of players
 	buzzer = new String[totalPlayers];
+	for (int i = 0; i < totalPlayers; i++) {
+	    buzzer[i] = ""; //To avoid a Null Pointer Exception
+	}
 
         //Updates the array playerNames to the size of the number of players
         for (int i = 0; i < totalPlayers; i++) {
@@ -365,23 +368,25 @@ public class Woo {
 		       || (row == 5 && board[4][col - 1] != 0)));
 
 	    printQues(col, row);
-	    System.out.println("Buzz to answer the question!");
-	    try {
-		buzzed = in.readLine().substring(0,1);
-	    } catch (IOException e) {
-		e.printStackTrace();
-	    }
-	    while (playerToAnswer(buzzed).equals("Error")) {
-		System.out.println("\nNo one has that buzzer!! Buzz again!\n");
+
+	    if (totalPlayers > 1) {
+		System.out.println("Buzz to answer the question!");
 		try {
 		    buzzed = in.readLine().substring(0,1);
 		} catch (IOException e) {
 		    e.printStackTrace();
 		}
+		while (playerToAnswer(buzzed).equals("Error")) {
+		    System.out.println("\nNo one has that buzzer!! Buzz again!\n");
+		    try {
+			buzzed = in.readLine().substring(0,1);
+		    } catch (IOException e) {
+			e.printStackTrace();
+		    }
+		}
+
+		System.out.println(playerToAnswer(buzzed) + " buzzed first, so you get to answer!");
 	    }
-
-	    System.out.println(playerToAnswer(buzzed) + " buzzed first, so you get to answer!");
-
 
 	    String ans = Keyboard.readString();
 	    checkAns(ans, col, row);//implementing modular design
@@ -497,10 +502,10 @@ public class Woo {
 	    System.out.println("Congratulations! You answered the question correctly!");
 	    board[row - 1][col - 1] = 0;
 	} else {
-	    System.out.println("You got it wrong");
+	    System.out.println("You got it wrong. ");
 	    if (totalPlayers == 1) {
 		board[row - 1][col - 1] = 0;
-		System.out.println("The correct answer is :");
+		System.out.println("The correct answer is: ");
 		if ((newCat[col - 1].trim().equals("Nature"))) {
 		    System.out.println(Nature.answers[row - 1]); }
 		if ((newCat[col - 1].trim().equalsIgnoreCase("Math"))) {

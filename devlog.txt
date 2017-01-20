@@ -42,6 +42,15 @@ originally intended) we need to keep track of which player is currently playing 
 +~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 + The various errors and exceptions that Java hosts, each catering to the very numerous errors we produce. 
 + Do while loop (evaluates the boolean at the end)
++ (Through COMPLETE experimentation), catches can be stacked, e.g.
+        try {
+            totalPlayers = Integer.parseInt(in.readLine());
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (NumberFormatException e) {
+	    e. printStackTrace();
+	}
+
 
 +MID-DEVELOPMENT DESIGN CHANGES
 +~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -229,6 +238,13 @@ Together::
 	 + Shortened 11 methods to 3 methods, one for answers, one for questions, and one for category
        + Added short mostly multiline descriptive comments preceding most methods.
 +Irene :: 
+       + Returns the correct answer when a single player gives a wrong answer
+       + Fixed NullPointerException/ error to buzzer triggering for single players
+       + More catching (e.g. NumberFormatException when inputting number of players)
+       + Now shows a leaderboard! (for multiplayers) and plain points for single players
+       	 + Increments/ Decrements points based on a player's answers
+	 + Prints rankings in descending order (previously made)
+       + Added comments for single players (the literal type, where good performance is applauded, bad performance not so much)
 +Jason :: 
        + Added nature category with questions for a round number of 25 categories to choose from
 +==============================================================

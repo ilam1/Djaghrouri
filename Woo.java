@@ -393,7 +393,11 @@ public class Woo {
 	} //ends for loop
 
     } //ends the game
-
+    /*
+     *After the user chooses the category they would like and the number of points they would like to play for
+     *This uses the user's input data to go into the array of category names and compares the category name to the class name
+     *Then prints out the points worth index of the question array in the category subclass. 
+     */
     public void printQues(int col, int row) {
 	//prints the questions corresponding to the random array
 	if (newCat[col - 1].trim().equalsIgnoreCase("Nature"))
@@ -470,6 +474,11 @@ public class Woo {
 	}
     }
 
+    /*
+     *After the user answers the question, this method compares what the user inputs to the subclass's corresponding answer.
+     *If the user gets it right then that part of the game board disappears and the user gets the points
+     *Otherwise the game prints out the correct answer.
+     */
     public void checkAns(String ans, int col, int row) {
 	//this if statement checks if the user's answer is correct and adds points if it is.
 	   if ((newCat[col - 1].trim().equalsIgnoreCase("Nature") && ans.equalsIgnoreCase(Nature.answers[row - 1]))
@@ -560,8 +569,11 @@ public class Woo {
 	}
     }
 
+    /*
+     *This method takes in an int array and an input and checks that it is not repeating.
+     *it is used in categoryChooser to make sure that the index is not repeating before appending it to the ind array
+     */
     public boolean checkArray(int[] arr, int input) {
-	//used in categoryChooser to make sure the index is not repeating before appending it to the ind array.
 	boolean retBool = true;
 	for (int i = 0; i < arr.length; i++) {
 	    if (arr[i] == input) {
@@ -571,6 +583,11 @@ public class Woo {
 	return retBool;
     }
 
+    /*
+     * categoryChooser randomly generates a number between 0 and the length of the categories instance variable. 
+     * then it returns an int array of randomly generated numbers that are not repeating.
+     * these numbers represent the index of the category in the categories instance variable
+     */
     public int[] categoryChooser(String[] categories, int[] ind) {
 	//Randomly generates a number and checks that it is not repeating.
 	//this is used to randomly generate categories.
@@ -587,8 +604,11 @@ public class Woo {
 	return ind;
     }
 
-    public String[] createCategory() {
-	//This calls category chooser and fills the array ans with the corresponding categories of the index from the ind array.
+    /*
+     *This method calls category chooser and fills the String array answer with the corresponding categories of the ind array 
+     * that is generated using categoryChooser and checkArray.
+     */
+    public String[] createCategory(){
 	String[] ans = new String[5];
 	int[] ind = new int[5];
 	ind = categoryChooser(categories, ind);
@@ -610,6 +630,10 @@ public class Woo {
 	return ans;
     }
 
+    /*
+     *This method is similar to the method we previously wrote when we were making the 2D array utils class.
+     *it populates a 2D array with the points. 
+     */
     public int[][] pointTable(int[][] board) {
 	//Creates the two d array that will be used to print the points.
 	for (int row = 0; row < board.length; row++) {
@@ -620,6 +644,10 @@ public class Woo {
 	return board;
     }
 
+    /*
+     * This method is similaar to the method we previously wrote when we were making the 2D array utils class.
+     * It loops through a 2D array and prints it out in the form of a table. 
+     */
     public static void print2(int[][] board) {
 	//prints two d array with a tab in between
 	for (int[] k : board) {
@@ -634,7 +662,9 @@ public class Woo {
 	}
     }
 
-    //String of each player ordered in terms of their points
+    /*
+     *String of each player ordered in terms of their points
+     */
     public String sortRank() {
 	for (int i = 0; i < playerNames.length - 1; i++) {
 	    if (points[i] < points[i + 1]) {
@@ -658,17 +688,11 @@ public class Woo {
 	}
 	return 0;
     }
-
-    //Returns if the given answer is correct
-    public boolean compareAnswers(String ans) {
-	return true;
-    }
-
+    
     //Returns a calculation of each player's total points
     public void addPoints(int index) {
 	//player in index will have the amount of points in points[index]
 	points[index] += questionWorth[0];
-
     }
 
     public String playerToAnswer(String character) {

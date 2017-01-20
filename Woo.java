@@ -202,14 +202,14 @@ public class Woo {
         } catch (IOException e) {
             e.printStackTrace();
         }
+	catch (NumberFormatException e) {
+	    e. printStackTrace();
+	}
 
         System.out.println("\nToday, one of these " + totalPlayers + " contestants will win the Jeopardy!");
 
         playerNames = new String[totalPlayers]; //Updates the array playerNames to the size of the number of players
 	buzzer = new String[totalPlayers];
-	for (int i = 0; i < totalPlayers; i++) {
-	    buzzer[i] = ""; //To avoid a Null Pointer Exception
-	}
 
         //Updates the array playerNames to the size of the number of players
 	/* for (int i = 0; i < totalPlayers; i++) {
@@ -516,6 +516,7 @@ public class Woo {
 	    board[row - 1][col - 1] = 0;
 	} else {
 	    System.out.println("You got it wrong. ");
+	    //points[whichPlayer(buzzed)] -= row * 100;
 	    if (totalPlayers == 1) {
 		board[row - 1][col - 1] = 0;
 		System.out.println("The correct answer is: ");
@@ -542,7 +543,9 @@ public class Woo {
 		if ((newCat[col - 1].trim().equalsIgnoreCase("Geography"))) {
 		    System.out.println(Geography.answers[row - 1]); }
 		if ((newCat[col - 1].trim().equalsIgnoreCase("Pop"))) {
-		    System.out.println(Impossible.answers[row - 1]); }
+		    System.out.println(Impossible.answers[row - 1]);
+		    System.out.println("\nDisclaimer: Pop was short for Impossible c:");
+		}
 		if ((newCat[col - 1].trim().equalsIgnoreCase("Women"))) {
 		    System.out.println(Women.answers[row - 1]); }
 		if ((newCat[col - 1].trim().equalsIgnoreCase("USA"))) {
@@ -571,7 +574,8 @@ public class Woo {
 		    System.out.println(Sport.answers[row - 1]); }
 
 	    }
-	}
+	   }
+	   sortRank();
     }
 
     /*
@@ -670,8 +674,8 @@ public class Woo {
     /*
      *String of each player ordered in terms of their points
      */
-    public String sortRank() {
-	for (int i = 0; i < playerNames.length - 1; i++) {
+    public void sortRank() {
+	for (int i = 0; i < playerNames.length -1 ; i++) {
 	    if (points[i] < points[i + 1]) {
 		//switches points
 		int temp = points[i];
@@ -683,7 +687,11 @@ public class Woo {
 		playerNames[i + 1] = temps;
 	    }
 	}
-	return null;
+	System.out.println("\n====================\nLeaderboard:\n");
+	for (int i = 0; i < playerNames.length; i++) {
+	    System.out.println(playerNames[i] + " -- " + points[i]);
+	}
+	System.out.println("\n====================");
     }
 
     public int whichPlayer(String buzz) {

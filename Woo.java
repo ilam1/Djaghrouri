@@ -54,7 +54,9 @@ public class Woo {
             }
             System.out.print(".");
         }
+	System.out.println("You are now playing JEOPARDY \nDedicated to Ms. Djaghrouri (≧∀≦)\n");
         System.out.println();
+	
     }
     /*
       This method populates the category array in Custom based on what the user inputs.
@@ -73,22 +75,25 @@ public class Woo {
      * This method takes in an array as a parameter and populates it with the questions that the user inputs
      * Limits the user to only 5 questions per category
      */
-    public String[] makeQues1(String[] arr){
+    public String[] makeQues1(String[] arr, int cat){
 	int ind=0;
+	//	int cat =0;
+
 	while(ind<5){
-	    System.out.println("What is the question worth "+((ind+1)*100)+" points for the "+ Custom.category[0]+" category");
+	    System.out.println("What is the question worth "+((ind+1)*100)+" points for the "+ Custom.category[cat]+" category");
 	    arr[ind]=Keyboard.readString();
 	    ind+=1;
 	}
+	//  cat+=1;
 	return arr;
     }
     /*
      * This method takes in an array as a parameter and populates it with the user's answer key. 
      */
-    public String[]makeAns1(String[] arr){
+    public String[]makeAns1(String[] arr,int cat){
     	int ind=0;
 	while(ind<5){
-	    System.out.println("What is the answer worth "+((ind+1)*100)+" points for the "+ Custom.category[0]+" category");
+	    System.out.println("What is the answer worth "+((ind+1)*100)+" points for the "+ Custom.category[cat]+" category");
 	    arr[ind]=Keyboard.readString();
 	    ind+=1;
 	}
@@ -101,43 +106,30 @@ public class Woo {
      *If they choose to create their own game they get the option of populating it the arrays of the class Custom
      */
     public void choice1(){
-	System.out.println("You are now playing JEOPARDY \nDedicated to Ms. Djaghrouri (≧∀≦)\n");
-        System.out.println("\t1: Create your own game!");
-        System.out.println("\t2: Play our game!");
-        int option = 0;
 
-        try {
-            option = Integer.parseInt(in.readLine());
-        } catch (IOException e) {
-        }
-
-        if (option == 1) {
             //Implementation to create your own game
 	     System.out.println("CURRENTLY EMPTY");
 	    makeCat();
 	    System.out.println("PRINTING CAT:");
 	    //testPrintArr(Custom.category);
-	    makeQues1(Custom.questions1);
+	    makeQues1(Custom.questions1,0);
 	    //System.out.println("PRINTING Q1:");
 	    //testPrintArr(Custom.questions1);
-	    makeAns1(Custom.answers1);
+	    makeAns1(Custom.answers1,0);
 	    //System.out.println("PRINTING A1:");
 	    //testPrintArr(Custom.answers1);
-	    makeQues1(Custom.questions2);
+	    makeQues1(Custom.questions2,1);
 	    //System.out.println("PRINTING Q2:");
 	    //testPrintArr(Custom.questions2);
-	    makeAns1(Custom.answers2);
+	    makeAns1(Custom.answers2,1);
 	    //System.out.println("PRINTING A2:");
 	    //testPrintArr(Custom.answers2);
-	    makeQues1(Custom.questions3);
-	    makeAns1(Custom.answers3);
-	    makeQues1(Custom.questions4);
-	    makeAns1(Custom.answers4);
-	    makeQues1(Custom.questions5);
-	    makeAns1(Custom.answers5);
-	   
-            //System.exit(0);
-	}
+	    makeQues1(Custom.questions3,2);
+	    makeAns1(Custom.answers3,2);
+	    makeQues1(Custom.questions4,3);
+	    makeAns1(Custom.answers4,3);
+	    makeQues1(Custom.questions5,4);
+	    makeAns1(Custom.answers5,4);
     }
     /*
      *This methos is just used to test whether or not the arrays are being populated or not.
@@ -194,7 +186,17 @@ public class Woo {
 
         in = new BufferedReader(new InputStreamReader(System.in));
 
-	choice1();
+        System.out.println("\t1: Create your own game!");
+        System.out.println("\t2: Play our game!");
+        int option = 0;
+
+        try {
+            option = Integer.parseInt(in.readLine());
+        } catch (IOException e) {
+        }
+
+        if (option == 1) {
+	    choice1(); }
 
 	System.out.println("\nHow many players are playing in total?"); //Currently only supports a single player
         try {
@@ -216,7 +218,8 @@ public class Woo {
 	setBuzzer(totalPlayers);
 	//testPrintArr(buzzer);
 	//testPrintArr(playerNames);
-	
+
+	if (option == 2) {
 	if (totalPlayers < 2) {
 	    System.out.println("\nWould you like to play a randomized game or customized game?");
 	}
@@ -282,6 +285,7 @@ public class Woo {
 		else
 		    System.out.printf("Sorry, we do not recognize \"%s\", please select another category", str);
 	    }
+	}
 	}
 	System.out.println("\n*            *            *\n\nThank you, ladies and gentlemen. Hello & welcome to Jeopardy!, America's favorite answer-and-question game. Yes, we give the QUESTIONS, and then it's up to these " + totalPlayers + " contestants to come up with the ANSWERS. Players, as you know, whenever you recognize an answer you're free to ring in; but, I want to warn you about the Jeopardy!: if you are wrong, the value of the question will be deducted from your winnings. Right now, put your hands on the buttons, but please don't ring in until the answer is exposed. If all " + totalPlayers + " of you are ready, then let's play Jeopardy!");
 

@@ -41,7 +41,10 @@ public class Woo {
     public Woo() {
         gameOn = true;
     }
-
+    /*
+     *This method loads the game in the beginning. 
+     * It prints out loading followed by periods with a lag time. 
+     */
     public void load(){
 	System.out.print("Loading");
         for (int i = 0; i < 3; i++) {
@@ -53,6 +56,10 @@ public class Woo {
         }
         System.out.println();
     }
+    /*
+      This method populates the category array in Custom based on what the user inputs.
+      Limits the user to only 5 categories 
+    */
     public String[] makeCat(){
 	int ctr=1;
 	while (ctr<=5){
@@ -62,6 +69,10 @@ public class Woo {
 	}
 	return Custom.category;
     }
+    /*
+     * This method takes in an array as a parameter and populates it with the questions that the user inputs
+     * Limits the user to only 5 questions per category
+     */
     public String[] makeQues1(String[] arr){
 	int ind=0;
 	while(ind<5){
@@ -71,6 +82,9 @@ public class Woo {
 	}
 	return arr;
     }
+    /*
+     * This method takes in an array as a parameter and populates it with the user's answer key. 
+     */
     public String[]makeAns1(String[] arr){
     	int ind=0;
 	while(ind<5){
@@ -81,6 +95,11 @@ public class Woo {
 	return arr;
     }
 
+    /*
+     *This method is used to answer the first question we ask the user:
+     *whether they would like to create their own game or play premade questions. 
+     *If they choose to create their own game they get the option of populating it the arrays of the class Custom
+     */
     public void choice1(){
 	System.out.println("You are now playing JEOPARDY \nDedicated to Ms. Djaghrouri (≧∀≦)\n");
         System.out.println("\t1: Create your own game!");
@@ -94,12 +113,22 @@ public class Woo {
 
         if (option == 1) {
             //Implementation to create your own game
-            System.out.println("CURRENTLY EMPTY");
+	     System.out.println("CURRENTLY EMPTY");
 	    makeCat();
+	    System.out.println("PRINTING CAT:");
+	    //testPrintArr(Custom.category);
 	    makeQues1(Custom.questions1);
+	    //System.out.println("PRINTING Q1:");
+	    //testPrintArr(Custom.questions1);
 	    makeAns1(Custom.answers1);
+	    //System.out.println("PRINTING A1:");
+	    //testPrintArr(Custom.answers1);
 	    makeQues1(Custom.questions2);
+	    //System.out.println("PRINTING Q2:");
+	    //testPrintArr(Custom.questions2);
 	    makeAns1(Custom.answers2);
+	    //System.out.println("PRINTING A2:");
+	    //testPrintArr(Custom.answers2);
 	    makeQues1(Custom.questions3);
 	    makeAns1(Custom.answers3);
 	    makeQues1(Custom.questions4);
@@ -110,30 +139,22 @@ public class Woo {
             //System.exit(0);
 	}
     }
+    /*
+     *This methos is just used to test whether or not the arrays are being populated or not.
+     * loops through a string array and prints each element
+     */
     public void testPrintArr(String[] arr){
-
+	for (String x: arr){
+	    System.out.println(x);
+	}
     }
-    public void newGame() {
-	//	load();
-
-        in = new BufferedReader(new InputStreamReader(System.in));
-
-	choice1();
-
-	System.out.println("\nHow many players are playing in total?"); //Currently only supports a single player
-        try {
-            totalPlayers = Integer.parseInt(in.readLine());
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-        System.out.println("\nToday, one of these " + totalPlayers + " contestants will win the Jeopardy!");
-
-        playerNames = new String[totalPlayers]; //Updates the array playerNames to the size of the number of players
-	buzzer = new String[totalPlayers];
-
-        //Updates the array playerNames to the size of the number of players
-        for (int i = 0; i < totalPlayers; i++) {
+    /*
+     *Updates the array playerNames to the size of the number of players
+     *Populates the array playerNames with the names that the players input
+     *Updates the array buzzer to include every players' buzzer
+     */
+    public void setBuzzer(int totalPlayers){
+	 for (int i = 0; i < totalPlayers; i++) {
             System.out.println("\nWho is player " + (i + 1) + " ?");
             try {
                 playerNames[i] = in.readLine();
@@ -166,8 +187,66 @@ public class Woo {
 		    }
 		}
 	    }
-	}
+	 }
+    }
+    public void newGame() {
+	//	load();
 
+        in = new BufferedReader(new InputStreamReader(System.in));
+
+	choice1();
+
+	System.out.println("\nHow many players are playing in total?"); //Currently only supports a single player
+        try {
+            totalPlayers = Integer.parseInt(in.readLine());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        System.out.println("\nToday, one of these " + totalPlayers + " contestants will win the Jeopardy!");
+
+        playerNames = new String[totalPlayers]; //Updates the array playerNames to the size of the number of players
+	buzzer = new String[totalPlayers];
+
+        //Updates the array playerNames to the size of the number of players
+	/* for (int i = 0; i < totalPlayers; i++) {
+            System.out.println("\nWho is player " + (i + 1) + " ?");
+            try {
+                playerNames[i] = in.readLine();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+	    if (totalPlayers > 1) {
+		System.out.println("\n" + playerNames[i] + " please select your ONE CHARACTER desired buzzer");
+
+		while (buzzer[i] == null) {
+		    boolean any = false;
+		    String buzzerName="";
+		    try {
+			buzzerName = in.readLine();
+		    } catch (IOException e) {
+			e.printStackTrace();
+		    }
+		    for (String x: buzzer) {
+			if (x != null && x.equals(buzzerName) ) {
+			    any = true; }
+		    }
+		    if (any) {
+			System.out.println("Your buzzer has already been taken! Please select another buzzer:");
+		    }
+		    else if (buzzerName.length() != 1) {
+			System.out.println("Your buzzer is invalid! Please select another buzzer:");
+		    }
+		    else {
+			buzzer[i] = buzzerName;
+		    }
+		}
+	    }
+	    }*/
+	setBuzzer(totalPlayers);
+	//testPrintArr(buzzer);
+	//testPrintArr(playerNames);
+	
 	if (totalPlayers < 2) {
 	    System.out.println("\nWould you like to play a randomized game or customized game?");
 	}

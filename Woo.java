@@ -41,7 +41,10 @@ public class Woo {
     public Woo() {
         gameOn = true;
     }
-
+    /*
+     *This method loads the game in the beginning. 
+     * It prints out loading followed by periods with a lag time. 
+     */
     public void load(){
 	System.out.print("Loading");
         for (int i = 0; i < 3; i++) {
@@ -53,6 +56,10 @@ public class Woo {
         }
         System.out.println();
     }
+    /*
+      This method populates the category array in Custom based on what the user inputs.
+      Limits the user to only 5 categories 
+    */
     public String[] makeCat(){
 	int ctr=1;
 	while (ctr<=5){
@@ -62,101 +69,37 @@ public class Woo {
 	}
 	return Custom.category;
     }
-    public String[] makeQues1(){
+    /*
+     * This method takes in an array as a parameter and populates it with the questions that the user inputs
+     * Limits the user to only 5 questions per category
+     */
+    public String[] makeQues1(String[] arr){
 	int ind=0;
 	while(ind<5){
 	    System.out.println("What is the question worth "+((ind+1)*100)+" points for the "+ Custom.category[0]+" category");
-	    Custom.questions1[ind]=Keyboard.readString();
+	    arr[ind]=Keyboard.readString();
 	    ind+=1;
 	}
-	return Custom.questions1;
+	return arr;
     }
-    public String[]makeAns1(){
+    /*
+     * This method takes in an array as a parameter and populates it with the user's answer key. 
+     */
+    public String[]makeAns1(String[] arr){
     	int ind=0;
 	while(ind<5){
 	    System.out.println("What is the answer worth "+((ind+1)*100)+" points for the "+ Custom.category[0]+" category");
-	    Custom.answers1[ind]=Keyboard.readString();
+	    arr[ind]=Keyboard.readString();
 	    ind+=1;
 	}
-	return Custom.answers1;
-    }
-     public String[] makeQues2(){
-	int ind=0;
-	while(ind<5){
-	    System.out.println("What is the question worth "+((ind+1)*100)+" points for the "+ Custom.category[1]+" category");
-	    Custom.questions2[ind]=Keyboard.readString();
-	    ind+=1;
-	}
-	return Custom.questions2;
-    }
-    public String[]makeAns2(){
-    	int ind=0;
-	while(ind<5){
-	    System.out.println("What is the answer worth "+((ind+1)*100)+" points for the "+ Custom.category[1]+" category");
-	    Custom.answers2[ind]=Keyboard.readString();
-	    ind+=1;
-	}
-	return Custom.answers2;
-    }
-    public String[] makeQues3(){
-	int ind=0;
-	while(ind<5){
-	    System.out.println("What is the question worth "+((ind+1)*100)+" points for the "+ Custom.category[2]+" category");
-	    Custom.questions3[ind]=Keyboard.readString();
-	    ind+=1;
-	}
-	return Custom.questions3;
-    }
-    public String[]makeAns3(){
-	int ind=0;
-	while(ind<5){
-	    System.out.println("What is the answer worth "+((ind+1)*100)+" points for the "+ Custom.category[2]+" category");
-	    Custom.answers3[ind]=Keyboard.readString();
-	    ind+=1;
-	}
-	return Custom.answers3;
-    }
-    public String[] makeQues4(){
-	//int ctr=1;
-	int ind=0;
-	while(ind<5){
-	    System.out.println("What is the question worth "+((ind+1)*100)+" points for the "+ Custom.category[3]+" category");
-	    Custom.questions4[ind]=Keyboard.readString();
-	    ind+=1;
-	}
-	return Custom.questions4;
-    }
-    public String[]makeAns4(){
-    	//int ctr=1;
-	int ind=0;
-	while(ind<5){
-	    System.out.println("What is the answer worth "+((ind+1)*100)+" points for the "+ Custom.category[3]+" category");
-	    Custom.answers4[ind]=Keyboard.readString();
-	    ind+=1;
-	}
-	return Custom.answers4;
-    }
-    public String[] makeQues5(){
-	//	int ctr=1;
-	int ind=0;
-	while(ind<5){
-	    System.out.println("What is the question worth "+((ind+1)*100)+" points for the "+ Custom.category[4]+" category");
-	    Custom.questions5[ind]=Keyboard.readString();
-	    ind+=1;
-	}
-	return Custom.questions5;
-    }
-    public String[]makeAns5(){
-	//	int ctr=1;
-	int ind=0;
-	while(ind<5){
-	    System.out.println("What is the answer worth "+((ind+1)*100)+" points for the "+ Custom.category[4]+" category");
-	    Custom.answers5[ind]=Keyboard.readString();
-	    ind+=1;
-	}
-	return Custom.answers5;
+	return arr;
     }
 
+    /*
+     *This method is used to answer the first question we ask the user:
+     *whether they would like to create their own game or play premade questions. 
+     *If they choose to create their own game they get the option of populating it the arrays of the class Custom
+     */
     public void choice1(){
 	System.out.println("You are now playing JEOPARDY \nDedicated to Ms. Djaghrouri (≧∀≦)\n");
         System.out.println("\t1: Create your own game!");
@@ -170,48 +113,48 @@ public class Woo {
 
         if (option == 1) {
             //Implementation to create your own game
-            System.out.println("CURRENTLY EMPTY");
+	     System.out.println("CURRENTLY EMPTY");
 	    makeCat();
-	    makeQues1();
-	    makeAns1();
-	    makeQues2();
-	    makeAns2();
-	    makeQues3();
-	    makeAns3();
-	    makeQues4();
-	    makeAns4();
-	    makeQues5();
-	    makeAns5();
+	    System.out.println("PRINTING CAT:");
+	    //testPrintArr(Custom.category);
+	    makeQues1(Custom.questions1);
+	    //System.out.println("PRINTING Q1:");
+	    //testPrintArr(Custom.questions1);
+	    makeAns1(Custom.answers1);
+	    //System.out.println("PRINTING A1:");
+	    //testPrintArr(Custom.answers1);
+	    makeQues1(Custom.questions2);
+	    //System.out.println("PRINTING Q2:");
+	    //testPrintArr(Custom.questions2);
+	    makeAns1(Custom.answers2);
+	    //System.out.println("PRINTING A2:");
+	    //testPrintArr(Custom.answers2);
+	    makeQues1(Custom.questions3);
+	    makeAns1(Custom.answers3);
+	    makeQues1(Custom.questions4);
+	    makeAns1(Custom.answers4);
+	    makeQues1(Custom.questions5);
+	    makeAns1(Custom.answers5);
+	   
             //System.exit(0);
 	}
     }
+    /*
+     *This methos is just used to test whether or not the arrays are being populated or not.
+     * loops through a string array and prints each element
+     */
     public void testPrintArr(String[] arr){
-
-    }
-    public void newGame() {
-	//	load();
-
-        in = new BufferedReader(new InputStreamReader(System.in));
-
-	choice1();
-
-	System.out.println("\nHow many players are playing in total?"); //Currently only supports a single player
-        try {
-            totalPlayers = Integer.parseInt(in.readLine());
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-        System.out.println("\nToday, one of these " + totalPlayers + " contestants will win the Jeopardy!");
-
-        playerNames = new String[totalPlayers]; //Updates the array playerNames to the size of the number of players
-	buzzer = new String[totalPlayers];
-	for (int i = 0; i < totalPlayers; i++) {
-	    buzzer[i] = ""; //To avoid a Null Pointer Exception
+	for (String x: arr){
+	    System.out.println(x);
 	}
-
-        //Updates the array playerNames to the size of the number of players
-        for (int i = 0; i < totalPlayers; i++) {
+    }
+    /*
+     *Updates the array playerNames to the size of the number of players
+     *Populates the array playerNames with the names that the players input
+     *Updates the array buzzer to include every players' buzzer
+     */
+    public void setBuzzer(int totalPlayers){
+	 for (int i = 0; i < totalPlayers; i++) {
             System.out.println("\nWho is player " + (i + 1) + " ?");
             try {
                 playerNames[i] = in.readLine();
@@ -244,8 +187,69 @@ public class Woo {
 		    }
 		}
 	    }
+	 }
+    }
+    public void newGame() {
+	//	load();
+
+        in = new BufferedReader(new InputStreamReader(System.in));
+
+	choice1();
+
+	System.out.println("\nHow many players are playing in total?"); //Currently only supports a single player
+        try {
+            totalPlayers = Integer.parseInt(in.readLine());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        System.out.println("\nToday, one of these " + totalPlayers + " contestants will win the Jeopardy!");
+
+        playerNames = new String[totalPlayers]; //Updates the array playerNames to the size of the number of players
+	buzzer = new String[totalPlayers];
+	for (int i = 0; i < totalPlayers; i++) {
+	    buzzer[i] = ""; //To avoid a Null Pointer Exception
 	}
 
+        //Updates the array playerNames to the size of the number of players
+	/* for (int i = 0; i < totalPlayers; i++) {
+            System.out.println("\nWho is player " + (i + 1) + " ?");
+            try {
+                playerNames[i] = in.readLine();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+	    if (totalPlayers > 1) {
+		System.out.println("\n" + playerNames[i] + " please select your ONE CHARACTER desired buzzer");
+
+		while (buzzer[i] == null) {
+		    boolean any = false;
+		    String buzzerName="";
+		    try {
+			buzzerName = in.readLine();
+		    } catch (IOException e) {
+			e.printStackTrace();
+		    }
+		    for (String x: buzzer) {
+			if (x != null && x.equals(buzzerName) ) {
+			    any = true; }
+		    }
+		    if (any) {
+			System.out.println("Your buzzer has already been taken! Please select another buzzer:");
+		    }
+		    else if (buzzerName.length() != 1) {
+			System.out.println("Your buzzer is invalid! Please select another buzzer:");
+		    }
+		    else {
+			buzzer[i] = buzzerName;
+		    }
+		}
+	    }
+	    }*/
+	setBuzzer(totalPlayers);
+	//testPrintArr(buzzer);
+	//testPrintArr(playerNames);
+	
 	if (totalPlayers < 2) {
 	    System.out.println("\nWould you like to play a randomized game or customized game?");
 	}
@@ -394,7 +398,11 @@ public class Woo {
 	} //ends for loop
 
     } //ends the game
-
+    /*
+     *After the user chooses the category they would like and the number of points they would like to play for
+     *This uses the user's input data to go into the array of category names and compares the category name to the class name
+     *Then prints out the points worth index of the question array in the category subclass. 
+     */
     public void printQues(int col, int row) {
 	//prints the questions corresponding to the random array
 	if (newCat[col - 1].trim().equalsIgnoreCase("Nature"))
@@ -471,6 +479,11 @@ public class Woo {
 	}
     }
 
+    /*
+     *After the user answers the question, this method compares what the user inputs to the subclass's corresponding answer.
+     *If the user gets it right then that part of the game board disappears and the user gets the points
+     *Otherwise the game prints out the correct answer.
+     */
     public void checkAns(String ans, int col, int row) {
 	//this if statement checks if the user's answer is correct and adds points if it is.
 	   if ((newCat[col - 1].trim().equalsIgnoreCase("Nature") && ans.equalsIgnoreCase(Nature.answers[row - 1]))
@@ -561,8 +574,11 @@ public class Woo {
 	}
     }
 
+    /*
+     *This method takes in an int array and an input and checks that it is not repeating.
+     *it is used in categoryChooser to make sure that the index is not repeating before appending it to the ind array
+     */
     public boolean checkArray(int[] arr, int input) {
-	//used in categoryChooser to make sure the index is not repeating before appending it to the ind array.
 	boolean retBool = true;
 	for (int i = 0; i < arr.length; i++) {
 	    if (arr[i] == input) {
@@ -572,6 +588,11 @@ public class Woo {
 	return retBool;
     }
 
+    /*
+     * categoryChooser randomly generates a number between 0 and the length of the categories instance variable. 
+     * then it returns an int array of randomly generated numbers that are not repeating.
+     * these numbers represent the index of the category in the categories instance variable
+     */
     public int[] categoryChooser(String[] categories, int[] ind) {
 	//Randomly generates a number and checks that it is not repeating.
 	//this is used to randomly generate categories.
@@ -588,8 +609,11 @@ public class Woo {
 	return ind;
     }
 
-    public String[] createCategory() {
-	//This calls category chooser and fills the array ans with the corresponding categories of the index from the ind array.
+    /*
+     *This method calls category chooser and fills the String array answer with the corresponding categories of the ind array 
+     * that is generated using categoryChooser and checkArray.
+     */
+    public String[] createCategory(){
 	String[] ans = new String[5];
 	int[] ind = new int[5];
 	ind = categoryChooser(categories, ind);
@@ -611,6 +635,10 @@ public class Woo {
 	return ans;
     }
 
+    /*
+     *This method is similar to the method we previously wrote when we were making the 2D array utils class.
+     *it populates a 2D array with the points. 
+     */
     public int[][] pointTable(int[][] board) {
 	//Creates the two d array that will be used to print the points.
 	for (int row = 0; row < board.length; row++) {
@@ -621,6 +649,10 @@ public class Woo {
 	return board;
     }
 
+    /*
+     * This method is similaar to the method we previously wrote when we were making the 2D array utils class.
+     * It loops through a 2D array and prints it out in the form of a table. 
+     */
     public static void print2(int[][] board) {
 	//prints two d array with a tab in between
 	for (int[] k : board) {
@@ -635,7 +667,9 @@ public class Woo {
 	}
     }
 
-    //String of each player ordered in terms of their points
+    /*
+     *String of each player ordered in terms of their points
+     */
     public String sortRank() {
 	for (int i = 0; i < playerNames.length - 1; i++) {
 	    if (points[i] < points[i + 1]) {
@@ -659,17 +693,11 @@ public class Woo {
 	}
 	return 0;
     }
-
-    //Returns if the given answer is correct
-    public boolean compareAnswers(String ans) {
-	return true;
-    }
-
+    
     //Returns a calculation of each player's total points
     public void addPoints(int index) {
 	//player in index will have the amount of points in points[index]
 	points[index] += questionWorth[0];
-
     }
 
     public String playerToAnswer(String character) {

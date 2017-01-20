@@ -29,6 +29,7 @@ wow we so BOSS bc...
 + We kept getting an error about in.readLine(). We fixed this error by implementing Keyboard.java instead. 
 + Utilized both try/ catch blocks and while loops as a precaution to bad input (There's more than one way to skin a cow!)
 + We finally managed to have the board print out lining up with the categories
++In order for the user to create their own jeopardy game we created a class called Custom.java which also extends Category, and created methods that populate the questions, answers, and category arrays. 
 +UNRESOLVED ISSUES
 +~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 + As opposed to our original beliefs, the current version only supports a single player. To incorporate a multi-player/ team status (as
@@ -222,6 +223,11 @@ Together::
 Together::
 +Bayan ::
        + Started implementing more modular design so that the code is more readable and easier to understand. This will also hopefully make it easier to see any mistakes or add parts to the code. descriptive variable names and methods will also make it easier to continue working off our partners' code
+       + Added the class Custom that will allow the user to customize their own game.
+       + Added the 11 different methods to populate the eleven different instance variables for Custom.java
+       	 + then realized I could just use arrayname as a parameter where arrayname is: Custom.___
+	 + Shortened 11 methods to 3 methods, one for answers, one for questions, and one for category
+       + Added short mostly multiline descriptive comments preceding most methods.
 +Irene :: 
 +Jason :: 
        + Added nature category with questions for a round number of 25 categories to choose from

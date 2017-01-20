@@ -6,7 +6,6 @@
 +---------------------
 +Jeopardy!
 +
-+
 +devlog--
 +Use keyboard shortcut to jump to end,
 + replicate entry template,
@@ -37,6 +36,7 @@ originally intended) we need to keep track of which player is currently playing 
 +How to add color
 +How to create a new file in order to let the user make their own game.
 +How to implement a timer
++The leaderboard is not working correctly. When a player gets a question right they get the points for the first turn but by the second turn it updates the wrong player's point value. 
 
 +COOL STUFF LEARNED
 +~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

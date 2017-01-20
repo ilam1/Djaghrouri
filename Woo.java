@@ -26,7 +26,7 @@ public class Woo {
     private boolean gameOn;
     private int[] ind = new int[5];
     private String[] categories =
-    {"???", "Math", "Science", "History", "Logic", "StuyTrivia",
+    {"Nature", "Math", "Science", "History", "Logic", "StuyTrivia",
      "Literature", "Cheese", "China", "CompSci", "Geography",
      "Pop", "Women", "USA", "College", "Plays",
      "Food", "Tech", "Shows", "Music", "Earth", "Culture",
@@ -167,7 +167,7 @@ public class Woo {
             option = Integer.parseInt(in.readLine());
         } catch (IOException e) {
         }
-	
+
         if (option == 1) {
             //Implementation to create your own game
             System.out.println("CURRENTLY EMPTY");
@@ -186,7 +186,7 @@ public class Woo {
 	}
     }
     public void testPrintArr(String[] arr){
-    
+
     }
     public void newGame() {
 	//	load();
@@ -206,7 +206,7 @@ public class Woo {
 
         playerNames = new String[totalPlayers]; //Updates the array playerNames to the size of the number of players
 	buzzer = new String[totalPlayers];
-	
+
         //Updates the array playerNames to the size of the number of players
         for (int i = 0; i < totalPlayers; i++) {
             System.out.println("\nWho is player " + (i + 1) + " ?");
@@ -231,10 +231,10 @@ public class Woo {
 			    any = true; }
 		    }
 		    if (any) {
-			System.out.println("Your buzzer has already been taken! Please select another buzzer:"); 
+			System.out.println("Your buzzer has already been taken! Please select another buzzer:");
 		    }
 		    else if (buzzerName.length() != 1) {
-			System.out.println("Your buzzer is invalid! Please select another buzzer:"); 
+			System.out.println("Your buzzer is invalid! Please select another buzzer:");
 		    }
 		    else {
 			buzzer[i] = buzzerName;
@@ -242,7 +242,7 @@ public class Woo {
 		}
 	    }
 	}
-	
+
 	if (totalPlayers < 2) {
 	    System.out.println("\nWould you like to play a randomized game or customized game?");
 	}
@@ -310,7 +310,7 @@ public class Woo {
 	    }
 	}
 	System.out.println("\n*            *            *\n\nThank you, ladies and gentlemen. Hello & welcome to Jeopardy!, America's favorite answer-and-question game. Yes, we give the QUESTIONS, and then it's up to these " + totalPlayers + " contestants to come up with the ANSWERS. Players, as you know, whenever you recognize an answer you're free to ring in; but, I want to warn you about the Jeopardy!: if you are wrong, the value of the question will be deducted from your winnings. Right now, put your hands on the buttons, but please don't ring in until the answer is exposed. If all " + totalPlayers + " of you are ready, then let's play Jeopardy!");
-	
+
 	points = new int[totalPlayers];//Updates the points array to number of players in the game
 
 	pointTable(board);
@@ -377,11 +377,11 @@ public class Woo {
 		    buzzed = in.readLine().substring(0,1);
 		} catch (IOException e) {
 		    e.printStackTrace();
-		}		
+		}
 	    }
-	    
+
 	    System.out.println(playerToAnswer(buzzed) + " buzzed first, so you get to answer!");
-	    
+
 
 	    String ans = Keyboard.readString();
 	    checkAns(ans, col, row);//implementing modular design
@@ -392,8 +392,8 @@ public class Woo {
 
     public void printQues(int col, int row) {
 	//prints the questions corresponding to the random array
-	if (newCat[col - 1].trim().equalsIgnoreCase("???"))
-	    System.out.println("***Encrypted Message***");
+	if (newCat[col - 1].trim().equalsIgnoreCase("Nature"))
+	    System.out.println(Nature.questions[row - 1]);
 	if (newCat[col - 1].trim().equalsIgnoreCase("Math"))
 	    System.out.println(Mathematics.questions[row - 1]);
 	if (newCat[col - 1].trim().equalsIgnoreCase("Science"))
@@ -468,7 +468,7 @@ public class Woo {
 
     public void checkAns(String ans, int col, int row) {
 	//this if statement checks if the user's answer is correct and adds points if it is.
-	if ((newCat[col - 1].trim().equals("???") && ans.equalsIgnoreCase("***Encrypted Answer***"))
+	   if ((newCat[col - 1].trim().equalsIgnoreCase("Nature") && ans.equalsIgnoreCase(Nature.answers[row - 1]))
 	    || (newCat[col - 1].trim().equalsIgnoreCase("Math")     && ans.equalsIgnoreCase(Mathematics.answers[row - 1]))
 	    || (newCat[col - 1].trim().equalsIgnoreCase("Science")  && ans.equalsIgnoreCase(Sci.answers[row - 1]))
 	    || (newCat[col - 1].trim().equalsIgnoreCase("History")  && ans.equalsIgnoreCase(History.answers[row - 1]))
@@ -501,8 +501,8 @@ public class Woo {
 	    if (totalPlayers == 1) {
 		board[row - 1][col - 1] = 0;
 		System.out.println("The correct answer is :");
-		if ((newCat[col - 1].trim().equals("???"))) {
-		    System.out.println("***Encrypted Answer***"); }
+		if ((newCat[col - 1].trim().equals("Nature"))) {
+		    System.out.println(Nature.answers[row - 1]); }
 		if ((newCat[col - 1].trim().equalsIgnoreCase("Math"))) {
 		    System.out.println(Mathematics.answers[row - 1]); }
 		if ((newCat[col - 1].trim().equalsIgnoreCase("Science"))) {
@@ -551,7 +551,7 @@ public class Woo {
 		    System.out.println(Astronomy.answers[row - 1]); }
 		if ((newCat[col - 1].trim().equalsIgnoreCase("Sports"))) {
 		    System.out.println(Sport.answers[row - 1]); }
-		
+
 	    }
 	}
     }
@@ -664,7 +664,7 @@ public class Woo {
     public void addPoints(int index) {
 	//player in index will have the amount of points in points[index]
 	points[index] += questionWorth[0];
-	
+
     }
 
     public String playerToAnswer(String character) {

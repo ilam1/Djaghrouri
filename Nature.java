@@ -3,7 +3,7 @@ public class Nature extends Category{
                                         "What country on earth are lemurs only native to?",
                                         "Which insect migrates annually from northeastern U.S. to central Mexico?",
                                         "The Great Barrier Reef lies of the coast of Australia.\nThe second longest barrier reef lies off the coast of which country?",
-                                        "What is the world's largest LAND carnivore but classified as a marine mammal?"
+                                        "What is the name of the world's largest LAND carnivore that is classified as a marine mammal?"
                                         };
     public static String[] answers={"Bamboo",
                                     "Madagascar",

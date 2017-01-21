@@ -247,6 +247,9 @@ Together::
        + Added comments for single players (the literal type, where good performance is applauded, bad performance not so much)
 +Jason :: 
        + Added nature category with questions for a round number of 25 categories to choose from
+       + Went to dojo and added functionality where user can create their own categories and make their own questions
+       + Updated flowchart to reflect current state of things
+       + Updated uml diagram to reflect current state of things
 +==============================================================
 +2017-01-23
 +--------------------------------------------------------------

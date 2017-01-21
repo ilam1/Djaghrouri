@@ -369,8 +369,6 @@ public class Woo {
                         || (row == 5 && board[4][col - 1] != 0)));
 
                 buzzers = new boolean[totalPlayers];        // nobody attempted this problem yet
-
-
                 printCustomQues(col, row);
 
                 if (totalPlayers > 1) {
@@ -394,7 +392,7 @@ public class Woo {
                 }
 
                 String ans = Keyboard.readString();
-                checkAns(ans, col, row);
+                checkCustomAns(ans, col, row);
             }
         }
 

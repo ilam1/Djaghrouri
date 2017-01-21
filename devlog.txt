@@ -250,6 +250,7 @@ Together::
        + Went to dojo and added functionality where user can create their own categories and make their own questions
        + Updated flowchart to reflect current state of things
        + Updated uml diagram to reflect current state of things
+       + Updated README.md to reflect current state of things, might change in future again
 +==============================================================
 +2017-01-23
 +--------------------------------------------------------------

@@ -37,6 +37,7 @@ originally intended) we need to keep track of which player is currently playing 
 +How to create a new file in order to let the user make their own game.
 +How to implement a timer
 +The leaderboard is not working correctly. When a player gets a question right they get the points for the first turn but by the second turn it updates the wrong player's point value. 
++(Personal issue of Irene) Commits made from home are recognized as commits by an exterior account, and not under the ilam1 github account
 
 +COOL STUFF LEARNED
 +~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -49,7 +50,7 @@ originally intended) we need to keep track of which player is currently playing 
             e.printStackTrace();
         } catch (NumberFormatException e) {
 	    e. printStackTrace();
-	}
+	}	
 
 
 +MID-DEVELOPMENT DESIGN CHANGES
@@ -251,6 +252,19 @@ Together::
        + Updated flowchart to reflect current state of things
        + Updated uml diagram to reflect current state of things
        + Updated README.md to reflect current state of things, might change in future again
++==============================================================
++2017-01-20
++--------------------------------------------------------------
+Together::
++Bayan ::
++Irene ::
+       + Rewrote sortRank
+       	 + Based on selectionSort instead or original plannings of bubbleSort
+	 + Does not modify instance variables, but instead prints the leaderboard in descending order (and in doing so resolves numerous 
+	   issues we had (e.g. only player 1's points being actively changed, returning player 2 when player 2 buzzed)
+       + When "creating your own game," the answer to a question is asked immediately after asking the question, instead of asking for all the questions then all the answers
+       + Colors are now possible! (Not yet completely implemented because of deliberations between purple/pink or cyan)
++Jason :: 
 +==============================================================
 +2017-01-23
 +--------------------------------------------------------------

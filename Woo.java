@@ -25,7 +25,7 @@ public class Woo {
     private int[] ind = new int[5];
     private String[] categories =
             {"Nature", "Math", "Science", "History", "Logic", "StuyTrivia",
-                    "Literature", "Cheese", "China", "CompSci", "Geography",
+                    "Cheese", "China", "CompSci", "Geography",
                     "Pop", "Women", "USA", "College", "Plays",
                     "Food", "Tech", "Shows", "Music", "Earth", "Culture",
                     "Literature", "Space", "Sports"};
@@ -34,7 +34,7 @@ public class Woo {
     public static final String ANSI_RESET = "\u001B[0m";
     public static final String ANSI_BLACK = "\u001B[30m";
     public static final String ANSI_RED = "\u001B[31m";
-    public static final String ANSI_GREEN = "\u001B[32m";
+    public static final String ANSI_GREEN = "\u001B[32m"; 
     public static final String ANSI_YELLOW = "\u001B[33m";
     public static final String ANSI_BLUE = "\u001B[34m";
     public static final String ANSI_PURPLE = "\u001B[35m";
@@ -51,10 +51,14 @@ public class Woo {
     public Woo() {
         gameOn = true;
     }
-    /*
+
+      /*  *******************************************************************************************************
+                                                                  SETUP GAME:
+      **************************************************************************************************/
+    /*======================================================================================================
      *This method loads the game in the beginning.
-     * It prints out loading followed by periods with a lag time.
-     */
+     *It prints out loading followed by periods with a lag time.
+     ======================================================================================================*/
     public void load(){
         System.out.print("Loading");
         for (int i = 0; i < 3; i++) {
@@ -68,48 +72,32 @@ public class Woo {
         System.out.println();
 
     }
-    /*
-      This method populates the category array in Custom based on what the user inputs.
-      Limits the user to only 5 categories
-    */
-    public String[] makeCat(){
-        int ctr=1;
-        while (ctr<=5){
-            System.out.println("What's the topic for category "+ ctr + "?");
-            Custom.category[ctr-1]= Keyboard.readString();
-            ctr+=1;
-        }
-        return Custom.category;
-    }
-    /*
-     * This method takes in an array as a parameter and populates it with the questions that the user inputs
-     * Limits the user to only 5 questions per category
-     */
-    public String[] makeQues1(String[] arr, int cat){
-        int ind=0;
-        //	int cat =0;
 
-        while(ind<5){
-            System.out.println("What is the question worth "+((ind+1)*100)+" points for the "+ Custom.category[cat]+" category");
-            arr[ind]=Keyboard.readString();
-            ind+=1;
-        }
-        //  cat+=1;
-        return arr;
-    }
-    /*
-     * This method takes in an array as a parameter and populates it with the user's answer key.
-     */
-    public String[]makeAns1(String[] arr,int cat){
-        int ind=0;
-        while(ind<5){
-            System.out.println("What is the answer worth "+((ind+1)*100)+" points for the "+ Custom.category[cat]+" category");
-            arr[ind]=Keyboard.readString();
-            ind+=1;
-        }
-        return arr;
-    }
 
+      /*  *******************************************************************************************************
+                                                                  MAKE CUSTOM GAME:
+      **************************************************************************************************/
+    /*======================================================================================================
+     *This method is used to answer the first question we ask the user:
+     *whether they would like to create their own game or play premade questions.
+     *If they choose to create their own game they get the option of populating it the arrays of the class Custom
+     ======================================================================================================*/
+    public void choice1(){
+
+        //Implementation to create your own game
+        makeCat();
+        makeQuesAns(Custom.questions1, Custom.answers1, 0);
+        makeQuesAns(Custom.questions2, Custom.answers2, 1);
+        makeQuesAns(Custom.questions3, Custom.answers3, 2);
+        makeQuesAns(Custom.questions4, Custom.answers4, 3);
+        makeQuesAns(Custom.questions5, Custom.answers5, 4);
+    }
+    
+    /*======================================================================================================
+     *This method asks the user for the question and immediately follows with asking the user for the answer
+     *It's different from the above methods because with makeAns and makeQues the user is asked for the answer 5 prompts later
+     *this might lead to the user 
+     ======================================================================================================*/
     public void makeQuesAns(String[] quesArr, String[] ansArr, int cat) {
         int ind=0;
         while(ind<5){
@@ -121,57 +109,64 @@ public class Woo {
         }
     }
 
-    /*
-     *This method is used to answer the first question we ask the user:
-     *whether they would like to create their own game or play premade questions.
-     *If they choose to create their own game they get the option of populating it the arrays of the class Custom
-     */
-    public void choice1(){
-
-        //Implementation to create your own game
-        makeCat();
-        //testPrintArr(Custom.category);
-        makeQuesAns(Custom.questions1, Custom.answers1, 0);
-        makeQuesAns(Custom.questions2, Custom.answers2, 1);
-        makeQuesAns(Custom.questions3, Custom.answers3, 2);
-        makeQuesAns(Custom.questions4, Custom.answers4, 3);
-        makeQuesAns(Custom.questions5, Custom.answers5, 4);
-
-        /*
-        makeQues1(Custom.questions1,0);
-        //System.out.println("PRINTING Q1:");
-        //testPrintArr(Custom.questions1);
-        makeAns1(Custom.answers1,0);
-        //System.out.println("PRINTING A1:");
-        //testPrintArr(Custom.answers1);
-        makeQues1(Custom.questions2,1);
-        //System.out.println("PRINTING Q2:");
-        //testPrintArr(Custom.questions2);
-        makeAns1(Custom.answers2,1);
-        //System.out.println("PRINTING A2:");
-        //testPrintArr(Custom.answers2);
-        makeQues1(Custom.questions3,2);
-        makeAns1(Custom.answers3,2);
-        makeQues1(Custom.questions4,3);
-        makeAns1(Custom.answers4,3);
-        makeQues1(Custom.questions5,4);
-        makeAns1(Custom.answers5,4);
-        */
+    /*======================================================================================================
+     * This method populates the category array in Custom based on what the user inputs.
+     * Limits the user to only 5 categories
+      ======================================================================================================*/
+    public String[] makeCat(){
+        int ctr=1;
+        while (ctr<=5){
+            System.out.println("What's the topic for category "+ ctr + "?");
+            Custom.category[ctr-1]= Keyboard.readString();
+            ctr+=1;
+        }
+        return Custom.category;
     }
-    /*
+    /*======================================================================================================
+     * This method takes in an array as a parameter and populates it with the questions that the user inputs
+     * Limits the user to only 5 questions per category
+     ======================================================================================================*/
+    public String[] makeQues1(String[] arr, int cat){
+        int ind=0;
+        while(ind<5){
+            System.out.println("What is the question worth "+((ind+1)*100)+" points for the "+ Custom.category[cat]+" category");
+            arr[ind]=Keyboard.readString();
+            ind+=1;
+        }
+        return arr;
+    }
+    /*======================================================================================================
+     * This method takes in an array as a parameter and populates it with the user's answer key.
+     ======================================================================================================*/
+    public String[]makeAns1(String[] arr,int cat){
+        int ind=0;
+        while(ind<5){
+            System.out.println("What is the answer worth "+((ind+1)*100)+" points for the "+ Custom.category[cat]+" category");
+            arr[ind]=Keyboard.readString();
+            ind+=1;
+        }
+        return arr;
+    }
+    
+  
+    /*======================================================================================================
      *This methos is just used to test whether or not the arrays are being populated or not.
-     * loops through a string array and prints each element
-     */
+     *loops through a string array and prints each element
+     ======================================================================================================*/
     public void testPrintArr(String[] arr){
         for (String x: arr){
             System.out.println(x);
         }
     }
-    /*
+
+      /*  *******************************************************************************************************
+                                                                  BUZZER IMPLEMENTATION:
+      **************************************************************************************************/
+    /*======================================================================================================
      *Updates the array playerNames to the size of the number of players
      *Populates the array playerNames with the names that the players input
      *Updates the array buzzer to include every players' buzzer
-     */
+    ====================================================================================================== */
     public void setBuzzer(int totalPlayers){
         for (int i = 0; i < totalPlayers; i++) {
             System.out.println("\nWho is player " + (i + 1) + " ?");
@@ -208,7 +203,477 @@ public class Woo {
             }
         }
     }
-    public void newGame() {
+
+    /*======================================================================================================
+     *Returns the index of the player that buzzed in
+     ======================================================================================================*/
+    public int whichPlayer(String buzz) {
+        for (int i = 0; i < buzzer.length; i++) {
+            if (buzz.equals(buzzer[i])) {
+                return i; }
+        }
+        return 0;
+    }
+
+    /*======================================================================================================
+     *returns the name of the player that buzzed in first. 
+     ======================================================================================================*/
+    public String playerToAnswer(String character) {
+        for (int x = 0; x < buzzer.length; x++) {
+            if (buzzer[x].equals(character)) {
+                return playerNames[x];
+            }
+        }
+        return "Error";
+    }
+
+    
+    /*======================================================================================================
+     *This method returns a boolean as to whether or not the user has answered the question.
+     ======================================================================================================*/
+    public boolean hasAnswered(String character) {
+        for (int x = 0; x < buzzer.length; x++)
+            if (buzzer[x].equals(character) && !buzzers[x]) {
+                buzzers[x] = true;
+                return false;
+            }
+
+        return true;
+    }
+
+      /************************************************************************************************
+                                                                  STARTING GAME:
+      **************************************************************************************************/
+   
+    /*======================================================================================================
+     *After the user chooses the category they would like and the number of points they would like to play for
+     *This uses the user's input data to go into the array of category names and compares the category name to the class name
+     *Then prints out the points worth index of the question array in the category subclass.
+     ======================================================================================================*/
+
+    public void printCustomQues(int col, int row) {
+        if (col == 1) { System.out.println(Custom.questions1[row-1]); }
+        else if (col == 2) { System.out.println(Custom.questions2[row-1]); }
+        else if (col == 3) { System.out.println(Custom.questions3[row-1]); }
+        else if (col == 4) { System.out.println(Custom.questions4[row-1]); }
+        else if (col == 5) { System.out.println(Custom.questions5[row-1]); }
+    }
+
+    /*======================================================================================================
+     * prints the questions corresponding to the random array
+     ======================================================================================================*/
+
+    public void printQues(int col, int row) {
+        if (newCat[col - 1].trim().equalsIgnoreCase("Nature"))
+            System.out.println(Nature.questions[row - 1]);
+        if (newCat[col - 1].trim().equalsIgnoreCase("Math"))
+            System.out.println(Mathematics.questions[row - 1]);
+        if (newCat[col - 1].trim().equalsIgnoreCase("Science"))
+            System.out.println(Sci.questions[row - 1]);
+        if (newCat[col - 1].trim().equalsIgnoreCase("History")) {
+            System.out.println(History.questions[row - 1]);
+        }
+        if (newCat[col - 1].trim().equalsIgnoreCase("Logic")) {
+            System.out.println(Misc.questions[row - 1]);
+        }
+        if (newCat[col - 1].trim().equalsIgnoreCase("StuyTrivia")) {
+            System.out.println(Stuy.questions[row - 1]);
+        }
+        if (newCat[col - 1].trim().equalsIgnoreCase("Literature")) {
+            System.out.println(Literature.questions[row - 1]);
+        }
+        if (newCat[col - 1].trim().equalsIgnoreCase("Cheese")) {
+            System.out.println(Cheese.questions[row - 1]);
+        }
+        if (newCat[col - 1].trim().equalsIgnoreCase("China")) {
+            System.out.println(China.questions[row - 1]);
+        }
+        if (newCat[col - 1].trim().equalsIgnoreCase("CompSci")) {
+            System.out.println(CompSci.questions[row - 1]);
+        }
+        if (newCat[col - 1].trim().equalsIgnoreCase("Geography")) {
+            System.out.println(Geography.questions[row - 1]);
+        }
+        if (newCat[col - 1].trim().equalsIgnoreCase("Pop")) {
+            System.out.println(Impossible.questions[row - 1]);
+        }
+        if (newCat[col - 1].trim().equalsIgnoreCase("Women")) {
+            System.out.println(Women.questions[row - 1]);
+        }
+        if (newCat[col - 1].trim().equalsIgnoreCase("USA")) {
+            System.out.println(USA.questions[row - 1]);
+        }
+        if (newCat[col - 1].trim().equalsIgnoreCase("College")) {
+            System.out.println(Universities.questions[row - 1]);
+        }
+        if (newCat[col - 1].trim().equalsIgnoreCase("Plays")) {
+            System.out.println(Theatre.questions[row - 1]);
+        }
+        if (newCat[col - 1].trim().equalsIgnoreCase("Food")) {
+            System.out.println(Food.questions[row - 1]);
+        }
+        if (newCat[col - 1].trim().equalsIgnoreCase("Tech")) {
+            System.out.println(Technology.questions[row - 1]);
+        }
+        if (newCat[col - 1].trim().equalsIgnoreCase("Shows")) {
+            System.out.println(Shows.questions[row - 1]);
+        }
+        if (newCat[col - 1].trim().equalsIgnoreCase("Music")) {
+            System.out.println(Music.questions[row - 1]);
+        }
+        if (newCat[col - 1].trim().equalsIgnoreCase("Earth")) {
+            System.out.println(Earth.questions[row - 1]);
+        }
+        if (newCat[col - 1].trim().equalsIgnoreCase("Culture")) {
+            System.out.println(Culture.questions[row - 1]);
+        }
+        if (newCat[col - 1].trim().equalsIgnoreCase("Composers")) {
+            System.out.println(Composers.questions[row - 1]);
+        }
+        if (newCat[col - 1].trim().equalsIgnoreCase("Space")) {
+            System.out.println(Astronomy.questions[row - 1]);
+        }
+        if (newCat[col - 1].trim().equalsIgnoreCase("Sports")) {
+            System.out.println(Sport.questions[row - 1]);
+        }
+    }
+
+    /*======================================================================================================
+     *This method compares the user input to the answer key of the user's custom game.
+     *If it's right they get the points otherwise they do not. 
+     ======================================================================================================*/
+    public void checkCustomAns(String ans, int col, int row) {
+        if (col == 1 && ans.equalsIgnoreCase(Custom.answers1[row - 1])
+                || col == 2 && ans.equalsIgnoreCase(Custom.answers2[row - 1])
+                || col == 3 && ans.equalsIgnoreCase(Custom.answers3[row - 1])
+                || col == 4 && ans.equalsIgnoreCase(Custom.answers4[row - 1])
+                || col == 5 && ans.equalsIgnoreCase(Custom.answers5[row - 1]))
+        {
+            points[whichPlayer(buzzed)] += row * 100;
+            System.out.println("Congratulations! You answered the question correctly!");
+            board[row - 1][col - 1] = 0;
+        }
+        else {
+            System.out.println("You got it wrong. ");
+            points[whichPlayer(buzzed)] -= row * 100;
+            if (totalPlayers == 1) {
+                board[row - 1][col - 1] = 0;
+                System.out.println("The correct answer was: ");
+                if (col == 1 && ans.equalsIgnoreCase(Custom.answers1[row - 1]))
+                    { System.out.println(Custom.answers1[row - 1]); }
+                if (col == 2 && ans.equalsIgnoreCase(Custom.answers2[row - 1]))
+                    { System.out.println(Custom.answers2[row - 1]); }
+                if (col == 3 && ans.equalsIgnoreCase(Custom.answers3[row - 1]))
+                    { System.out.println(Custom.answers3[row - 1]); }
+                if (col == 4 && ans.equalsIgnoreCase(Custom.answers4[row - 1]))
+                    { System.out.println(Custom.answers4[row - 1]); }
+                if (col == 5 && ans.equalsIgnoreCase(Custom.answers5[row - 1]))
+                    { System.out.println(Custom.answers5[row - 1]); }
+            }
+        }
+        sortRank();
+    }
+
+
+    /*======================================================================================================
+     *After the user answers the question, this method compares what the user inputs to the subclass's corresponding answer.
+     *If the user gets it right then that part of the game board disappears and the user gets the points
+     *Otherwise the game prints out the correct answer.
+     ======================================================================================================*/
+    public void checkAns(String ans, int col, int row) {
+        //this if statement checks if the user's answer is correct and adds points if it is.
+        if ((newCat[col - 1].trim().equalsIgnoreCase("Nature") && ans.equalsIgnoreCase(Nature.answers[row - 1]))
+                || (newCat[col - 1].trim().equalsIgnoreCase("Math")     && ans.equalsIgnoreCase(Mathematics.answers[row - 1]))
+                || (newCat[col - 1].trim().equalsIgnoreCase("Science")  && ans.equalsIgnoreCase(Sci.answers[row - 1]))
+                || (newCat[col - 1].trim().equalsIgnoreCase("History")  && ans.equalsIgnoreCase(History.answers[row - 1]))
+                || (newCat[col - 1].trim().equalsIgnoreCase("Logic")    && ans.equalsIgnoreCase(Misc.answers[row - 1]))
+                || (newCat[col - 1].trim().equalsIgnoreCase("StuyTrivia")&& ans.equalsIgnoreCase(Stuy.answers[row - 1]))
+                || (newCat[col - 1].trim().equalsIgnoreCase("Literature")     && ans.equalsIgnoreCase(Literature.answers[row - 1]))
+                || (newCat[col - 1].trim().equalsIgnoreCase("Cheese")   && ans.equalsIgnoreCase(Cheese.answers[row - 1]))
+                || (newCat[col - 1].trim().equalsIgnoreCase("China")    && ans.equalsIgnoreCase(China.answers[row - 1]))
+                || (newCat[col - 1].trim().equalsIgnoreCase("CompSci")  && ans.equalsIgnoreCase(CompSci.answers[row - 1]))
+                || (newCat[col - 1].trim().equalsIgnoreCase("Geography")&& ans.equalsIgnoreCase(Geography.answers[row - 1]))
+                || (newCat[col - 1].trim().equalsIgnoreCase("Pop")      && ans.equalsIgnoreCase(Impossible.answers[row - 1]))
+                || (newCat[col - 1].trim().equalsIgnoreCase("Women")    && ans.equalsIgnoreCase(Women.answers[row - 1]))
+                || (newCat[col - 1].trim().equalsIgnoreCase("USA")      && ans.equalsIgnoreCase(USA.answers[row - 1]))
+                || (newCat[col - 1].trim().equalsIgnoreCase("College")  && ans.equalsIgnoreCase(Universities.answers[row - 1]))
+                || (newCat[col - 1].trim().equalsIgnoreCase("Plays")    && ans.equalsIgnoreCase(Theatre.answers[row - 1]))
+                || (newCat[col - 1].trim().equalsIgnoreCase("Food")     && ans.equalsIgnoreCase(Food.answers[row - 1]))
+                || (newCat[col - 1].trim().equalsIgnoreCase("Tech")     && ans.equalsIgnoreCase(Technology.answers[row - 1]))
+                || (newCat[col - 1].trim().equalsIgnoreCase("Shows")    && ans.equalsIgnoreCase(Shows.answers[row - 1]))
+                || (newCat[col - 1].trim().equalsIgnoreCase("Music")    && ans.equalsIgnoreCase(Music.answers[row - 1]))
+                || (newCat[col - 1].trim().equalsIgnoreCase("Earth")    && ans.equalsIgnoreCase(Earth.answers[row - 1]))
+                || (newCat[col - 1].trim().equalsIgnoreCase("Culture")  && ans.equalsIgnoreCase(Culture.answers[row - 1]))
+                || (newCat[col - 1].trim().equalsIgnoreCase("Composers")&& ans.equalsIgnoreCase(Composers.answers[row - 1]))
+                || (newCat[col - 1].trim().equalsIgnoreCase("Space")    && ans.equalsIgnoreCase(Astronomy.answers[row - 1]))
+                || (newCat[col - 1].trim().equalsIgnoreCase("Sports")   && ans.equalsIgnoreCase(Sport.answers[row - 1]))) {
+            points[whichPlayer(buzzed)] += row * 100;
+            System.out.println("Congratulations! You answered the question correctly!");
+            board[row - 1][col - 1] = 0;
+        } else {
+            System.out.println("You got it wrong. ");
+            points[whichPlayer(buzzed)] -= row * 100;
+            if (totalPlayers == 1) {
+                board[row - 1][col - 1] = 0;
+                System.out.println("The correct answer is: ");
+                if ((newCat[col - 1].trim().equals("Nature"))) {
+                    System.out.println(Nature.answers[row - 1]); }
+                if ((newCat[col - 1].trim().equalsIgnoreCase("Math"))) {
+                    System.out.println(Mathematics.answers[row - 1]); }
+                if ((newCat[col - 1].trim().equalsIgnoreCase("Science"))) {
+                    System.out.println(Sci.answers[row - 1]); }
+                if ((newCat[col - 1].trim().equalsIgnoreCase("History"))) {
+                    System.out.println(History.answers[row - 1]); }
+                if ((newCat[col - 1].trim().equalsIgnoreCase("Logic"))) {
+                    System.out.println(Misc.answers[row - 1]); }
+                if ((newCat[col - 1].trim().equalsIgnoreCase("StuyTrivia"))) {
+                    System.out.println(Stuy.answers[row - 1]); }
+                if ((newCat[col - 1].trim().equalsIgnoreCase("Literature"))) {
+                    System.out.println(Literature.answers[row - 1]); }
+                if ((newCat[col - 1].trim().equalsIgnoreCase("Cheese"))) {
+                    System.out.println(Cheese.answers[row - 1]); }
+                if ((newCat[col - 1].trim().equalsIgnoreCase("China"))) {
+                    System.out.println(China.answers[row - 1]); }
+                if ((newCat[col - 1].trim().equalsIgnoreCase("Compsci"))) {
+                    System.out.println(CompSci.answers[row - 1]); }
+                if ((newCat[col - 1].trim().equalsIgnoreCase("Geography"))) {
+                    System.out.println(Geography.answers[row - 1]); }
+                if ((newCat[col - 1].trim().equalsIgnoreCase("Pop"))) {
+                    System.out.println(Impossible.answers[row - 1]);
+                    System.out.println("\nDisclaimer: Pop was short for Impossible c:");
+                }
+                if ((newCat[col - 1].trim().equalsIgnoreCase("Women"))) {
+                    System.out.println(Women.answers[row - 1]); }
+                if ((newCat[col - 1].trim().equalsIgnoreCase("USA"))) {
+                    System.out.println(USA.answers[row - 1]); }
+                if ((newCat[col - 1].trim().equalsIgnoreCase("College"))) {
+                    System.out.println(Universities.answers[row - 1]); }
+                if ((newCat[col - 1].trim().equalsIgnoreCase("Plays"))) {
+                    System.out.println(Theatre.answers[row - 1]); }
+                if ((newCat[col - 1].trim().equalsIgnoreCase("Food"))) {
+                    System.out.println(Food.answers[row - 1]); }
+                if ((newCat[col - 1].trim().equalsIgnoreCase("Tech"))) {
+                    System.out.println(Technology.answers[row - 1]); }
+                if ((newCat[col - 1].trim().equalsIgnoreCase("Shows"))) {
+                    System.out.println(Shows.answers[row - 1]); }
+                if ((newCat[col - 1].trim().equalsIgnoreCase("Music"))) {
+                    System.out.println(Music.answers[row - 1]); }
+                if ((newCat[col - 1].trim().equalsIgnoreCase("Earth"))) {
+                    System.out.println(Earth.answers[row - 1]); }
+                if ((newCat[col - 1].trim().equalsIgnoreCase("Culture"))) {
+                    System.out.println(Culture.answers[row - 1]); }
+                if ((newCat[col - 1].trim().equalsIgnoreCase("Composers"))) {
+                    System.out.println(Composers.answers[row - 1]); }
+                if ((newCat[col - 1].trim().equalsIgnoreCase("Space"))) {
+                    System.out.println(Astronomy.answers[row - 1]); }
+                if ((newCat[col - 1].trim().equalsIgnoreCase("Sports"))) {
+                    System.out.println(Sport.answers[row - 1]); }
+
+            }
+        }
+        sortRank();
+    }
+    
+    /*  *******************************************************************************************************
+                                                                  RANDOM GAME:
+      **************************************************************************************************/
+
+    /*======================================================================================================
+     *This method takes in an int array and an input and checks that it is not repeating.
+     *it is used in categoryChooser to makeQuesAns sure that the index is not repeating before appending it to the ind array
+     ======================================================================================================*/
+    public boolean checkArray(int[] arr, int input) {
+        boolean retBool = true;
+        for (int i = 0; i < arr.length; i++) {
+            if (arr[i] == input) {
+                return false;
+            }
+        }
+        return retBool;
+    }
+
+    /*======================================================================================================
+     * categoryChooser randomly generates a number between 0 and the length of the categories instance variable.
+     * then it returns an int array of randomly generated numbers that are not repeating.
+     * these numbers represent the index of the category in the categories instance variable
+     ======================================================================================================*/
+    public int[] categoryChooser(String[] categories, int[] ind) {
+        //Randomly generates a number and checks that it is not repeating.
+        //this is used to randomly generate categories.
+        int ctr = 0;
+        while (ctr < 5) {
+            int rand = (int) (Math.random() * categories.length);
+            if (checkArray(ind, rand)) {
+                ind[ctr] = rand;
+                ctr += 1;
+            } else {
+                ctr += 0;
+            }
+        }
+        return ind;
+    }
+
+    /*======================================================================================================
+     *This method calls category chooser and fills the String array answer with the corresponding categories of the ind array
+     * that is generated using categoryChooser and checkArray.
+     ======================================================================================================*/
+    public String[] createCategory(){
+        String[] ans = new String[5];
+        int[] ind = new int[5];
+        ind = categoryChooser(categories, ind);
+        for (int i = 0; i < 5; i++) {
+            ans[i] = categories[ind[i]] + "";
+        }
+        return ans;
+    }
+  /*  *******************************************************************************************************
+                                                                   GAME BOARD:
+  ***********************************************************************************************************/
+
+    
+    /*======================================================================================================
+     *Overwritten toString that prints the game board headers
+     ======================================================================================================*/
+     public String toString() {
+        //Adds the category names
+        String ans = "";
+        for (String category : newCat) {//newcat is an instance variable array that is randomly generated
+            ans += String.format("%-11s", category);
+        }
+        ans += "\n";
+        return ans;
+    }
+
+    /*======================================================================================================
+     *Works similar to toString above except it's for the custom game. 
+     ======================================================================================================*/
+    public String printCustom() {
+        String retString = "";
+        for (String category : Custom.category) {//Custom.category is an instance variable array inside a subclass
+            retString += String.format("%-11s", category);
+        }
+        retString += "\n";
+        return retString;
+    }
+
+    /*======================================================================================================
+     *This method is similar to the method we previously wrote when we were making the 2D array utils class.
+     *it populates a 2D array with the points.
+     =======================================================================================================*/
+    
+    public int[][] pointTable(int[][] board) {
+        //Creates the two d array that will be used to print the points.
+        for (int row = 0; row < board.length; row++) {
+            for (int col = 0; col < board[row].length; col++) {
+                board[row][col] = (row + 1) * 100;
+            }
+        }
+        return board;
+    }
+
+    /*======================================================================================================
+     * This method is similaar to the method we previously wrote when we were making the 2D array utils class.
+     * It loops through a 2D array and prints it out in the form of a table.
+    ====================================================================================================== */
+    
+    public static void print2(int[][] board) {
+        //prints two d array with a tab in between
+        for (int[] k : board) {
+            for (int j : k) {
+                if (j != 0)
+                    System.out.print(j);
+                else
+                    System.out.printf("%3s", "");
+                System.out.printf("%8s", "");
+            }
+            System.out.println();
+        }
+    }
+
+    /***************************************************************************************************
+                                                                  SCORES:
+      **************************************************************************************************/
+    
+    /*======================================================================================================
+     *String of each player ordered in descending order in terms of their points
+     ======================================================================================================*/
+    public void sortRank() {
+        if (totalPlayers == 1 ) {
+            System.out.println("\nYour points: " + points[0]);
+            System.out.println(comments(points[0]));
+            return;
+        }
+        boolean[] accessed = new boolean[totalPlayers];
+        System.out.println("\n====================\nLeaderboard:\n");
+        for (int i = 0; i < totalPlayers; i++) {
+            int maxPlace = -1;
+            for (int j = 0; j < totalPlayers; j++)
+                if (!accessed[j]) {
+                    maxPlace = j;
+                    break;
+                }
+            if (maxPlace == -1)
+                System.out.println("SOMETHING WENT WRONG: no new parts");
+
+            for (int j = maxPlace; j < totalPlayers; j++)
+                if (!accessed[j] && points[maxPlace] < points[j])
+                    maxPlace = j;
+
+            accessed[maxPlace] = true;      // min place is used, do not repeat again
+
+            System.out.println(playerNames[maxPlace] + " -- " + points[maxPlace]);
+        }
+        System.out.println("====================");
+
+        /*
+        for (int i = 0; i < playerNames.length -1 ; i++) {
+            if (points[i] < points[i + 1]) {
+                //switches points
+                int temp = points[i];
+                points[i] = points[i + 1];
+                points[i + 1] = temp;
+                //switches playerNames when points are switched
+                String temps = playerNames[i];
+                playerNames[i] = playerNames[i + 1];
+                playerNames[i + 1] = temps;
+                //System.out.println("I ran!");
+                //System.out.println(points[i]);
+            }
+        }
+
+        if (totalPlayers == 1 ) {
+            System.out.println("\nYour points: " + points[0]);
+            System.out.println(comments(points[0]));
+        } else {
+            System.out.println("\n====================\nLeaderboard:\n");
+            for (int i = 0; i < playerNames.length; i++) {
+                System.out.println(playerNames[i] + " -- " + points[i]);
+            }
+            System.out.println("\n====================");
+        }*/
+    }
+    
+    
+    /*======================================================================================================
+     *These comments print based on what the player gets at the end of the game
+     ======================================================================================================*/
+
+    public String comments(int point) {
+        if (point < -1000) {
+            return "And you call yourself a Stuyvesant student?"; }
+        else if (point < -500) {
+            return "Almost beyond hope - Selling 1 point for $1, please find Ms. D for change"; }
+        else if (point < 0) {
+            return "We offer ARISTA and AIS Tutoring to cater to your every needs. Academic needs."; }
+        else if (point > 2000) {
+            return "Average"; }
+        return "";
+    }
+      /*  *******************************************************************************************************
+                                                                  PLAY GAME:
+      **************************************************************************************************/
+    
+ public void newGame() {
         //	load();
 
         in = new BufferedReader(new InputStreamReader(System.in));
@@ -240,11 +705,8 @@ public class Woo {
         buzzer = new String[totalPlayers];
 
         //Updates the array playerNames to the size of the number of players
-
         setBuzzer(totalPlayers);
-        //testPrintArr(buzzer);
-        //testPrintArr(playerNames);
-
+	
         if (option == 2) {
             if (totalPlayers < 2) {
                 System.out.println("\nWould you like to play a randomized game or customized game?");
@@ -478,432 +940,10 @@ public class Woo {
             } //ends for loop
         } //ends if/else statement
     } //ends the game
-    /*
-     *After the user chooses the category they would like and the number of points they would like to play for
-     *This uses the user's input data to go into the array of category names and compares the category name to the class name
-     *Then prints out the points worth index of the question array in the category subclass.
-     */
-
-    public void printCustomQues(int col, int row) {
-        if (col == 1) { System.out.println(Custom.questions1[row-1]); }
-        else if (col == 2) { System.out.println(Custom.questions2[row-1]); }
-        else if (col == 3) { System.out.println(Custom.questions3[row-1]); }
-        else if (col == 4) { System.out.println(Custom.questions4[row-1]); }
-        else if (col == 5) { System.out.println(Custom.questions5[row-1]); }
-    }
-
-    public void printQues(int col, int row) {
-        //prints the questions corresponding to the random array
-        if (newCat[col - 1].trim().equalsIgnoreCase("Nature"))
-            System.out.println(Nature.questions[row - 1]);
-        if (newCat[col - 1].trim().equalsIgnoreCase("Math"))
-            System.out.println(Mathematics.questions[row - 1]);
-        if (newCat[col - 1].trim().equalsIgnoreCase("Science"))
-            System.out.println(Sci.questions[row - 1]);
-        if (newCat[col - 1].trim().equalsIgnoreCase("History")) {
-            System.out.println(History.questions[row - 1]);
-        }
-        if (newCat[col - 1].trim().equalsIgnoreCase("Logic")) {
-            System.out.println(Misc.questions[row - 1]);
-        }
-        if (newCat[col - 1].trim().equalsIgnoreCase("StuyTrivia")) {
-            System.out.println(Stuy.questions[row - 1]);
-        }
-        if (newCat[col - 1].trim().equalsIgnoreCase("Literature")) {
-            System.out.println(Literature.questions[row - 1]);
-        }
-        if (newCat[col - 1].trim().equalsIgnoreCase("Cheese")) {
-            System.out.println(Cheese.questions[row - 1]);
-        }
-        if (newCat[col - 1].trim().equalsIgnoreCase("China")) {
-            System.out.println(China.questions[row - 1]);
-        }
-        if (newCat[col - 1].trim().equalsIgnoreCase("CompSci")) {
-            System.out.println(CompSci.questions[row - 1]);
-        }
-        if (newCat[col - 1].trim().equalsIgnoreCase("Geography")) {
-            System.out.println(Geography.questions[row - 1]);
-        }
-        if (newCat[col - 1].trim().equalsIgnoreCase("Pop")) {
-            System.out.println(Impossible.questions[row - 1]);
-        }
-        if (newCat[col - 1].trim().equalsIgnoreCase("Women")) {
-            System.out.println(Women.questions[row - 1]);
-        }
-        if (newCat[col - 1].trim().equalsIgnoreCase("USA")) {
-            System.out.println(USA.questions[row - 1]);
-        }
-        if (newCat[col - 1].trim().equalsIgnoreCase("College")) {
-            System.out.println(Universities.questions[row - 1]);
-        }
-        if (newCat[col - 1].trim().equalsIgnoreCase("Plays")) {
-            System.out.println(Theatre.questions[row - 1]);
-        }
-        if (newCat[col - 1].trim().equalsIgnoreCase("Food")) {
-            System.out.println(Food.questions[row - 1]);
-        }
-        if (newCat[col - 1].trim().equalsIgnoreCase("Tech")) {
-            System.out.println(Technology.questions[row - 1]);
-        }
-        if (newCat[col - 1].trim().equalsIgnoreCase("Shows")) {
-            System.out.println(Shows.questions[row - 1]);
-        }
-        if (newCat[col - 1].trim().equalsIgnoreCase("Music")) {
-            System.out.println(Music.questions[row - 1]);
-        }
-        if (newCat[col - 1].trim().equalsIgnoreCase("Earth")) {
-            System.out.println(Earth.questions[row - 1]);
-        }
-        if (newCat[col - 1].trim().equalsIgnoreCase("Culture")) {
-            System.out.println(Culture.questions[row - 1]);
-        }
-        if (newCat[col - 1].trim().equalsIgnoreCase("Composers")) {
-            System.out.println(Composers.questions[row - 1]);
-        }
-        if (newCat[col - 1].trim().equalsIgnoreCase("Space")) {
-            System.out.println(Astronomy.questions[row - 1]);
-        }
-        if (newCat[col - 1].trim().equalsIgnoreCase("Sports")) {
-            System.out.println(Sport.questions[row - 1]);
-        }
-    }
-
-    public void checkCustomAns(String ans, int col, int row) {
-        if (col == 1 && ans.equalsIgnoreCase(Custom.answers1[row - 1])
-                || col == 2 && ans.equalsIgnoreCase(Custom.answers2[row - 1])
-                || col == 3 && ans.equalsIgnoreCase(Custom.answers3[row - 1])
-                || col == 4 && ans.equalsIgnoreCase(Custom.answers4[row - 1])
-                || col == 5 && ans.equalsIgnoreCase(Custom.answers5[row - 1]))
-        {
-            points[whichPlayer(buzzed)] += row * 100;
-            System.out.println("Congratulations! You answered the question correctly!");
-            board[row - 1][col - 1] = 0;
-        }
-        else {
-            System.out.println("You got it wrong. ");
-            points[whichPlayer(buzzed)] -= row * 100;
-            if (totalPlayers == 1) {
-                board[row - 1][col - 1] = 0;
-                System.out.println("The correct answer was: ");
-                if (col == 1 && ans.equalsIgnoreCase(Custom.answers1[row - 1]))
-                    { System.out.println(Custom.answers1[row - 1]); }
-                if (col == 2 && ans.equalsIgnoreCase(Custom.answers2[row - 1]))
-                    { System.out.println(Custom.answers2[row - 1]); }
-                if (col == 3 && ans.equalsIgnoreCase(Custom.answers3[row - 1]))
-                    { System.out.println(Custom.answers3[row - 1]); }
-                if (col == 4 && ans.equalsIgnoreCase(Custom.answers4[row - 1]))
-                    { System.out.println(Custom.answers4[row - 1]); }
-                if (col == 5 && ans.equalsIgnoreCase(Custom.answers5[row - 1]))
-                    { System.out.println(Custom.answers5[row - 1]); }
-            }
-        }
-        sortRank();
-    }
-
-
-    /*
-     *After the user answers the question, this method compares what the user inputs to the subclass's corresponding answer.
-     *If the user gets it right then that part of the game board disappears and the user gets the points
-     *Otherwise the game prints out the correct answer.
-     */
-    public void checkAns(String ans, int col, int row) {
-        //this if statement checks if the user's answer is correct and adds points if it is.
-        if ((newCat[col - 1].trim().equalsIgnoreCase("Nature") && ans.equalsIgnoreCase(Nature.answers[row - 1]))
-                || (newCat[col - 1].trim().equalsIgnoreCase("Math")     && ans.equalsIgnoreCase(Mathematics.answers[row - 1]))
-                || (newCat[col - 1].trim().equalsIgnoreCase("Science")  && ans.equalsIgnoreCase(Sci.answers[row - 1]))
-                || (newCat[col - 1].trim().equalsIgnoreCase("History")  && ans.equalsIgnoreCase(History.answers[row - 1]))
-                || (newCat[col - 1].trim().equalsIgnoreCase("Logic")    && ans.equalsIgnoreCase(Misc.answers[row - 1]))
-                || (newCat[col - 1].trim().equalsIgnoreCase("StuyTrivia")&& ans.equalsIgnoreCase(Stuy.answers[row - 1]))
-                || (newCat[col - 1].trim().equalsIgnoreCase("Literature")     && ans.equalsIgnoreCase(Literature.answers[row - 1]))
-                || (newCat[col - 1].trim().equalsIgnoreCase("Cheese")   && ans.equalsIgnoreCase(Cheese.answers[row - 1]))
-                || (newCat[col - 1].trim().equalsIgnoreCase("China")    && ans.equalsIgnoreCase(China.answers[row - 1]))
-                || (newCat[col - 1].trim().equalsIgnoreCase("CompSci")  && ans.equalsIgnoreCase(CompSci.answers[row - 1]))
-                || (newCat[col - 1].trim().equalsIgnoreCase("Geography")&& ans.equalsIgnoreCase(Geography.answers[row - 1]))
-                || (newCat[col - 1].trim().equalsIgnoreCase("Pop")      && ans.equalsIgnoreCase(Impossible.answers[row - 1]))
-                || (newCat[col - 1].trim().equalsIgnoreCase("Women")    && ans.equalsIgnoreCase(Women.answers[row - 1]))
-                || (newCat[col - 1].trim().equalsIgnoreCase("USA")      && ans.equalsIgnoreCase(USA.answers[row - 1]))
-                || (newCat[col - 1].trim().equalsIgnoreCase("College")  && ans.equalsIgnoreCase(Universities.answers[row - 1]))
-                || (newCat[col - 1].trim().equalsIgnoreCase("Plays")    && ans.equalsIgnoreCase(Theatre.answers[row - 1]))
-                || (newCat[col - 1].trim().equalsIgnoreCase("Food")     && ans.equalsIgnoreCase(Food.answers[row - 1]))
-                || (newCat[col - 1].trim().equalsIgnoreCase("Tech")     && ans.equalsIgnoreCase(Technology.answers[row - 1]))
-                || (newCat[col - 1].trim().equalsIgnoreCase("Shows")    && ans.equalsIgnoreCase(Shows.answers[row - 1]))
-                || (newCat[col - 1].trim().equalsIgnoreCase("Music")    && ans.equalsIgnoreCase(Music.answers[row - 1]))
-                || (newCat[col - 1].trim().equalsIgnoreCase("Earth")    && ans.equalsIgnoreCase(Earth.answers[row - 1]))
-                || (newCat[col - 1].trim().equalsIgnoreCase("Culture")  && ans.equalsIgnoreCase(Culture.answers[row - 1]))
-                || (newCat[col - 1].trim().equalsIgnoreCase("Composers")&& ans.equalsIgnoreCase(Composers.answers[row - 1]))
-                || (newCat[col - 1].trim().equalsIgnoreCase("Space")    && ans.equalsIgnoreCase(Astronomy.answers[row - 1]))
-                || (newCat[col - 1].trim().equalsIgnoreCase("Sports")   && ans.equalsIgnoreCase(Sport.answers[row - 1]))) {
-            points[whichPlayer(buzzed)] += row * 100;
-            System.out.println("Congratulations! You answered the question correctly!");
-            board[row - 1][col - 1] = 0;
-        } else {
-            System.out.println("You got it wrong. ");
-            points[whichPlayer(buzzed)] -= row * 100;
-            if (totalPlayers == 1) {
-                board[row - 1][col - 1] = 0;
-                System.out.println("The correct answer is: ");
-                if ((newCat[col - 1].trim().equals("Nature"))) {
-                    System.out.println(Nature.answers[row - 1]); }
-                if ((newCat[col - 1].trim().equalsIgnoreCase("Math"))) {
-                    System.out.println(Mathematics.answers[row - 1]); }
-                if ((newCat[col - 1].trim().equalsIgnoreCase("Science"))) {
-                    System.out.println(Sci.answers[row - 1]); }
-                if ((newCat[col - 1].trim().equalsIgnoreCase("History"))) {
-                    System.out.println(History.answers[row - 1]); }
-                if ((newCat[col - 1].trim().equalsIgnoreCase("Logic"))) {
-                    System.out.println(Misc.answers[row - 1]); }
-                if ((newCat[col - 1].trim().equalsIgnoreCase("StuyTrivia"))) {
-                    System.out.println(Stuy.answers[row - 1]); }
-                if ((newCat[col - 1].trim().equalsIgnoreCase("Literature"))) {
-                    System.out.println(Literature.answers[row - 1]); }
-                if ((newCat[col - 1].trim().equalsIgnoreCase("Cheese"))) {
-                    System.out.println(Cheese.answers[row - 1]); }
-                if ((newCat[col - 1].trim().equalsIgnoreCase("China"))) {
-                    System.out.println(China.answers[row - 1]); }
-                if ((newCat[col - 1].trim().equalsIgnoreCase("Compsci"))) {
-                    System.out.println(CompSci.answers[row - 1]); }
-                if ((newCat[col - 1].trim().equalsIgnoreCase("Geography"))) {
-                    System.out.println(Geography.answers[row - 1]); }
-                if ((newCat[col - 1].trim().equalsIgnoreCase("Pop"))) {
-                    System.out.println(Impossible.answers[row - 1]);
-                    System.out.println("\nDisclaimer: Pop was short for Impossible c:");
-                }
-                if ((newCat[col - 1].trim().equalsIgnoreCase("Women"))) {
-                    System.out.println(Women.answers[row - 1]); }
-                if ((newCat[col - 1].trim().equalsIgnoreCase("USA"))) {
-                    System.out.println(USA.answers[row - 1]); }
-                if ((newCat[col - 1].trim().equalsIgnoreCase("College"))) {
-                    System.out.println(Universities.answers[row - 1]); }
-                if ((newCat[col - 1].trim().equalsIgnoreCase("Plays"))) {
-                    System.out.println(Theatre.answers[row - 1]); }
-                if ((newCat[col - 1].trim().equalsIgnoreCase("Food"))) {
-                    System.out.println(Food.answers[row - 1]); }
-                if ((newCat[col - 1].trim().equalsIgnoreCase("Tech"))) {
-                    System.out.println(Technology.answers[row - 1]); }
-                if ((newCat[col - 1].trim().equalsIgnoreCase("Shows"))) {
-                    System.out.println(Shows.answers[row - 1]); }
-                if ((newCat[col - 1].trim().equalsIgnoreCase("Music"))) {
-                    System.out.println(Music.answers[row - 1]); }
-                if ((newCat[col - 1].trim().equalsIgnoreCase("Earth"))) {
-                    System.out.println(Earth.answers[row - 1]); }
-                if ((newCat[col - 1].trim().equalsIgnoreCase("Culture"))) {
-                    System.out.println(Culture.answers[row - 1]); }
-                if ((newCat[col - 1].trim().equalsIgnoreCase("Composers"))) {
-                    System.out.println(Composers.answers[row - 1]); }
-                if ((newCat[col - 1].trim().equalsIgnoreCase("Space"))) {
-                    System.out.println(Astronomy.answers[row - 1]); }
-                if ((newCat[col - 1].trim().equalsIgnoreCase("Sports"))) {
-                    System.out.println(Sport.answers[row - 1]); }
-
-            }
-        }
-        sortRank();
-    }
-
-    /*
-     *This method takes in an int array and an input and checks that it is not repeating.
-     *it is used in categoryChooser to makeQuesAns sure that the index is not repeating before appending it to the ind array
-     */
-    public boolean checkArray(int[] arr, int input) {
-        boolean retBool = true;
-        for (int i = 0; i < arr.length; i++) {
-            if (arr[i] == input) {
-                return false;
-            }
-        }
-        return retBool;
-    }
-
-    /*
-     * categoryChooser randomly generates a number between 0 and the length of the categories instance variable.
-     * then it returns an int array of randomly generated numbers that are not repeating.
-     * these numbers represent the index of the category in the categories instance variable
-     */
-    public int[] categoryChooser(String[] categories, int[] ind) {
-        //Randomly generates a number and checks that it is not repeating.
-        //this is used to randomly generate categories.
-        int ctr = 0;
-        while (ctr < 5) {
-            int rand = (int) (Math.random() * categories.length);
-            if (checkArray(ind, rand)) {
-                ind[ctr] = rand;
-                ctr += 1;
-            } else {
-                ctr += 0;
-            }
-        }
-        return ind;
-    }
-
-    /*
-     *This method calls category chooser and fills the String array answer with the corresponding categories of the ind array
-     * that is generated using categoryChooser and checkArray.
-     */
-    public String[] createCategory(){
-        String[] ans = new String[5];
-        int[] ind = new int[5];
-        ind = categoryChooser(categories, ind);
-        for (int i = 0; i < 5; i++) {
-            ans[i] = categories[ind[i]] + "";
-        }
-        return ans;
-    }
-
-
-    //Overwritten toString that prints the game board headers
-    public String toString() {
-        //Adds the category names
-        String ans = "";
-        for (String category : newCat) {//newcat is an instance variable array that is randomly generated
-            ans += String.format("%-11s", category);
-        }
-        ans += "\n";
-        return ans;
-    }
-
-    public String printCustom() {
-        String retString = "";
-        for (String category : Custom.category) {//Custom.category is an instance variable array inside a subclass
-            retString += String.format("%-11s", category);
-        }
-        retString += "\n";
-        return retString;
-    }
-
-    /*
-     *This method is similar to the method we previously wrote when we were making the 2D array utils class.
-     *it populates a 2D array with the points.
-     */
-    public int[][] pointTable(int[][] board) {
-        //Creates the two d array that will be used to print the points.
-        for (int row = 0; row < board.length; row++) {
-            for (int col = 0; col < board[row].length; col++) {
-                board[row][col] = (row + 1) * 100;
-            }
-        }
-        return board;
-    }
-
-    /*
-     * This method is similaar to the method we previously wrote when we were making the 2D array utils class.
-     * It loops through a 2D array and prints it out in the form of a table.
-     */
-    public static void print2(int[][] board) {
-        //prints two d array with a tab in between
-        for (int[] k : board) {
-            for (int j : k) {
-                if (j != 0)
-                    System.out.print(j);
-                else
-                    System.out.printf("%3s", "");
-                System.out.printf("%8s", "");
-            }
-            System.out.println();
-        }
-    }
-
-    /*
-     *String of each player ordered in terms of their points
-     */
-    public void sortRank() {
-        if (totalPlayers == 1 ) {
-            System.out.println("\nYour points: " + points[0]);
-            System.out.println(comments(points[0]));
-            return;
-        }
-        boolean[] accessed = new boolean[totalPlayers];
-        System.out.println("\n====================\nLeaderboard:\n");
-        for (int i = 0; i < totalPlayers; i++) {
-            int maxPlace = -1;
-            for (int j = 0; j < totalPlayers; j++)
-                if (!accessed[j]) {
-                    maxPlace = j;
-                    break;
-                }
-            if (maxPlace == -1)
-                System.out.println("SOMETHING WENT WRONG: no new parts");
-
-            for (int j = maxPlace; j < totalPlayers; j++)
-                if (!accessed[j] && points[maxPlace] < points[j])
-                    maxPlace = j;
-
-            accessed[maxPlace] = true;      // min place is used, do not repeat again
-
-            System.out.println(playerNames[maxPlace] + " -- " + points[maxPlace]);
-        }
-        System.out.println("====================");
-
-        /*
-        for (int i = 0; i < playerNames.length -1 ; i++) {
-            if (points[i] < points[i + 1]) {
-                //switches points
-                int temp = points[i];
-                points[i] = points[i + 1];
-                points[i + 1] = temp;
-                //switches playerNames when points are switched
-                String temps = playerNames[i];
-                playerNames[i] = playerNames[i + 1];
-                playerNames[i + 1] = temps;
-                //System.out.println("I ran!");
-                //System.out.println(points[i]);
-            }
-        }
-
-        if (totalPlayers == 1 ) {
-            System.out.println("\nYour points: " + points[0]);
-            System.out.println(comments(points[0]));
-        } else {
-            System.out.println("\n====================\nLeaderboard:\n");
-            for (int i = 0; i < playerNames.length; i++) {
-                System.out.println(playerNames[i] + " -- " + points[i]);
-            }
-            System.out.println("\n====================");
-        }*/
-    }
-
-    public int whichPlayer(String buzz) {
-        for (int i = 0; i < buzzer.length; i++) {
-            if (buzz.equals(buzzer[i])) {
-                return i; }
-        }
-        return 0;
-    }
-
-    public String playerToAnswer(String character) {
-        for (int x = 0; x < buzzer.length; x++) {
-            if (buzzer[x].equals(character)) {
-                return playerNames[x];
-            }
-        }
-        return "Error";
-    }
-
-    public boolean hasAnswered(String character) {
-        for (int x = 0; x < buzzer.length; x++)
-            if (buzzer[x].equals(character) && !buzzers[x]) {
-                buzzers[x] = true;
-                return false;
-            }
-
-        return true;
-    }
-
-    public String comments(int point) {
-        if (point < -1000) {
-            return "And you call yourself a Stuyvesant student?"; }
-        else if (point < -500) {
-            return "Almost beyond hope - Selling 1 point for $1, please find Ms. D for change"; }
-        else if (point < 0) {
-            return "We offer ARISTA and AIS Tutoring to cater to your every needs. Academic needs."; }
-        else if (point > 2000) {
-            return "Average"; }
-        return "";
-    }
 
 
     public static void main(String[] args) {
         Woo jeopardy = new Woo();
-        //System.out.println(jeopardy.categories.length);
         jeopardy.newGame();
     }
 }

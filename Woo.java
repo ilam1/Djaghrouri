@@ -129,7 +129,7 @@ public class Woo {
                 e.printStackTrace();
             }
             if (totalPlayers > 1) {
-                System.out.println("\n" + playerNames[i] + " please select your ONE CHARACTER desired buzzer");
+                System.out.println("\n" + playerNames[i] + " please select your ONE CHARACTER desired buzzer (e.g. a)");
 
                 while (buzzer[i] == null) {
                     boolean any = false;
@@ -335,7 +335,9 @@ public class Woo {
                             e.printStackTrace();
                         }
                         while (hasAnswered(buzzed)) {   //playerToAnswer(buzzed).equals("Error")
-                            System.out.println("\nNo one has that buzzer!! Buzz again! Don't remember your buzzer?? Type \"Buzzer\".\n");
+			    if (!buzzed.equalsIgnoreCase("Buzzer"))
+				System.out.println("\nNo one has that buzzer!!");
+			    System.out.println("Playing players buzz again! Not sure? Type \"Buzzer\".\n");
                             try {
                                 buzzed = in.readLine().trim();
                                 if (buzzed.equalsIgnoreCase("Buzzer"))
@@ -417,7 +419,7 @@ public class Woo {
                 buzzers = new boolean[totalPlayers];        // nobody attempted this problem yet
 
 
-                while (true) {                              // until somebody gets it right
+                while (true) {                              // until somebody answers the question right
                     int count = 0;      // how many people still have a buzzer
                     for (int i = 0; i < totalPlayers; i++)
                         if (!buzzers[i]) {
@@ -429,7 +431,7 @@ public class Woo {
                     printQues(col, row);
 
                     if (totalPlayers > 1 && count > 1) {
-                        System.out.println("Buzz to answer the question!  Don't remember your buzzer?? Type \"Buzzer\".");
+                        System.out.println("Buzz to answer the question!  Not sure? Don't Remember? Type \"Buzzer\".");
                         try {
                             buzzed = in.readLine();
                             if (buzzed.equalsIgnoreCase("Buzzer"))
@@ -441,7 +443,9 @@ public class Woo {
                             e.printStackTrace();
                         }
                         while (hasAnswered(buzzed)) {//playerToAnswer(buzzed).equals("Error")) {
-                            System.out.println("\nNo one has that buzzer!! Buzz again!  Don't remember your buzzer?? Type \"Buzzer\".\n");
+			    if (!buzzed.equalsIgnoreCase("Buzzer"))
+				System.out.println("\nNo one active has that buzzer!!");
+			    System.out.println("Playing players buzz again!  Not sure? Type \"Buzzer\".\n");
                             try {
                                 buzzed = in.readLine();
                                 if (buzzed.equalsIgnoreCase("Buzzer"))
@@ -800,7 +804,7 @@ public class Woo {
                     break;
                 }
             if (maxPlace == -1)
-                System.out.println("SOMETHING WENT WRONG: no new parts");
+                System.out.println("Congradulations, you beat the program! Please report it to the creators of this game :)");
 
             for (int j = maxPlace; j < totalPlayers; j++)
                 if (!accessed[j] && points[maxPlace] < points[j])
@@ -875,18 +879,27 @@ public class Woo {
 
 
         while (who.size() > 1) {             // until there is one
-            System.out.println("~~  Instant Death  ~~\n\tFinal Jeopardy");
+            System.out.println("\n~~  Instant Death  ~~\n\tFinal Jeopardy");
             System.out.println("What is the name of Reddit's alien?");
 
-            System.out.println("Only the best may play  \nRemember your buzzers");
+            System.out.println("Only the best may play  \nRemember your buzzers!!");
             for (int i = 0; i < who.size(); i++)
                 System.out.printf("%-10s -> %s%n", who.get(i), whoChar.get(i));
+	    System.out.print("BUZZ IN");
+	    for (int i = 0; i < 3; i++) {
+		try {
+		    Thread.sleep(1000); //What gives the 1 second interval
+		} catch (InterruptedException ignored) {}
+		System.out.print(".");
+	    }
+	    System.out.print("\nNOW");
+	    
             buzzed = "";
             try {
                 while (true) {
                     buzzed = in.readLine();
                     if (!whoChar.contains(buzzed))
-                        System.out.println("No winner has that buzzer!! Buzz again!");
+                        System.out.println("No playing winner has that buzzer!! Buzz again!");
                     else
                         break;
                 }
@@ -896,14 +909,19 @@ public class Woo {
             if ("snoo".equalsIgnoreCase(Keyboard.readString())) {
                 for (int i = 0; i < totalPlayers; i++)
                     if (buzzer[i].equalsIgnoreCase(buzzed))
-                        points[i]++;        // most frustrating one point
+                        points[i]++;        // adds one point = victory
                 break;
             } else {
                 who.remove(whoChar.indexOf(buzzed));
                 whoChar.remove(buzzed);
+		for (int i = 0; i < totalPlayers; i++)
+                    if (buzzer[i].equalsIgnoreCase(buzzed))
+			points[i]--;        // loses one point = defeat
+		
             }
         }
         System.out.println("Thank you for playing Jeopardy.  We have a winner~~");
+	System.out.println("\nThe winner is: " + who.get(0));
         sortRank();
     }
 

@@ -109,27 +109,6 @@ public class Woo {
         makeQuesAns(Custom.questions3, Custom.answers3, 2);
         makeQuesAns(Custom.questions4, Custom.answers4, 3);
         makeQuesAns(Custom.questions5, Custom.answers5, 4);
-
-        /*
-        makeQues1(Custom.questions1,0);
-        //System.out.println("PRINTING Q1:");
-        //testPrintArr(Custom.questions1);
-        makeAns1(Custom.answers1,0);
-        //System.out.println("PRINTING A1:");
-        //testPrintArr(Custom.answers1);
-        makeQues1(Custom.questions2,1);
-        //System.out.println("PRINTING Q2:");
-        //testPrintArr(Custom.questions2);
-        makeAns1(Custom.answers2,1);
-        //System.out.println("PRINTING A2:");
-        //testPrintArr(Custom.answers2);
-        makeQues1(Custom.questions3,2);
-        makeAns1(Custom.answers3,2);
-        makeQues1(Custom.questions4,3);
-        makeAns1(Custom.answers4,3);
-        makeQues1(Custom.questions5,4);
-        makeAns1(Custom.answers5,4);
-        */
     }
     /*
      *This methos is just used to test whether or not the arrays are being populated or not.
@@ -347,7 +326,7 @@ public class Woo {
                 printCustomQues(col, row);
 
                 if (totalPlayers > 1) {
-                    System.out.println("Buzz to answer the question!");
+                    System.out.println("Buzz to answer the question! Don't remember your buzzer?? Type \"Buzzer\".");
                     try {
                         buzzed = in.readLine();
                         if (buzzed.equalsIgnoreCase("Buzzer"))
@@ -360,7 +339,7 @@ public class Woo {
                         e.printStackTrace();
                     }
                     while (hasAnswered(buzzed)) {   //playerToAnswer(buzzed).equals("Error")
-                        System.out.println("\nNo one has that buzzer!! Buzz again!\n");
+                        System.out.println("\nNo one has that buzzer!! Buzz again! Don't remember your buzzer?? Type \"Buzzer\".\n");
                         try {
                             buzzed = in.readLine();
                             if (buzzed.equalsIgnoreCase("Buzzer"))
@@ -439,7 +418,7 @@ public class Woo {
                 printQues(col, row);
 
                 if (totalPlayers > 1) {
-                    System.out.println("Buzz to answer the question!");
+                    System.out.println("Buzz to answer the question!  Don't remember your buzzer?? Type \"Buzzer\".");
                     try {
                         buzzed = in.readLine();
                         if (buzzed.equalsIgnoreCase("Buzzer"))
@@ -450,7 +429,7 @@ public class Woo {
                         e.printStackTrace();
                     }
                     while (hasAnswered(buzzed)) {//playerToAnswer(buzzed).equals("Error")) {
-                        System.out.println("\nNo one has that buzzer!! Buzz again!\n");
+                        System.out.println("\nNo one has that buzzer!! Buzz again!  Don't remember your buzzer?? Type \"Buzzer\".\n");
                         try {
                             buzzed = in.readLine();
                             if (buzzed.equalsIgnoreCase("Buzzer"))
@@ -822,33 +801,6 @@ public class Woo {
             System.out.println(playerNames[maxPlace] + " -- " + points[maxPlace]);
         }
         System.out.println("====================");
-
-        /*
-        for (int i = 0; i < playerNames.length -1 ; i++) {
-            if (points[i] < points[i + 1]) {
-                //switches points
-                int temp = points[i];
-                points[i] = points[i + 1];
-                points[i + 1] = temp;
-                //switches playerNames when points are switched
-                String temps = playerNames[i];
-                playerNames[i] = playerNames[i + 1];
-                playerNames[i + 1] = temps;
-                //System.out.println("I ran!");
-                //System.out.println(points[i]);
-            }
-        }
-
-        if (totalPlayers == 1 ) {
-            System.out.println("\nYour points: " + points[0]);
-            System.out.println(comments(points[0]));
-        } else {
-            System.out.println("\n====================\nLeaderboard:\n");
-            for (int i = 0; i < playerNames.length; i++) {
-                System.out.println(playerNames[i] + " -- " + points[i]);
-            }
-            System.out.println("\n====================");
-        }*/
     }
 
     public int whichPlayer(String buzz) {
@@ -893,7 +845,6 @@ public class Woo {
 
     public static void main(String[] args) {
         Woo jeopardy = new Woo();
-        //System.out.println(jeopardy.categories.length);
         jeopardy.newGame();
     }
 }

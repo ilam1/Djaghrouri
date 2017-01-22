@@ -9,7 +9,6 @@
 
 import java.io.*;
 import java.util.*;
-
 import cs1.Keyboard;
 
 public class Woo {
@@ -60,13 +59,10 @@ public class Woo {
         for (int i = 0; i < 3; i++) {
             try {
                 Thread.sleep(1000); //What gives the 1 second interval
-            } catch (InterruptedException ex) {
-            }
+            } catch (InterruptedException ignored) {}
             System.out.print(".");
         }
-        System.out.println("You are now playing JEOPARDY \nDedicated to Ms. Djaghrouri (≧∀≦)\n");
-        System.out.println();
-
+        System.out.println("You are now playing JEOPARDY \nDedicated to Ms. Djaghrouri (≧∀≦)\n\n");
     }
     /*
       This method populates the category array in Custom based on what the user inputs.
@@ -139,7 +135,7 @@ public class Woo {
                     boolean any = false;
                     String buzzerName="";
                     try {
-                        buzzerName = in.readLine();
+                        buzzerName = in.readLine().trim().substring(0,1);
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
@@ -171,13 +167,10 @@ public class Woo {
 
         try {
             option = Integer.parseInt(in.readLine());
-        } catch (IOException ignored) {
-        }
+        } catch (IOException ignored) {}
 
-        if (option == 1) {
+        if (option == 1)
             choice1();
-
-        }
 
         System.out.println(ANSI_PURPLE + "\nHow many players are playing in total?" + ANSI_RESET);
         try {
@@ -194,15 +187,9 @@ public class Woo {
         //Updates the array playerNames to the size of the number of players
 
         setBuzzer(totalPlayers);
-        //testPrintArr(buzzer);
-        //testPrintArr(playerNames);
 
         if (option == 2) {
-            if (totalPlayers < 2) {
-                System.out.println("\nWould you like to play a randomized game or customized game?");
-            }
-            else {
-                System.out.println("\nWould you all like to play a randomized game or a customized game?"); }
+            System.out.printf("\nWould you %s like to play a randomized game or a customized game?%n", (totalPlayers == 1) ? "" : "all" );
             System.out.println("\t1: Random Game\n\t2: Customized Game");
 
             String choice = "";
@@ -224,10 +211,7 @@ public class Woo {
                         for (String str : newCat)
                             if (s.equalsIgnoreCase(str))
                                 exists = true;
-                        if (exists)
-                            System.out.printf("%-12s", "");
-                        else
-                            System.out.printf("%-12s", s);
+                        System.out.printf("%-12s", exists ? "" : s);
                         if (i++ == 4) {
                             System.out.println();
                             i = 0;
@@ -238,8 +222,7 @@ public class Woo {
                     String str = "";
                     try {
                         str = in.readLine().trim().toUpperCase();
-                    } catch (IOException ignored) {
-                    }
+                    } catch (IOException ignored) {}
                     boolean invalid = false;
                     for (String s : newCat)
                         if (str.equals(s))
@@ -265,12 +248,19 @@ public class Woo {
                 }
             }
         }
-        System.out.println("\n*            *            *\n\nThank you, ladies and gentlemen. Hello & welcome to Jeopardy!, America's favorite answer-and-question game. Yes, we give the QUESTIONS, and then it's up to these " + totalPlayers + " contestants to come up with the ANSWERS. Players, as you know, whenever you recognize an answer you're free to ring in; but, I want to warn you about the Jeopardy!: if you are wrong, the value of the question will be deducted from your winnings. Right now, put your hands on the buttons, but please don't ring in until the answer is exposed. If all " + totalPlayers + " of you are ready, then let's play Jeopardy!");
+        System.out.println("\n*            *            *\n\nThank you, ladies and gentlemen. Hello & welcome to " +
+                "Jeopardy!, America's favorite answer-and-question game. Yes, we give the QUESTIONS, and then it's " +
+                "up to these " + totalPlayers + " contestants to come up with the ANSWERS. Players, as you know, " +
+                "whenever you recognize an answer you're free to ring in; but, I want to warn you about the " +
+                "Jeopardy!: if you are wrong, the value of the question will be deducted from your winnings. " +
+                "Right now, put your hands on the buttons, but please don't ring in until the answer is exposed. " +
+                "If all " + totalPlayers + " of you are ready, then let's play Jeopardy!");
 
         points = new int[totalPlayers];//Updates the points array to number of players in the game
         if (option == 1) {
             pointTable(board);
-            for (int ind = 0; ind < (board[0].length) * ((board.length) - 1); ind++) {
+            for (int ind = 0; ind < (board[0].length) * ((board.length)); ind++) {
+                sortRank();
                 System.out.println();
                 System.out.println(printCustom());
                 print2(board);
@@ -322,49 +312,60 @@ public class Woo {
 
                 buzzers = new boolean[totalPlayers];        // nobody attempted this problem yet
 
-
-                printCustomQues(col, row);
-
-                if (totalPlayers > 1) {
-                    System.out.println("Buzz to answer the question! Don't remember your buzzer?? Type \"Buzzer\".");
-                    try {
-                        buzzed = in.readLine();
-                        if (buzzed.equalsIgnoreCase("Buzzer"))
-                            for (int i = 0; i < totalPlayers; i++)
-                                System.out.printf("%-10s -> %s%n", playerNames[i], buzzer[i]);
-                        //.substring(0,1);
+                while (true) {                              // until somebody gets it right
 
 
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
-                    while (hasAnswered(buzzed)) {   //playerToAnswer(buzzed).equals("Error")
-                        System.out.println("\nNo one has that buzzer!! Buzz again! Don't remember your buzzer?? Type \"Buzzer\".\n");
+                    int count = 0;      // how many people still have a buzzer
+                    for (int i = 0; i < totalPlayers; i++)
+                        if (!buzzers[i]) {
+                            count++;
+                            buzzed = buzzer[i];     // only matters if last person buzzed, else overwritten below
+                        }
+                    if (count == 0)
+                        break;
+
+                    printCustomQues(col, row);
+                    if (totalPlayers > 1 && count > 1) {
+                        System.out.println("Buzz to answer the question! Don't remember your buzzer?? Type \"Buzzer\".");
                         try {
-                            buzzed = in.readLine();
+                            buzzed = in.readLine().trim();
                             if (buzzed.equalsIgnoreCase("Buzzer"))
                                 for (int i = 0; i < totalPlayers; i++)
-                                    System.out.printf("%-10s -> %s%n", playerNames[i], buzzer[i]);
-
+                                    if (!buzzers[i])
+                                        System.out.printf("%-10s -> %s%n", playerNames[i], buzzer[i]);
                         } catch (IOException e) {
                             e.printStackTrace();
                         }
+                        while (hasAnswered(buzzed)) {   //playerToAnswer(buzzed).equals("Error")
+                            System.out.println("\nNo one has that buzzer!! Buzz again! Don't remember your buzzer?? Type \"Buzzer\".\n");
+                            try {
+                                buzzed = in.readLine().trim();
+                                if (buzzed.equalsIgnoreCase("Buzzer"))
+                                    for (int i = 0; i < totalPlayers; i++)
+                                        if (!buzzers[i])
+                                            System.out.printf("%-10s -> %s%n", playerNames[i], buzzer[i]);
+
+                            } catch (IOException e) {
+                                e.printStackTrace();
+                            }
+                        }
                     }
+                    System.out.println(playerToAnswer(buzzed) + " buzzed, so you get to answer!");
 
-                    System.out.println(playerToAnswer(buzzed) + " buzzed first, so you get to answer!");
-
+                    hasAnswered(buzzed);
+                    System.out.print("Ans: ");
+                    String ans = Keyboard.readString();
+                    if (checkCustomAns(ans, col, row, count == 1))
+                        break;
                 }
-
-                String ans = Keyboard.readString();
-                checkAns(ans, col, row);
+                finalJeopardy();
             }
         }
 
         //------------------------------MARKER FOR HELP-------
         else {
-
             pointTable(board);
-            for (int ind = 0; ind < (board[0].length) * ((board.length) - 1); ind++) {
+            for (int ind = 0; ind < board[0].length * board.length; ind++) {
                 System.out.println();
                 System.out.println(toString());
                 print2(board);
@@ -444,9 +445,10 @@ public class Woo {
                 }
 
                 String ans = Keyboard.readString();
-                checkAns(ans, col, row);//implementing modular design
+                checkAns(ans, col, row, false);//implementing modular design
 
             } //ends for loop
+            finalJeopardy();
         } //ends if/else statement
     } //ends the game
     /*
@@ -539,7 +541,7 @@ public class Woo {
         }
     }
 
-    public void checkCustomAns(String ans, int col, int row) {
+    public boolean checkCustomAns(String ans, int col, int row, boolean toPrint) {
         if (col == 1 && ans.equalsIgnoreCase(Custom.answers1[row - 1])
                 || col == 2 && ans.equalsIgnoreCase(Custom.answers2[row - 1])
                 || col == 3 && ans.equalsIgnoreCase(Custom.answers3[row - 1])
@@ -549,26 +551,28 @@ public class Woo {
             points[whichPlayer(buzzed)] += row * 100;
             System.out.println("Congratulations! You answered the question correctly!");
             board[row - 1][col - 1] = 0;
+            return true;
         }
         else {
             System.out.println("You got it wrong. ");
             points[whichPlayer(buzzed)] -= row * 100;
-            if (totalPlayers == 1) {
+            if (totalPlayers == 1 || toPrint) {
                 board[row - 1][col - 1] = 0;
                 System.out.println("The correct answer was: ");
-                if (col == 1 && ans.equalsIgnoreCase(Custom.answers1[row - 1]))
+                if (col == 1 )
                     { System.out.println(Custom.answers1[row - 1]); }
-                if (col == 2 && ans.equalsIgnoreCase(Custom.answers2[row - 1]))
+                if (col == 2 )
                     { System.out.println(Custom.answers2[row - 1]); }
-                if (col == 3 && ans.equalsIgnoreCase(Custom.answers3[row - 1]))
+                if (col == 3 )
                     { System.out.println(Custom.answers3[row - 1]); }
-                if (col == 4 && ans.equalsIgnoreCase(Custom.answers4[row - 1]))
+                if (col == 4 )
                     { System.out.println(Custom.answers4[row - 1]); }
-                if (col == 5 && ans.equalsIgnoreCase(Custom.answers5[row - 1]))
+                if (col == 5 )
                     { System.out.println(Custom.answers5[row - 1]); }
             }
+            return false;
         }
-        sortRank();
+        //sortRank();
     }
 
 
@@ -577,7 +581,7 @@ public class Woo {
      *If the user gets it right then that part of the game board disappears and the user gets the points
      *Otherwise the game prints out the correct answer.
      */
-    public void checkAns(String ans, int col, int row) {
+    public boolean checkAns(String ans, int col, int row, boolean toPrint) {
         //this if statement checks if the user's answer is correct and adds points if it is.
         if ((newCat[col - 1].trim().equalsIgnoreCase("Nature") && ans.equalsIgnoreCase(Nature.answers[row - 1]))
                 || (newCat[col - 1].trim().equalsIgnoreCase("Math")     && ans.equalsIgnoreCase(Mathematics.answers[row - 1]))
@@ -607,10 +611,11 @@ public class Woo {
             points[whichPlayer(buzzed)] += row * 100;
             System.out.println("Congratulations! You answered the question correctly!");
             board[row - 1][col - 1] = 0;
+            return true;
         } else {
             System.out.println("You got it wrong. ");
             points[whichPlayer(buzzed)] -= row * 100;
-            if (totalPlayers == 1) {
+            if (totalPlayers == 1 || toPrint) {
                 board[row - 1][col - 1] = 0;
                 System.out.println("The correct answer is: ");
                 if ((newCat[col - 1].trim().equals("Nature"))) {
@@ -635,10 +640,8 @@ public class Woo {
                     System.out.println(CompSci.answers[row - 1]); }
                 if ((newCat[col - 1].trim().equalsIgnoreCase("Geography"))) {
                     System.out.println(Geography.answers[row - 1]); }
-                if ((newCat[col - 1].trim().equalsIgnoreCase("Pop"))) {
-                    System.out.println(Impossible.answers[row - 1]);
-                    System.out.println("\nDisclaimer: Pop was short for Impossible c:");
-                }
+                if ((newCat[col - 1].trim().equalsIgnoreCase("Pop")))
+                    System.out.println(Impossible.answers[row - 1] + "\nDisclaimer: Pop was short for Impossible c:");
                 if ((newCat[col - 1].trim().equalsIgnoreCase("Women"))) {
                     System.out.println(Women.answers[row - 1]); }
                 if ((newCat[col - 1].trim().equalsIgnoreCase("USA"))) {
@@ -667,8 +670,9 @@ public class Woo {
                     System.out.println(Sport.answers[row - 1]); }
 
             }
+            return false;
         }
-        sortRank();
+        //sortRank();
     }
 
     /*
@@ -676,13 +680,10 @@ public class Woo {
      *it is used in categoryChooser to makeQuesAns sure that the index is not repeating before appending it to the ind array
      */
     public boolean checkArray(int[] arr, int input) {
-        boolean retBool = true;
-        for (int i = 0; i < arr.length; i++) {
-            if (arr[i] == input) {
+        for (int anArr : arr)
+            if (anArr == input)
                 return false;
-            }
-        }
-        return retBool;
+        return true;
     }
 
     /*
@@ -713,7 +714,7 @@ public class Woo {
         int[] ind = new int[5];
         ind = categoryChooser(categories, ind);
         for (int i = 0; i < 5; i++) {
-            ans[i] = categories[ind[i]] + "";
+            ans[i] = categories[ind[i]];
         }
         return ans;
     }
@@ -761,11 +762,7 @@ public class Woo {
         //prints two d array with a tab in between
         for (int[] k : board) {
             for (int j : k) {
-                if (j != 0)
-                    System.out.print(j);
-                else
-                    System.out.printf("%3s", "");
-                System.out.printf("%8s", "");
+                System.out.printf("%3s%8s", (j != 0) ? j : "", "");
             }
             System.out.println();
         }
@@ -796,7 +793,7 @@ public class Woo {
                 if (!accessed[j] && points[maxPlace] < points[j])
                     maxPlace = j;
 
-            accessed[maxPlace] = true;      // min place is used, do not repeat again
+            accessed[maxPlace] = true;      // max place is used, do not repeat again
 
             System.out.println(playerNames[maxPlace] + " -- " + points[maxPlace]);
         }
@@ -840,6 +837,61 @@ public class Woo {
         else if (point > 2000) {
             return "Average"; }
         return "";
+    }
+
+    public void finalJeopardy() {
+        sortRank();     // prints the final scores
+
+        int maxScore =  points[0];      // max score for a player(s)
+        ArrayList<String> who = new ArrayList<>();      // who hold the max scores
+        ArrayList<String> whoChar = new ArrayList<>();  // corresponding char
+
+        for (int i = 0; i < totalPlayers; i++)
+            if (points[i] > maxScore) {
+                maxScore = points[i];       // max score beaten, renew maxScore
+
+                who.clear();                // reset list
+                who.add(playerNames[i]);
+
+                whoChar.clear();
+                whoChar.add(buzzer[i]);
+            } else if (points[i] == maxScore) {
+                who.add(playerNames[i]);
+                whoChar.add(buzzer[i]);
+            }
+
+
+        while (who.size() > 1) {             // until there is one
+            System.out.println("~~ Instant Death ~~\n\tFinal Jeopardy");
+            System.out.println("What is the name of Reddit's alien?");
+
+            System.out.println("Only the best may play  \nRemember your buzzers");
+            for (int i = 0; i < who.size(); i++)
+                System.out.printf("%-10s -> %s%n", who.get(i), whoChar.get(i));
+            buzzed = "";
+            try {
+                while (true) {
+                    buzzed = in.readLine();
+                    if (!whoChar.contains(buzzed)) {
+                        System.out.println("No one has that buzzer!! Buzz again!");
+                        break;
+                    }
+                }
+            } catch (IOException ignored) {}
+
+            System.out.println(playerToAnswer(buzzed) + " buzzed first, so you get to answer!");
+            if ("snoo".equalsIgnoreCase(Keyboard.readString())) {
+                for (int i = 0; i < totalPlayers; i++)
+                    if (buzzer[i].equalsIgnoreCase(buzzed))
+                        points[i]++;        // most frustrating one point
+                break;
+            } else {
+                who.remove(whoChar.indexOf(buzzed));
+                whoChar.remove(buzzed);
+            }
+        }
+        System.out.println("Thank you for playing Jeopardy.  We have a winner~~");
+        sortRank();
     }
 
 

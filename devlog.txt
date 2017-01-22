@@ -275,11 +275,16 @@ Together::
 +Bayan ::
 +Irene ::
        + Now prints the answer for multiplayers if everyone answers incorrectly
-       + Implemented "buzzer" keyword, such that any user can type buzzer following prompting of buzzer to show ONLY playing players' buzzers
+       + Implemented "buzzer" keyword!! (For the forgetful. And the unconfident. And everyone in general.)
+         + Accepted when the code prompts for a buzzer (e.g. Playing players buzz again! Not sure? Don't remember? Type \"Buzzer\".\n)
+	 + Adapts to playing players (e.g. does not show the buzzer of a player that answered the question incorrectly)
+	 + Usable for a customized game and pre-written game alike
        + When a question is asked, everyone is forced to answer the question
-       + FINAL JEOPARDY! written and working (called when there is a tie for the highest points)
+       + The last player (who is the only one among total players who has yet to buzz in) does not need to buzz in
+       + FINAL JEOPARDY! newly written and functional (called when there is a tie for the highest points)
          + Uses ArrayList to keep track of Final Jeopardy players and their respective buzzers
 	 + Prints all necessary instructions
+	 + Checks the question with the answer
 	 + Uses a time interval (Thread.sleep) to add suspense
 	 + Keeps track of input and increments/ decrements points depending on the user's answers
 	 + Announces the winner at the end and ends the game

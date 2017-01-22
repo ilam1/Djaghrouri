@@ -1,0 +1,2 @@
+user.email=ilam1.stuy.edu
+user.name=ilam1

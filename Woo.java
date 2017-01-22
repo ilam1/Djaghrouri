@@ -81,43 +81,16 @@ public class Woo {
         }
         return Custom.category;
     }
-    /*
-     * This method takes in an array as a parameter and populates it with the questions that the user inputs
-     * Limits the user to only 5 questions per category
+    /**
+     * This method takes in two arrays as parameter and populates it with the questions and answer that the user inputs
+     * Limits the user to only 5 questions+answers per category
      */
-    public String[] makeQues1(String[] arr, int cat){
-        int ind=0;
-        //	int cat =0;
-
-        while(ind<5){
-            System.out.println("What is the question worth "+((ind+1)*100)+" points for the "+ Custom.category[cat]+" category");
-            arr[ind]=Keyboard.readString();
-            ind+=1;
-        }
-        //  cat+=1;
-        return arr;
-    }
-    /*
-     * This method takes in an array as a parameter and populates it with the user's answer key.
-     */
-    public String[]makeAns1(String[] arr,int cat){
-        int ind=0;
-        while(ind<5){
-            System.out.println("What is the answer worth "+((ind+1)*100)+" points for the "+ Custom.category[cat]+" category");
-            arr[ind]=Keyboard.readString();
-            ind+=1;
-        }
-        return arr;
-    }
-
     public void makeQuesAns(String[] quesArr, String[] ansArr, int cat) {
-        int ind=0;
-        while(ind<5){
+        for(int ind=0; ind<5; ind++){
             System.out.println("What is the question worth "+((ind+1)*100)+" points for the "+ Custom.category[cat]+" category");
             quesArr[ind]=Keyboard.readString();
             System.out.println("What is the answer worth "+((ind+1)*100)+" points for the "+ Custom.category[cat]+" category");
             ansArr[ind]=Keyboard.readString();
-            ind+=1;
         }
     }
 
@@ -376,14 +349,24 @@ public class Woo {
                 if (totalPlayers > 1) {
                     System.out.println("Buzz to answer the question!");
                     try {
-                        buzzed = in.readLine().substring(0,1);
+                        buzzed = in.readLine();
+                        if (buzzed.equalsIgnoreCase("Buzzer"))
+                            for (int i = 0; i < totalPlayers; i++)
+                                System.out.printf("%-10s -> %s%n", playerNames[i], buzzer[i]);
+                        //.substring(0,1);
+
+
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
                     while (hasAnswered(buzzed)) {   //playerToAnswer(buzzed).equals("Error")
                         System.out.println("\nNo one has that buzzer!! Buzz again!\n");
                         try {
-                            buzzed = in.readLine().substring(0,1);
+                            buzzed = in.readLine();
+                            if (buzzed.equalsIgnoreCase("Buzzer"))
+                                for (int i = 0; i < totalPlayers; i++)
+                                    System.out.printf("%-10s -> %s%n", playerNames[i], buzzer[i]);
+
                         } catch (IOException e) {
                             e.printStackTrace();
                         }
@@ -458,14 +441,21 @@ public class Woo {
                 if (totalPlayers > 1) {
                     System.out.println("Buzz to answer the question!");
                     try {
-                        buzzed = in.readLine().substring(0,1);
+                        buzzed = in.readLine();
+                        if (buzzed.equalsIgnoreCase("Buzzer"))
+                            for (int i = 0; i < totalPlayers; i++)
+                                System.out.printf("%-10s -> %s%n", playerNames[i], buzzer[i]);
+
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
                     while (hasAnswered(buzzed)) {//playerToAnswer(buzzed).equals("Error")) {
                         System.out.println("\nNo one has that buzzer!! Buzz again!\n");
                         try {
-                            buzzed = in.readLine().substring(0,1);
+                            buzzed = in.readLine();
+                            if (buzzed.equalsIgnoreCase("Buzzer"))
+                                for (int i = 0; i < totalPlayers; i++)
+                                    System.out.printf("%-10s -> %s%n", playerNames[i], buzzer[i]);
                         } catch (IOException e) {
                             e.printStackTrace();
                         }

@@ -259,7 +259,7 @@ public class Woo {
         points = new int[totalPlayers];//Updates the points array to number of players in the game
         if (option == 1) {
             pointTable(board);
-            for (int ind = 0; ind < (board[0].length) * ((board.length)); ind++) {
+            for (int ind = 0; ind < board[0].length * board.length; ind++) {
                 sortRank();
                 System.out.println();
                 System.out.println(printCustom());
@@ -313,8 +313,6 @@ public class Woo {
                 buzzers = new boolean[totalPlayers];        // nobody attempted this problem yet
 
                 while (true) {                              // until somebody gets it right
-
-
                     int count = 0;      // how many people still have a buzzer
                     for (int i = 0; i < totalPlayers; i++)
                         if (!buzzers[i]) {
@@ -366,6 +364,7 @@ public class Woo {
         else {
             pointTable(board);
             for (int ind = 0; ind < board[0].length * board.length; ind++) {
+                sortRank();
                 System.out.println();
                 System.out.println(toString());
                 print2(board);
@@ -416,37 +415,51 @@ public class Woo {
                         || (row == 5 && board[4][col - 1] != 0)));
 
                 buzzers = new boolean[totalPlayers];        // nobody attempted this problem yet
-                printQues(col, row);
 
-                if (totalPlayers > 1) {
-                    System.out.println("Buzz to answer the question!  Don't remember your buzzer?? Type \"Buzzer\".");
-                    try {
-                        buzzed = in.readLine();
-                        if (buzzed.equalsIgnoreCase("Buzzer"))
-                            for (int i = 0; i < totalPlayers; i++)
-                                System.out.printf("%-10s -> %s%n", playerNames[i], buzzer[i]);
 
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
-                    while (hasAnswered(buzzed)) {//playerToAnswer(buzzed).equals("Error")) {
-                        System.out.println("\nNo one has that buzzer!! Buzz again!  Don't remember your buzzer?? Type \"Buzzer\".\n");
+                while (true) {                              // until somebody gets it right
+                    int count = 0;      // how many people still have a buzzer
+                    for (int i = 0; i < totalPlayers; i++)
+                        if (!buzzers[i]) {
+                            count++;
+                            buzzed = buzzer[i];     // only matters if last person buzzed, else overwritten below
+                        }
+                    if (count == 0)
+                        break;
+                    printQues(col, row);
+
+                    if (totalPlayers > 1 && count > 1) {
+                        System.out.println("Buzz to answer the question!  Don't remember your buzzer?? Type \"Buzzer\".");
                         try {
                             buzzed = in.readLine();
                             if (buzzed.equalsIgnoreCase("Buzzer"))
                                 for (int i = 0; i < totalPlayers; i++)
-                                    System.out.printf("%-10s -> %s%n", playerNames[i], buzzer[i]);
+                                    if (!buzzers[i])
+                                        System.out.printf("%-10s -> %s%n", playerNames[i], buzzer[i]);
+
                         } catch (IOException e) {
                             e.printStackTrace();
                         }
+                        while (hasAnswered(buzzed)) {//playerToAnswer(buzzed).equals("Error")) {
+                            System.out.println("\nNo one has that buzzer!! Buzz again!  Don't remember your buzzer?? Type \"Buzzer\".\n");
+                            try {
+                                buzzed = in.readLine();
+                                if (buzzed.equalsIgnoreCase("Buzzer"))
+                                    for (int i = 0; i < totalPlayers; i++)
+                                        if (!buzzers[i])
+                                            System.out.printf("%-10s -> %s%n", playerNames[i], buzzer[i]);
+                            } catch (IOException e) {
+                                e.printStackTrace();
+                            }
+                        }
                     }
-
-                    System.out.println(playerToAnswer(buzzed) + " buzzed first, so you get to answer!");
+                    System.out.println(playerToAnswer(buzzed) + " buzzed, so you get to answer!");
+                    hasAnswered(buzzed);
+                    System.out.print("Ans: ");
+                    String ans = Keyboard.readString();
+                    if (checkAns(ans, col, row, count == 1))
+                        break;
                 }
-
-                String ans = Keyboard.readString();
-                checkAns(ans, col, row, false);//implementing modular design
-
             } //ends for loop
             finalJeopardy();
         } //ends if/else statement
@@ -862,7 +875,7 @@ public class Woo {
 
 
         while (who.size() > 1) {             // until there is one
-            System.out.println("~~ Instant Death ~~\n\tFinal Jeopardy");
+            System.out.println("~~  Instant Death  ~~\n\tFinal Jeopardy");
             System.out.println("What is the name of Reddit's alien?");
 
             System.out.println("Only the best may play  \nRemember your buzzers");
@@ -872,10 +885,10 @@ public class Woo {
             try {
                 while (true) {
                     buzzed = in.readLine();
-                    if (!whoChar.contains(buzzed)) {
-                        System.out.println("No one has that buzzer!! Buzz again!");
+                    if (!whoChar.contains(buzzed))
+                        System.out.println("No winner has that buzzer!! Buzz again!");
+                    else
                         break;
-                    }
                 }
             } catch (IOException ignored) {}
 

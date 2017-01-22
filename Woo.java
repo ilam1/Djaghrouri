@@ -157,7 +157,7 @@ public class Woo {
         }
     }
     public void newGame() {
-        //	load();
+        load();
 
         in = new BufferedReader(new InputStreamReader(System.in));
 

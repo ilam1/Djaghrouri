@@ -24,7 +24,7 @@ public class Woo {
     private int[] ind = new int[5];
     private String[] categories =
             {"Nature", "Math", "Science", "History", "Logic", "StuyTrivia",
-                    "Literature", "Cheese", "China", "CompSci", "Geography",
+                     "Cheese", "China", "CompSci", "Geography",
                     "Pop", "Women", "USA", "College", "Plays",
                     "Food", "Tech", "Shows", "Music", "Earth", "Culture",
                     "Literature", "Space", "Sports"};

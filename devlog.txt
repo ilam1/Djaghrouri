@@ -268,6 +268,7 @@ Together::
        + When "creating your own game," the answer to a question is asked immediately after asking the question, instead of asking for all the questions then all the answers
        + Colors are now possible! (Not yet completely implemented because of deliberations between purple/pink or cyan)
 +Jason :: 
+	+ Fixed some small errors with user created game
 +==============================================================
 +2017-01-23
 +--------------------------------------------------------------
@@ -289,6 +290,7 @@ Together::
 	 + Keeps track of input and increments/ decrements points depending on the user's answers
 	 + Announces the winner at the end and ends the game
 +Jason :: 
+	+ Reupdated flow and uml to actually reflect current state of things
 +==============================================================
 +2017-01-23
 +--------------------------------------------------------------

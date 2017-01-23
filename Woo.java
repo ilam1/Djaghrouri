@@ -576,7 +576,8 @@ public class Woo {
         }
         else {
             System.out.println("You got it wrong. ");
-            points[whichPlayer(buzzed)] -= row * 100;
+	    if (totalPlayers > 1) {
+		points[whichPlayer(buzzed)] -= row * 100; }
             if (totalPlayers == 1 || toPrint) {
                 board[row - 1][col - 1] = 0;
                 System.out.println("The correct answer was: ");

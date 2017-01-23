@@ -295,15 +295,15 @@ public class Woo {
                     System.out.println("\n" + ANSI_GREEN +"How many points would you like to play for? " +
                             "Please type in the number before the points.\n" + ANSI_RESET);
                     if (board[0][col - 1] != 0)
-                        System.out.println("\t" + ANSI_RED "1: 100" + ANSI_RESET);
+                        System.out.println("\t" + ANSI_RED + "1: 100" + ANSI_RESET);
                     if (board[1][col - 1] != 0)
-                        System.out.println(("\t" + ANSI_RED "2: 200" + ANSI_RESET);
+                        System.out.println(("\t" + ANSI_RED + "2: 200" + ANSI_RESET);
                     if (board[2][col - 1] != 0)
-                        System.out.println(("\t" + ANSI_RED "3: 300" + ANSI_RESET);
+                        System.out.println(("\t" + ANSI_RED + "3: 300" + ANSI_RESET);
                     if (board[3][col - 1] != 0)
-                        System.out.println(("\t" + ANSI_RED "4: 400" + ANSI_RESET);
+                        System.out.println(("\t" + ANSI_RED + "4: 400" + ANSI_RESET);
                     if (board[4][col - 1] != 0)
-                        System.out.println(("\t" + ANSI_RED "5: 500" + ANSI_RESET);
+                        System.out.println(("\t" + ANSI_RED + "5: 500" + ANSI_RESET);
                     row = Keyboard.readInt();
                 } while (!((row == 1 && board[0][col - 1] != 0)
                         || (row == 2 && board[1][col - 1] != 0)
@@ -352,7 +352,7 @@ public class Woo {
                         }
                     }
                     if (totalPlayers > 1) {
-                        System.out.println(playerToAnswer(buzzed) + " buzzed, so you get to answer!");
+                        System.out.println(ANSI_GREEN + playerToAnswer(buzzed) + " buzzed, so you get to answer!");
                         hasAnswered(buzzed);
                     }
                     System.out.print("Ans: ");

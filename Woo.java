@@ -62,7 +62,7 @@ public class Woo {
             } catch (InterruptedException ignored) {}
             System.out.print(ANSI_GREEN + "." + ANSI_RESET);
         }
-        System.out.println("\n" + ANSI_YELLOW + "You are now playing JEOPARDY \nDedicated to Ms. Djaghrouri (≧∀≦)" + ANSI_RESET + "\n\n" );
+        System.out.println("\n" + ANSI_GREEN + "You are now playing JEOPARDY \nDedicated to Ms. Djaghrouri (≧∀≦)" + ANSI_RESET + "\n\n" );
     }
     /*
       This method populates the category array in Custom based on what the user inputs.

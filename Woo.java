@@ -483,7 +483,7 @@ public class Woo {
         else if (col == 2) { System.out.println(Custom.questions2[row-1]); }
         else if (col == 3) { System.out.println(Custom.questions3[row-1]); }
         else if (col == 4) { System.out.println(Custom.questions4[row-1]); }
-        else if (col == 5) { System.out.println(Custom.questions5[row-1]) + ANSI_RESET; }
+        else if (col == 5) { System.out.println(Custom.questions5[row-1] + ANSI_RESET); }
     }
 
     public void printQues(int col, int row) {

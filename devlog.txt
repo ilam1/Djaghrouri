@@ -29,6 +29,7 @@ wow we so BOSS bc...
 + Utilized both try/ catch blocks and while loops as a precaution to bad input (There's more than one way to skin a cow!)
 + We finally managed to have the board print out lining up with the categories
 +In order for the user to create their own jeopardy game we created a class called Custom.java which also extends Category, and created methods that populate the questions, answers, and category arrays. 
+
 +UNRESOLVED ISSUES
 +~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 + As opposed to our original beliefs, the current version only supports a single player. To incorporate a multi-player/ team status (as
@@ -37,7 +38,8 @@ originally intended) we need to keep track of which player is currently playing 
 +How to create a new file in order to let the user make their own game.
 +How to implement a timer
 +The leaderboard is not working correctly. When a player gets a question right they get the points for the first turn but by the second turn it updates the wrong player's point value. 
-+(Personal issue of Irene) Commits made from home are recognized as commits by an exterior account, and not under the ilam1 github account
++(Personal issue of Irene) Commits made from home are recognized as commits by an exterior account, and not under the ilam1 github account 
+  + Update: Words of advice from PATRICK CHAN resolved this issue as of 1/21/17
 
 +COOL STUFF LEARNED
 +~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -51,7 +53,7 @@ originally intended) we need to keep track of which player is currently playing 
         } catch (NumberFormatException e) {
 	    e. printStackTrace();
 	}	
-
++ Formatted printing (System.out.printf)	
 
 +MID-DEVELOPMENT DESIGN CHANGES
 +~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -68,6 +70,7 @@ originally intended) we need to keep track of which player is currently playing 
 + Having descriptive comments, especially when working in a group, is quite resourceful.
 + Incorporating modular design is much much easier to follow than having one method that contains hundreds of lines of code.
 + Looking back at other homeworks can really help. You never know when you can incorporate methods that you've already coded. 
+
 + ______   ______   __   __   __       ______   _______     
 +/_____/\ /_____/\ /_/\ /_/\ /_/\     /_____/\ /______/\    
 +\:::_ \ \\::::_\/_\:\ \\ \ \\:\ \    \:::_ \ \\::::__\/__  
@@ -265,6 +268,29 @@ Together::
        + When "creating your own game," the answer to a question is asked immediately after asking the question, instead of asking for all the questions then all the answers
        + Colors are now possible! (Not yet completely implemented because of deliberations between purple/pink or cyan)
 +Jason :: 
+	+ Fixed some small errors with user created game
++==============================================================
++2017-01-23
++--------------------------------------------------------------
+Together::
++Bayan ::
++Irene ::
+       + Now prints the answer for multiplayers if everyone answers incorrectly
+       + Implemented "buzzer" keyword!! (For the forgetful. And the unconfident. And everyone in general.)
+         + Accepted when the code prompts for a buzzer (e.g. Playing players buzz again! Not sure? Don't remember? Type \"Buzzer\".\n)
+	 + Adapts to playing players (e.g. does not show the buzzer of a player that answered the question incorrectly)
+	 + Usable for a customized game and pre-written game alike
+       + When a question is asked, everyone is forced to answer the question
+       + The last player (who is the only one among total players who has yet to buzz in) does not need to buzz in
+       + FINAL JEOPARDY! newly written and functional (called when there is a tie for the highest points)
+         + Uses ArrayList to keep track of Final Jeopardy players and their respective buzzers
+	 + Prints all necessary instructions
+	 + Checks the question with the answer
+	 + Uses a time interval (Thread.sleep) to add suspense
+	 + Keeps track of input and increments/ decrements points depending on the user's answers
+	 + Announces the winner at the end and ends the game
++Jason :: 
+	+ Reupdated flow and uml to actually reflect current state of things
 +==============================================================
 +2017-01-23
 +--------------------------------------------------------------

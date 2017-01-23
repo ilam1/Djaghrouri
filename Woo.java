@@ -750,7 +750,8 @@ public class Woo {
             ans += String.format("%-11s", category);
         }
         ans += "\n";
-        return ans;
+        String retAns = ANSI_CYAN + ans + ANSI_RESET;
+        return retAns;
     }
 
     public String printCustom() {
@@ -759,7 +760,8 @@ public class Woo {
             retString += String.format("%-11s", category);
         }
         retString += "\n";
-        return retString;
+        String colorRetString = ANSI_CYAN + retString + ANSI_RESET;
+        return colorRetString;
     }
 
     /*

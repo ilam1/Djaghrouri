@@ -24,7 +24,7 @@ public class Woo {
     private int[] ind = new int[5];
     private String[] categories =
             {"Nature", "Math", "Science", "History", "Logic", "StuyTrivia",
-                    "Literature", "Cheese", "China", "CompSci", "Geography",
+                     "Cheese", "China", "CompSci", "Geography",
                     "Pop", "Women", "USA", "College", "Plays",
                     "Food", "Tech", "Shows", "Music", "Earth", "Culture",
                     "Literature", "Space", "Sports"};
@@ -157,7 +157,7 @@ public class Woo {
         }
     }
     public void newGame() {
-        //	load();
+        load();
 
         in = new BufferedReader(new InputStreamReader(System.in));
 
@@ -350,12 +350,13 @@ public class Woo {
                             }
                         }
                     }
-                    System.out.println(playerToAnswer(buzzed) + " buzzed, so you get to answer!");
-
-                    hasAnswered(buzzed);
+                    if (totalPlayers > 1) {
+                        System.out.println(playerToAnswer(buzzed) + " buzzed, so you get to answer!");
+                        hasAnswered(buzzed);
+                    }
                     System.out.print("Ans: ");
                     String ans = Keyboard.readString();
-                    if (checkCustomAns(ans, col, row, count == 1))
+                    if (checkCustomAns(ans, col, row, count == 1) || (totalPlayers == 1))
                         break;
                 }
                 finalJeopardy();
@@ -457,11 +458,13 @@ public class Woo {
                             }
                         }
                     }
-                    System.out.println(playerToAnswer(buzzed) + " buzzed, so you get to answer!");
-                    hasAnswered(buzzed);
+                    if (totalPlayers > 1) {
+                        System.out.println(playerToAnswer(buzzed) + " buzzed, so you get to answer!");
+                        hasAnswered(buzzed);
+                    }
                     System.out.print("Ans: ");
                     String ans = Keyboard.readString();
-                    if (checkAns(ans, col, row, count == 1))
+                    if (checkAns(ans, col, row, count == 1) || (totalPlayers == 1))
                         break;
                 }
             } //ends for loop
@@ -565,7 +568,7 @@ public class Woo {
                 || col == 4 && ans.equalsIgnoreCase(Custom.answers4[row - 1])
                 || col == 5 && ans.equalsIgnoreCase(Custom.answers5[row - 1]))
         {
-            points[whichPlayer(buzzed)] += row * 100;
+            points[(totalPlayers > 1) ? whichPlayer(buzzed) : 0] += row * 100;
             System.out.println("Congratulations! You answered the question correctly!");
             board[row - 1][col - 1] = 0;
             return true;
@@ -625,13 +628,13 @@ public class Woo {
                 || (newCat[col - 1].trim().equalsIgnoreCase("Composers")&& ans.equalsIgnoreCase(Composers.answers[row - 1]))
                 || (newCat[col - 1].trim().equalsIgnoreCase("Space")    && ans.equalsIgnoreCase(Astronomy.answers[row - 1]))
                 || (newCat[col - 1].trim().equalsIgnoreCase("Sports")   && ans.equalsIgnoreCase(Sport.answers[row - 1]))) {
-            points[whichPlayer(buzzed)] += row * 100;
+            points[(totalPlayers > 1) ? whichPlayer(buzzed) : 0] += row * 100;
             System.out.println("Congratulations! You answered the question correctly!");
             board[row - 1][col - 1] = 0;
             return true;
         } else {
             System.out.println("You got it wrong. ");
-            points[whichPlayer(buzzed)] -= row * 100;
+            points[(totalPlayers > 1) ? whichPlayer(buzzed) : 0] -= row * 100;
             if (totalPlayers == 1 || toPrint) {
                 board[row - 1][col - 1] = 0;
                 System.out.println("The correct answer is: ");
@@ -921,7 +924,7 @@ public class Woo {
             }
         }
         System.out.println("Thank you for playing Jeopardy.  We have a winner~~");
-	System.out.println("\nThe winner is: " + who.get(0));
+	    System.out.println("\nThe winner is: " + who.get(0));
         sortRank();
     }
 

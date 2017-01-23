@@ -360,8 +360,9 @@ public class Woo {
                     if (checkCustomAns(ans, col, row, count == 1) || (totalPlayers == 1))
                         break;
                 }
-                finalJeopardy();
+                
             }
+	finalJeopardy();	
         }
 
         //------------------------------MARKER FOR HELP-------

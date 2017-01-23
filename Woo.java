@@ -27,7 +27,7 @@ public class Woo {
                      "Cheese", "China", "CompSci", "Geography",
                     "Pop", "Women", "USA", "College", "Plays",
                     "Food", "Tech", "Shows", "Music", "Earth", "Culture",
-                    "Literature", "Space", "Sports"};
+                    "Literature", "Space", "Sports", "Art"};
 
     //COLORS
     public static final String ANSI_RESET = "\u001B[0m";
@@ -490,6 +490,8 @@ public class Woo {
         //prints the questions corresponding to the random array
         if (newCat[col - 1].trim().equalsIgnoreCase("Nature"))
             System.out.println(ANSI_GREEN + Nature.questions[row - 1]);
+        if (newCat[col - 1].trim().equalsIgnoreCase("Art"))
+            System.out.println(Art.questions[row - 1]);
         if (newCat[col - 1].trim().equalsIgnoreCase("Math"))
             System.out.println(Mathematics.questions[row - 1]);
         if (newCat[col - 1].trim().equalsIgnoreCase("Science"))
@@ -606,6 +608,7 @@ public class Woo {
     public boolean checkAns(String ans, int col, int row, boolean toPrint) {
         //this if statement checks if the user's answer is correct and adds points if it is.
         if ((newCat[col - 1].trim().equalsIgnoreCase("Nature") && ans.equalsIgnoreCase(Nature.answers[row - 1]))
+                || (newCat[col - 1].trim().equalsIgnoreCase("Art")     && ans.equalsIgnoreCase(Art.answers[row - 1]))
                 || (newCat[col - 1].trim().equalsIgnoreCase("Math")     && ans.equalsIgnoreCase(Mathematics.answers[row - 1]))
                 || (newCat[col - 1].trim().equalsIgnoreCase("Science")  && ans.equalsIgnoreCase(Sci.answers[row - 1]))
                 || (newCat[col - 1].trim().equalsIgnoreCase("History")  && ans.equalsIgnoreCase(History.answers[row - 1]))
@@ -886,33 +889,33 @@ public class Woo {
 
 
         while (who.size() > 1) {             // until there is one
-            System.out.println("\n~~  Instant Death  ~~\n\tFinal Jeopardy\n\nThe first to buzz in wins! But be careful, if you answer incorrectly, you lose a point! May the best win c:");
-            System.out.println("What is our team name?");
+            System.out.println("\n"+ ANSI_CYAN + "~~  Instant Death  ~~\n\tFinal Jeopardy\n\nThe first to buzz in wins! But be careful, if you answer incorrectly, you lose a point! May the best win c:" + ANSI_RESET);
+            System.out.println(ANSI_CYAN + "What is our team name?" + ANSI_RESET);
 
-            System.out.println("Only the best may play  \nRemember your buzzers!!");
+            System.out.println(ANSI_CYAN + "Only the best may play  \nRemember your buzzers!!" + ANSI_RESET);
             for (int i = 0; i < who.size(); i++)
                 System.out.printf("%-10s -> %s%n", who.get(i), whoChar.get(i));
-	    System.out.print("BUZZ IN");
+	    System.out.print(ANSI_GREEN + "BUZZ IN" + ANSI_RESET);
 	    for (int i = 0; i < 3; i++) {
 		try {
 		    Thread.sleep(1000); //What gives the 1 second interval
 		} catch (InterruptedException ignored) {}
-		System.out.print(".");
+		System.out.print(ANSI_GREEN + "." + ANSI_RESET);
 	    }
-	    System.out.print("\nNOW");
+	    System.out.print("\n" + ANSI_GREEN + "NOW" + ANSI_RESET);
 
             buzzed = "";
             try {
                 while (true) {
                     buzzed = in.readLine();
                     if (!whoChar.contains(buzzed))
-                        System.out.println("No playing winner has that buzzer!! Buzz again!");
+                        System.out.println(ANSI_RED + "No playing winner has that buzzer!! Buzz again!" + ANSI_RESET);
                     else
                         break;
                 }
             } catch (IOException ignored) {}
 
-            System.out.println(playerToAnswer(buzzed) + " buzzed first, so you get to answer!");
+            System.out.println(ANSI_GREEN + playerToAnswer(buzzed) + " buzzed first, so you get to answer!" + ANSI_RESET);
             if ("Djaghrouri".equalsIgnoreCase(Keyboard.readString())) {
                 for (int i = 0; i < totalPlayers; i++)
                     if (buzzer[i].equalsIgnoreCase(buzzed))
@@ -927,8 +930,8 @@ public class Woo {
 
             }
         }
-        System.out.println("Thank you for playing Jeopardy.  We have a winner~~");
-	    System.out.println("\nThe winner is: " + who.get(0));
+        System.out.println(ANSI_WHITE + "Thank you for playing Jeopardy.  We have a winner~~" + ANSI_RESET);
+	    System.out.println("\n" + ANSI_WHITE + "The winner is: " + who.get(0) + ANSI_RESET);
         sortRank();
     }
 

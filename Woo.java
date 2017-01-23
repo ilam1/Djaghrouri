@@ -886,7 +886,7 @@ public class Woo {
 
 
         while (who.size() > 1) {             // until there is one
-            System.out.println("\n~~  Instant Death  ~~\n\tFinal Jeopardy");
+            System.out.println("\n~~  Instant Death  ~~\n\tFinal Jeopardy\n\nThe first to buzz in wins! But be careful, if you answer incorrectly, you lose a point! May the best win c:");
             System.out.println("What is our team name?");
 
             System.out.println("Only the best may play  \nRemember your buzzers!!");

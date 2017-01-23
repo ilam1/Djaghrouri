@@ -338,7 +338,7 @@ public class Woo {
                         while (hasAnswered(buzzed)) {   //playerToAnswer(buzzed).equals("Error")
 			    if (!buzzed.equalsIgnoreCase("Buzzer"))
 				System.out.println("\n" + ANSI_GREEN + "No one has that buzzer!!" + ANSI_RESET);
-			    System.out.println(ANSI_GREEN + "Playing players buzz again! Not sure? Type \"Buzzer\"." + ANSI_RESET + "\n");
+			    System.out.println(ANSI_GREEN + "Playing players buzz again!" + ANSI_RESET + "\n");
                             try {
                                 buzzed = in.readLine().trim();
                                 if (buzzed.equalsIgnoreCase("Buzzer"))
@@ -447,7 +447,7 @@ public class Woo {
                         while (hasAnswered(buzzed)) {//playerToAnswer(buzzed).equals("Error")) {
 			    if (!buzzed.equalsIgnoreCase("Buzzer"))
 				System.out.println("\n" + ANSI_RED + "No one active has that buzzer!!" + ANSI_RESET);
-			    System.out.println(ANSI_GREEN + "Playing players buzz again!  Not sure? Type \"Buzzer\"." + ANSI_RESET + "\n");
+			    System.out.println(ANSI_GREEN + "Playing players buzz again!" + ANSI_RESET + "\n");
                             try {
                                 buzzed = in.readLine();
                                 if (buzzed.equalsIgnoreCase("Buzzer"))

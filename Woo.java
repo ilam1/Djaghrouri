@@ -55,14 +55,14 @@ public class Woo {
      * It prints out loading followed by periods with a lag time.
      */
     public void load(){
-        System.out.print(ANSI_CYAN + "Loading" + ANSI_RESET);
+        System.out.print(ANSI_GREEN + "Loading" + ANSI_RESET);
         for (int i = 0; i < 3; i++) {
             try {
                 Thread.sleep(1000); //What gives the 1 second interval
             } catch (InterruptedException ignored) {}
-            System.out.print(".");
+            System.out.print(ANSI_GREEN + "." + ANSI_RESET);
         }
-        System.out.println(ANSI_PURPLE + "You are now playing JEOPARDY \nDedicated to Ms. Djaghrouri (≧∀≦)" + ANSI_RESET + "\n\n" );
+        System.out.println("\n" + ANSI_YELLOW + "You are now playing JEOPARDY \nDedicated to Ms. Djaghrouri (≧∀≦)" + ANSI_RESET + "\n\n" );
     }
     /*
       This method populates the category array in Custom based on what the user inputs.
@@ -378,15 +378,15 @@ public class Woo {
                     System.out.println("\n" + ANSI_GREEN + "Select the categories you wish to play. Please type in the number before the points" + ANSI_RESET);
 
                     if (board[0][0] + board[1][0] + board[2][0] + board[3][0] + board[4][0] != 0)
-                        System.out.println("\t1: " + newCat[0]);
+                        System.out.println("\t" + ANSI_RED + "1: " + newCat[0] + ANSI_RESET);
                     if (board[0][1] + board[1][1] + board[2][1] + board[3][1] + board[4][1] != 0)
-                        System.out.println("\t2: " + newCat[1]);
+                        System.out.println("\t" + ANSI_RED + "2: " + newCat[1] + ANSI_RESET);
                     if (board[0][2] + board[1][2] + board[2][2] + board[3][2] + board[4][2] != 0)
-                        System.out.println("\t3: " + newCat[2]);
+                        System.out.println("\t" + ANSI_RED + "3: " + newCat[2] + ANSI_RESET);
                     if (board[0][3] + board[1][3] + board[2][3] + board[3][3] + board[4][3] != 0)
-                        System.out.println("\t4: " + newCat[3]);
+                        System.out.println("\t" + ANSI_RED + "4: " + newCat[3] + ANSI_RESET);
                     if (board[0][4] + board[1][4] + board[2][4] + board[3][4] + board[4][4] != 0)
-                        System.out.println("\t5: " + newCat[4]);
+                        System.out.println("\t" + ANSI_RED + "5: " + newCat[4] + ANSI_RESET);
 
                     col = Keyboard.readInt();
                 } while (!((col == 1 && (board[0][0] + board[1][0] + board[2][0] + board[3][0] + board[4][0] != 0))

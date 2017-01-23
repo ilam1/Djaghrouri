@@ -479,17 +479,17 @@ public class Woo {
      */
 
     public void printCustomQues(int col, int row) {
-        if (col == 1) { System.out.println(Custom.questions1[row-1]); }
+        if (col == 1) { System.out.println(ANSI_GREEN + Custom.questions1[row-1]); }
         else if (col == 2) { System.out.println(Custom.questions2[row-1]); }
         else if (col == 3) { System.out.println(Custom.questions3[row-1]); }
         else if (col == 4) { System.out.println(Custom.questions4[row-1]); }
-        else if (col == 5) { System.out.println(Custom.questions5[row-1]); }
+        else if (col == 5) { System.out.println(Custom.questions5[row-1]) + ANSI_RESET; }
     }
 
     public void printQues(int col, int row) {
         //prints the questions corresponding to the random array
         if (newCat[col - 1].trim().equalsIgnoreCase("Nature"))
-            System.out.println(Nature.questions[row - 1]);
+            System.out.println(ANSI_GREEN + Nature.questions[row - 1]);
         if (newCat[col - 1].trim().equalsIgnoreCase("Math"))
             System.out.println(Mathematics.questions[row - 1]);
         if (newCat[col - 1].trim().equalsIgnoreCase("Science"))
@@ -558,7 +558,7 @@ public class Woo {
             System.out.println(Astronomy.questions[row - 1]);
         }
         if (newCat[col - 1].trim().equalsIgnoreCase("Sports")) {
-            System.out.println(Sport.questions[row - 1]);
+            System.out.println(Sport.questions[row - 1] + ANSI_RESET);
         }
     }
 
@@ -795,12 +795,12 @@ public class Woo {
      */
     public void sortRank() {
         if (totalPlayers == 1 ) {
-            System.out.println("\nYour points: " + points[0]);
+            System.out.println("\n" + ANSI_YELLOW +"Your points: " + points[0] + ANSI_YELLOW);
             System.out.println(comments(points[0]));
             return;
         }
         boolean[] accessed = new boolean[totalPlayers];
-        System.out.println("\n====================\nLeaderboard:\n");
+        System.out.println("\n" + ANSI_YELLOW + "====================\nLeaderboard:\n");
         for (int i = 0; i < totalPlayers; i++) {
             int maxPlace = -1;
             for (int j = 0; j < totalPlayers; j++)
@@ -809,7 +809,7 @@ public class Woo {
                     break;
                 }
             if (maxPlace == -1)
-                System.out.println("Congradulations, you beat the program! Please report it to the creators of this game :)");
+                System.out.println(ANSI_WHITE + "Congratulations, you beat the program! Please report it to the creators of this game :)" + ANSI_RESET);
 
             for (int j = maxPlace; j < totalPlayers; j++)
                 if (!accessed[j] && points[maxPlace] < points[j])
@@ -851,13 +851,13 @@ public class Woo {
 
     public String comments(int point) {
         if (point < -1000) {
-            return "And you call yourself a Stuyvesant student?"; }
+            return ANSI_BLUE + "And you call yourself a Stuyvesant student?" + ANSI_RESET; }
         else if (point < -500) {
-            return "Almost beyond hope - Selling 1 point for $1, please find Ms. D for change"; }
+            return ANSI_BLUE + "Almost beyond hope - Selling 1 point for $1, please find Ms. D for change" + ANSI_RESET; }
         else if (point < 0) {
-            return "We offer ARISTA and AIS Tutoring to cater to your every needs. Academic needs."; }
+            return ANSI_BLUE + "We offer ARISTA and AIS Tutoring to cater to your every needs. Academic needs." + ANSI_RESET; }
         else if (point > 2000) {
-            return "Average"; }
+            return ANSI_BLUE + "Average" + ANSI_RESET; }
         return "";
     }
 

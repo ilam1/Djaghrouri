@@ -122,14 +122,14 @@ public class Woo {
      */
     public void setBuzzer(int totalPlayers){
         for (int i = 0; i < totalPlayers; i++) {
-            System.out.println(ANSI_GREEN + "\nWho is player " + (i + 1) + " ?" + ANSI_GREEN);
+            System.out.println("\n" + ANSI_GREEN + "Who is player " + (i + 1) + " ?" + ANSI_RESET);
             try {
                 playerNames[i] = in.readLine();
             } catch (IOException e) {
                 e.printStackTrace();
             }
             if (totalPlayers > 1) {
-                System.out.println("\n" + playerNames[i] + " please select your ONE CHARACTER desired buzzer (e.g. a)");
+                System.out.println("\n" + ANSI_GREEN + playerNames[i] + " please select your ONE CHARACTER desired buzzer (e.g. a)" + ANSI_RESET);
 
                 while (buzzer[i] == null) {
                     boolean any = false;
@@ -144,10 +144,10 @@ public class Woo {
                             any = true; }
                     }
                     if (any) {
-                        System.out.println("Your buzzer has already been taken! Please select another buzzer:");
+                        System.out.println(ANSI_RED + "Your buzzer has already been taken! Please select another buzzer:" + ANSI_RESET);
                     }
                     else if (buzzerName.length() != 1) {
-                        System.out.println("Your buzzer is invalid! Please select another buzzer:");
+                        System.out.println(ANSI_RED + "Your buzzer is invalid! Please select another buzzer:" + ANSI_RESET);
                     }
                     else {
                         buzzer[i] = buzzerName;
@@ -161,7 +161,7 @@ public class Woo {
 
         in = new BufferedReader(new InputStreamReader(System.in));
 
-        System.out.println(ANSI_CYAN + "\t1: Create your own game!" + ANSI_RESET);
+        System.out.println(ANSI_PURPLE + "\t1: Create your own game!" + ANSI_RESET);
         System.out.println(ANSI_PURPLE + "\t2: Play our game!" + ANSI_RESET);
         int option = 0;
 
@@ -172,14 +172,15 @@ public class Woo {
         if (option == 1)
             choice1();
 
-        System.out.println(ANSI_PURPLE + "\nHow many players are playing in total?" + ANSI_RESET);
+        System.out.println("\n" + ANSI_PURPLE + "How many players are playing in total?" + ANSI_RESET);
+
         try {
             totalPlayers = Integer.parseInt(in.readLine());
         } catch (IOException | NumberFormatException e) {
             e.printStackTrace();
         }
 
-        System.out.println("\nToday, one of these " + totalPlayers + " contestants will win the Jeopardy!");
+        System.out.println("\n" + ANSI_GREEN + "Today, one of these " + totalPlayers + " contestants will win the Jeopardy!" + ANSI_RESET);
 
         playerNames = new String[totalPlayers]; //Updates the array playerNames to the size of the number of players
         buzzer = new String[totalPlayers];
@@ -189,8 +190,8 @@ public class Woo {
         setBuzzer(totalPlayers);
 
         if (option == 2) {
-            System.out.printf("\nWould you %s like to play a randomized game or a customized game?%n", (totalPlayers == 1) ? "" : "all" );
-            System.out.println("\t1: Random Game\n\t2: Customized Game");
+            System.out.printf("\n" + ANSI_GREEN + "Would you %s like to play a randomized game or a customized game?%n" + ANSI_RESET, (totalPlayers == 1) ? "" : "all" );
+            System.out.println("\t" + ANSI_GREEN + "1: Random Game" + "\n\t2: Customized Game" + ANSI_RESET);
 
             String choice = "";
 

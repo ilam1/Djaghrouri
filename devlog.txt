@@ -301,12 +301,9 @@ Together::
 	+ Changed comments to be more logical
 	+ Contributed to the theoretical changes of the UML diagram, Flow chart, and color schemes
 +Jason :: 
-+==============================================================
-+2017-01-23
-+--------------------------------------------------------------
-Together::
-+Bayan ::
-+Irene ::
-+Jason :: 
+	+ Added colors to EVERYTHING
+	+ More visually appealing
+	+ Updated FINAL changes to flow and uml to FINALLY reflect current state of things
+	+ Added a last subclass, ART, for a round number of 25 categories
 +==============================================================
 

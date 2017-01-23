@@ -268,7 +268,7 @@ public class Woo {
 
                 int col = 0;
                 do {
-                    System.out.println("\n" + ANSI_GREEN + "Select the categories you wish to play. Please type in the number before the points" + ANSI_RESET);
+                    System.out.println("\n" + ANSI_GREEN + "Select the categories you wish to play. Please type in the number before the points" + ANSI_RESET + "\n");
 
                     if (board[0][0] + board[1][0] + board[2][0] + board[3][0] + board[4][0] != 0)
                         System.out.println("\t" + ANSI_RED + "1: " + Custom.category[0] + ANSI_RESET);
@@ -399,18 +399,18 @@ public class Woo {
 
                 int row = 0;
                 do {
-                    System.out.println("\nHow many points would you like to play for? " +
-                            "Please type in the number before the points.\n");
+                    System.out.println("\n" + ANSI_GREEN +"How many points would you like to play for? " +
+                            "Please type in the number before the points.\n" + ANSI_RESET);
                     if (board[0][col - 1] != 0)
-                        System.out.println("\t 1: 100");
+                        System.out.println("\t" + ANSI_RED + "1: 100" + ANSI_RESET);
                     if (board[1][col - 1] != 0)
-                        System.out.println("\t 2: 200");
+                        System.out.println("\t" + ANSI_RED + "2: 200" + ANSI_RESET);
                     if (board[2][col - 1] != 0)
-                        System.out.println("\t 3: 300");
+                        System.out.println("\t" + ANSI_RED + "3: 300" + ANSI_RESET);
                     if (board[3][col - 1] != 0)
-                        System.out.println("\t 4: 400");
+                        System.out.println("\t" + ANSI_RED + "4: 400" + ANSI_RESET);
                     if (board[4][col - 1] != 0)
-                        System.out.println("\t 5: 500");
+                        System.out.println("\t" + ANSI_RED + "5: 500" + ANSI_RESET);
                     row = Keyboard.readInt();
                 } while (!((row == 1 && board[0][col - 1] != 0)
                         || (row == 2 && board[1][col - 1] != 0)
@@ -433,7 +433,7 @@ public class Woo {
                     printQues(col, row);
 
                     if (totalPlayers > 1 && count > 1) {
-                        System.out.println("Buzz to answer the question!  Not sure? Don't Remember? Type \"Buzzer\".");
+                        System.out.println(ANSI_GREEN + "Buzz to answer the question!  Not sure? Don't Remember? Type \"Buzzer\"." + ANSI_RESET);
                         try {
                             buzzed = in.readLine();
                             if (buzzed.equalsIgnoreCase("Buzzer"))
@@ -446,8 +446,8 @@ public class Woo {
                         }
                         while (hasAnswered(buzzed)) {//playerToAnswer(buzzed).equals("Error")) {
 			    if (!buzzed.equalsIgnoreCase("Buzzer"))
-				System.out.println("\nNo one active has that buzzer!!");
-			    System.out.println("Playing players buzz again!  Not sure? Type \"Buzzer\".\n");
+				System.out.println("\n" + ANSI_RED + "No one active has that buzzer!!" + ANSI_RESET);
+			    System.out.println(ANSI_GREEN + "Playing players buzz again!  Not sure? Type \"Buzzer\"." + ANSI_RESET + "\n");
                             try {
                                 buzzed = in.readLine();
                                 if (buzzed.equalsIgnoreCase("Buzzer"))
@@ -460,10 +460,10 @@ public class Woo {
                         }
                     }
                     if (totalPlayers > 1) {
-                        System.out.println(playerToAnswer(buzzed) + " buzzed, so you get to answer!");
+                        System.out.println(ANSI_GREEN + playerToAnswer(buzzed) + " buzzed, so you get to answer!" + ANSI_RESET);
                         hasAnswered(buzzed);
                     }
-                    System.out.print("Ans: ");
+                    System.out.print(ANSI_GREEN + "Ans: " + ANSI_RESET);
                     String ans = Keyboard.readString();
                     if (checkAns(ans, col, row, count == 1) || (totalPlayers == 1))
                         break;
@@ -570,17 +570,17 @@ public class Woo {
                 || col == 5 && ans.equalsIgnoreCase(Custom.answers5[row - 1]))
         {
             points[(totalPlayers > 1) ? whichPlayer(buzzed) : 0] += row * 100;
-            System.out.println("Congratulations! You answered the question correctly!");
+            System.out.println(ANSI_GREEN + "Congratulations! You answered the question correctly!" + ANSI_RESET);
             board[row - 1][col - 1] = 0;
             return true;
         }
         else {
-            System.out.println("You got it wrong. ");
+            System.out.println(ANSI_GREEN + "You got it wrong. " + ANSI_RESET);
 	    if (totalPlayers > 1) {
 		points[whichPlayer(buzzed)] -= row * 100; }
             if (totalPlayers == 1 || toPrint) {
                 board[row - 1][col - 1] = 0;
-                System.out.println("The correct answer was: ");
+                System.out.println(ANSI_GREEN + "The correct answer was: " + ANSI_RESET);
                 if (col == 1 )
                     { System.out.println(Custom.answers1[row - 1]); }
                 if (col == 2 )
@@ -631,15 +631,15 @@ public class Woo {
                 || (newCat[col - 1].trim().equalsIgnoreCase("Space")    && ans.equalsIgnoreCase(Astronomy.answers[row - 1]))
                 || (newCat[col - 1].trim().equalsIgnoreCase("Sports")   && ans.equalsIgnoreCase(Sport.answers[row - 1]))) {
             points[(totalPlayers > 1) ? whichPlayer(buzzed) : 0] += row * 100;
-            System.out.println("Congratulations! You answered the question correctly!");
+            System.out.println(ANSI_GREEN + "Congratulations! You answered the question correctly!" + ANSI_RESET);
             board[row - 1][col - 1] = 0;
             return true;
         } else {
-            System.out.println("You got it wrong. ");
+            System.out.println(ANSI_GREEN + "You got it wrong. " + ANSI_RESET);
             points[(totalPlayers > 1) ? whichPlayer(buzzed) : 0] -= row * 100;
             if (totalPlayers == 1 || toPrint) {
                 board[row - 1][col - 1] = 0;
-                System.out.println("The correct answer is: ");
+                System.out.println(ANSI_GREEN + "The correct answer is: " + ANSI_RESET);
                 if ((newCat[col - 1].trim().equals("Nature"))) {
                     System.out.println(Nature.answers[row - 1]); }
                 if ((newCat[col - 1].trim().equalsIgnoreCase("Math"))) {

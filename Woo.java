@@ -55,14 +55,14 @@ public class Woo {
      * It prints out loading followed by periods with a lag time.
      */
     public void load(){
-        System.out.print("Loading");
+        System.out.print(ANSI_CYAN + "Loading" + ANSI_RESET);
         for (int i = 0; i < 3; i++) {
             try {
                 Thread.sleep(1000); //What gives the 1 second interval
             } catch (InterruptedException ignored) {}
             System.out.print(".");
         }
-        System.out.println("You are now playing JEOPARDY \nDedicated to Ms. Djaghrouri (≧∀≦)\n\n");
+        System.out.println(ANSI_PURPLE + "You are now playing JEOPARDY \nDedicated to Ms. Djaghrouri (≧∀≦)" + ANSI_RESET + "\n\n" );
     }
     /*
       This method populates the category array in Custom based on what the user inputs.
@@ -161,8 +161,8 @@ public class Woo {
 
         in = new BufferedReader(new InputStreamReader(System.in));
 
-        System.out.println(ANSI_PURPLE + "\t1: Create your own game!" + ANSI_RESET);
-        System.out.println(ANSI_PURPLE + "\t2: Play our game!" + ANSI_RESET);
+        System.out.println(ANSI_RED + "\t1: Create your own game!" + ANSI_RESET);
+        System.out.println(ANSI_RED + "\t2: Play our game!" + ANSI_RESET);
         int option = 0;
 
         try {
@@ -172,7 +172,7 @@ public class Woo {
         if (option == 1)
             choice1();
 
-        System.out.println("\n" + ANSI_PURPLE + "How many players are playing in total?" + ANSI_RESET);
+        System.out.println("\n" + ANSI_GREEN + "How many players are playing in total?" + ANSI_RESET);
 
         try {
             totalPlayers = Integer.parseInt(in.readLine());
@@ -191,7 +191,7 @@ public class Woo {
 
         if (option == 2) {
             System.out.printf("\n" + ANSI_GREEN + "Would you %s like to play a randomized game or a customized game?%n" + ANSI_RESET, (totalPlayers == 1) ? "" : "all" );
-            System.out.println("\t" + ANSI_GREEN + "1: Random Game" + "\n\t2: Customized Game" + ANSI_RESET);
+            System.out.println("\t" + ANSI_RED + "1: Random Game" + "\n\t2: Customized Game" + ANSI_RESET);
 
             String choice = "";
 
@@ -218,7 +218,7 @@ public class Woo {
                             i = 0;
                         }
                     }
-                    System.out.printf("%nCategories left: %d%n_> ", left);
+                    System.out.printf(ANSI_GREEN + "%nCategories left: %d%n_> " + ANSI_RESET, left);
 
                     String str = "";
                     try {
@@ -237,25 +237,25 @@ public class Woo {
                     if (exists && !invalid) {
                         newCat[5 - left] = str;
                         left--;
-                        System.out.printf("%s has been added to our game.", str);
+                        System.out.printf(ANSI_GREEN + "%s has been added to our game." + ANSI_GREEN, str);
                         if (left > 0)
                             System.out.printf("Select %d more categories.", left);
                         else
                             System.out.println();
                     } else if (invalid)
-                        System.out.printf("%s is already taken, please select another category", str);
+                        System.out.printf(ANSI_RED + "%s is already taken, please select another category" + ANSI_RESET, str);
                     else
-                        System.out.printf("Sorry, we do not recognize \"%s\", please select another category", str);
+                        System.out.printf(ANSI_RED + "Sorry, we do not recognize \"%s\", please select another category" + ANSI_RESET, str);
                 }
             }
         }
-        System.out.println("\n*            *            *\n\nThank you, ladies and gentlemen. Hello & welcome to " +
+        System.out.println("\n*            *            *\n\n" + ANSI_GREEN + "Thank you, ladies and gentlemen. Hello & welcome to " +
                 "Jeopardy!, America's favorite answer-and-question game. Yes, we give the QUESTIONS, and then it's " +
                 "up to these " + totalPlayers + " contestants to come up with the ANSWERS. Players, as you know, " +
                 "whenever you recognize an answer you're free to ring in; but, I want to warn you about the " +
                 "Jeopardy!: if you are wrong, the value of the question will be deducted from your winnings. " +
                 "Right now, put your hands on the buttons, but please don't ring in until the answer is exposed. " +
-                "If all " + totalPlayers + " of you are ready, then let's play Jeopardy!");
+                "If all " + totalPlayers + " of you are ready, then let's play Jeopardy!" + ANSI_RESET);
 
         points = new int[totalPlayers];//Updates the points array to number of players in the game
         if (option == 1) {
@@ -268,18 +268,18 @@ public class Woo {
 
                 int col = 0;
                 do {
-                    System.out.println("\nSelect the categories you wish to play. Please type in the number before the points");
+                    System.out.println("\n" + ANSI_GREEN + "Select the categories you wish to play. Please type in the number before the points" + ANSI_RESET);
 
                     if (board[0][0] + board[1][0] + board[2][0] + board[3][0] + board[4][0] != 0)
-                        System.out.println("\t1: " + Custom.category[0]);
+                        System.out.println("\t" + ANSI_RED + "1: " + Custom.category[0] + ANSI_RESET);
                     if (board[0][1] + board[1][1] + board[2][1] + board[3][1] + board[4][1] != 0)
-                        System.out.println("\t2: " + Custom.category[1]);
+                        System.out.println("\t" + ANSI_RED + "2: " + Custom.category[1] + ANSI_RESET);
                     if (board[0][2] + board[1][2] + board[2][2] + board[3][2] + board[4][2] != 0)
-                        System.out.println("\t3: " + Custom.category[2]);
+                        System.out.println("\t" + ANSI_RED + "3: " + Custom.category[2] + ANSI_RESET);
                     if (board[0][3] + board[1][3] + board[2][3] + board[3][3] + board[4][3] != 0)
-                        System.out.println("\t4: " + Custom.category[3]);
+                        System.out.println("\t" + ANSI_RED + "4: " + Custom.category[3] + ANSI_RESET);
                     if (board[0][4] + board[1][4] + board[2][4] + board[3][4] + board[4][4] != 0)
-                        System.out.println("\t5: " + Custom.category[4]);
+                        System.out.println("\t" + ANSI_RED + "5: " + Custom.category[4] + ANSI_RESET);
 
                     col = Keyboard.readInt();
                 } while (!((col == 1 && (board[0][0] + board[1][0] + board[2][0] + board[3][0] + board[4][0] != 0))
@@ -292,18 +292,18 @@ public class Woo {
 
                 int row = 0;
                 do {
-                    System.out.println("\nHow many points would you like to play for? " +
-                            "Please type in the number before the points.\n");
+                    System.out.println("\n" + ANSI_GREEN +"How many points would you like to play for? " +
+                            "Please type in the number before the points.\n" + ANSI_RESET);
                     if (board[0][col - 1] != 0)
-                        System.out.println("\t 1: 100");
+                        System.out.println("\t" + ANSI_RED "1: 100" + ANSI_RESET);
                     if (board[1][col - 1] != 0)
-                        System.out.println("\t 2: 200");
+                        System.out.println(("\t" + ANSI_RED "2: 200" + ANSI_RESET);
                     if (board[2][col - 1] != 0)
-                        System.out.println("\t 3: 300");
+                        System.out.println(("\t" + ANSI_RED "3: 300" + ANSI_RESET);
                     if (board[3][col - 1] != 0)
-                        System.out.println("\t 4: 400");
+                        System.out.println(("\t" + ANSI_RED "4: 400" + ANSI_RESET);
                     if (board[4][col - 1] != 0)
-                        System.out.println("\t 5: 500");
+                        System.out.println(("\t" + ANSI_RED "5: 500" + ANSI_RESET);
                     row = Keyboard.readInt();
                 } while (!((row == 1 && board[0][col - 1] != 0)
                         || (row == 2 && board[1][col - 1] != 0)
@@ -325,7 +325,7 @@ public class Woo {
 
                     printCustomQues(col, row);
                     if (totalPlayers > 1 && count > 1) {
-                        System.out.println("Buzz to answer the question! Don't remember your buzzer?? Type \"Buzzer\".");
+                        System.out.println(ANSI_GREEN + "Buzz to answer the question! Don't remember your buzzer?? Type \"Buzzer\"." + ANSI_RESET);
                         try {
                             buzzed = in.readLine().trim();
                             if (buzzed.equalsIgnoreCase("Buzzer"))
@@ -337,8 +337,8 @@ public class Woo {
                         }
                         while (hasAnswered(buzzed)) {   //playerToAnswer(buzzed).equals("Error")
 			    if (!buzzed.equalsIgnoreCase("Buzzer"))
-				System.out.println("\nNo one has that buzzer!!");
-			    System.out.println("Playing players buzz again! Not sure? Type \"Buzzer\".\n");
+				System.out.println("\n" + ANSI_GREEN + "No one has that buzzer!!" + ANSI_RESET);
+			    System.out.println(ANSI_GREEN + "Playing players buzz again! Not sure? Type \"Buzzer\"." + ANSI_RESET + "\n");
                             try {
                                 buzzed = in.readLine().trim();
                                 if (buzzed.equalsIgnoreCase("Buzzer"))

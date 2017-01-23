@@ -71,7 +71,7 @@ public class Woo {
     public String[] makeCat(){
         int ctr=1;
         while (ctr<=5){
-            System.out.println("What's the topic for category "+ ctr + "?");
+            System.out.println(ANSI_GREEN + "What's the topic for category "+ ctr + "?" + ANSI_RESET);
             Custom.category[ctr-1]= Keyboard.readString();
             ctr+=1;
         }
@@ -83,9 +83,9 @@ public class Woo {
      */
     public void makeQuesAns(String[] quesArr, String[] ansArr, int cat) {
         for(int ind=0; ind<5; ind++){
-            System.out.println("What is the question worth "+((ind+1)*100)+" points for the "+ Custom.category[cat]+" category");
+            System.out.println(ANSI_GREEN + "What is the question worth "+((ind+1)*100)+" points for the "+ Custom.category[cat]+" category") + ANSI_RESET;
             quesArr[ind]=Keyboard.readString();
-            System.out.println("What is the answer worth "+((ind+1)*100)+" points for the "+ Custom.category[cat]+" category");
+            System.out.println(ANSI_GREEN + "What is the answer worth "+((ind+1)*100)+" points for the "+ Custom.category[cat]+" category" + ANSI_RESET);
             ansArr[ind]=Keyboard.readString();
         }
     }
@@ -122,7 +122,7 @@ public class Woo {
      */
     public void setBuzzer(int totalPlayers){
         for (int i = 0; i < totalPlayers; i++) {
-            System.out.println("\nWho is player " + (i + 1) + " ?");
+            System.out.println(ANSI_GREEN + "\nWho is player " + (i + 1) + " ?" + ANSI_GREEN);
             try {
                 playerNames[i] = in.readLine();
             } catch (IOException e) {
@@ -896,7 +896,7 @@ public class Woo {
 		System.out.print(".");
 	    }
 	    System.out.print("\nNOW");
-	    
+
             buzzed = "";
             try {
                 while (true) {
@@ -920,7 +920,7 @@ public class Woo {
 		for (int i = 0; i < totalPlayers; i++)
                     if (buzzer[i].equalsIgnoreCase(buzzed))
 			points[i]--;        // loses one point = defeat
-		
+
             }
         }
         System.out.println("Thank you for playing Jeopardy.  We have a winner~~");

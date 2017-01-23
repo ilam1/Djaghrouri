@@ -202,6 +202,7 @@ Together::
 +Bayan, Irene::
        + Incorporated abstract methods into Category.java
 +Bayan ::
+       +Added Food.java
 +Irene ::
        + Added new instance variable buzzer to accomodate the newly added buzzer (recorded after the user inputs their name)
        + Added conditionals and necessary try catch blocks to prevent the selection of a buzzer already taken
@@ -259,7 +260,9 @@ Together::
 +2017-01-20
 +--------------------------------------------------------------
 Together::
-+Bayan :: debugging
++Bayan ::
+       +debugging
+       +added a parameter to make ques and answer so that it would change. 
 +Irene ::
        + Rewrote sortRank
        	 + Based on selectionSort instead or original plannings of bubbleSort

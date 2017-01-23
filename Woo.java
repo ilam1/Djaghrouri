@@ -83,7 +83,7 @@ public class Woo {
      */
     public void makeQuesAns(String[] quesArr, String[] ansArr, int cat) {
         for(int ind=0; ind<5; ind++){
-            System.out.println(ANSI_GREEN + "What is the question worth "+((ind+1)*100)+" points for the "+ Custom.category[cat]+" category") + ANSI_RESET;
+            System.out.println(ANSI_GREEN + "What is the question worth "+((ind+1)*100)+" points for the "+ Custom.category[cat]+" category" + ANSI_RESET);
             quesArr[ind]=Keyboard.readString();
             System.out.println(ANSI_GREEN + "What is the answer worth "+((ind+1)*100)+" points for the "+ Custom.category[cat]+" category" + ANSI_RESET);
             ansArr[ind]=Keyboard.readString();

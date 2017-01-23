@@ -59,8 +59,8 @@ originally intended) we need to keep track of which player is currently playing 
 +~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 + We changed our plan to use early exit bubble sort for sorting the ranks of the players because
  we will only have a small amount of players so which ever sort we use wouldn't really matter. 
- (Currently under dispute; Opposer: Irene; to be resolved on a later date)
-+ We changed from a multiplayer status to a single player status (the latter will be implemented later)
++ We replaced All or Nothing! and Bet! with Final Jeopardy, triggered only when players acheive a tie
++ We removed Special Edition Jeopardy and Double Jeopardy
 
 +LESSONS LEARNED
 +~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -270,7 +270,7 @@ Together::
 +Jason :: 
 	+ Fixed some small errors with user created game
 +==============================================================
-+2017-01-23
++2017-01-21
 +--------------------------------------------------------------
 Together::
 +Bayan ::
@@ -291,6 +291,15 @@ Together::
 	 + Announces the winner at the end and ends the game
 +Jason :: 
 	+ Reupdated flow and uml to actually reflect current state of things
++==============================================================
++2017-01-23
++--------------------------------------------------------------
++Bayan ::
++Irene ::
+	+ Various bugs were fixed in the case of single players
+	+ Final Jeopardy question was changed to be more answerable and relevant to the previous game experience
+	+ Contributed to the theoretical changes of the UML diagram, Flow chart, and color schemes
++Jason :: 
 +==============================================================
 +2017-01-23
 +--------------------------------------------------------------

@@ -885,7 +885,7 @@ public class Woo {
 
         while (who.size() > 1) {             // until there is one
             System.out.println("\n~~  Instant Death  ~~\n\tFinal Jeopardy");
-            System.out.println("What is the name of Reddit's alien?");
+            System.out.println("What is our team name?");
 
             System.out.println("Only the best may play  \nRemember your buzzers!!");
             for (int i = 0; i < who.size(); i++)
@@ -911,7 +911,7 @@ public class Woo {
             } catch (IOException ignored) {}
 
             System.out.println(playerToAnswer(buzzed) + " buzzed first, so you get to answer!");
-            if ("snoo".equalsIgnoreCase(Keyboard.readString())) {
+            if ("Djaghrouri".equalsIgnoreCase(Keyboard.readString())) {
                 for (int i = 0; i < totalPlayers; i++)
                     if (buzzer[i].equalsIgnoreCase(buzzed))
                         points[i]++;        // adds one point = victory

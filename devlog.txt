@@ -259,7 +259,7 @@ Together::
 +2017-01-20
 +--------------------------------------------------------------
 Together::
-+Bayan ::
++Bayan :: debugging
 +Irene ::
        + Rewrote sortRank
        	 + Based on selectionSort instead or original plannings of bubbleSort
